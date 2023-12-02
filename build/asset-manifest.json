@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/LeyangLi/static/css/main.fccfe5a5.css",
-    "main.js": "/LeyangLi/static/js/main.43bf7425.js",
-    "static/media/Leyang Li.jpeg": "/LeyangLi/static/media/Leyang Li.d87b228b653f8ae60878.jpeg",
-    "index.html": "/LeyangLi/index.html",
-    "main.fccfe5a5.css.map": "/LeyangLi/static/css/main.fccfe5a5.css.map",
-    "main.43bf7425.js.map": "/LeyangLi/static/js/main.43bf7425.js.map"
+    "main.css": "/static/css/main.fccfe5a5.css",
+    "main.js": "/static/js/main.f5c1985f.js",
+    "static/media/Leyang Li.jpeg": "/static/media/Leyang Li.d87b228b653f8ae60878.jpeg",
+    "index.html": "/index.html",
+    "main.fccfe5a5.css.map": "/static/css/main.fccfe5a5.css.map",
+    "main.f5c1985f.js.map": "/static/js/main.f5c1985f.js.map"
   },
   "entrypoints": [
     "static/css/main.fccfe5a5.css",
-    "static/js/main.43bf7425.js"
+    "static/js/main.f5c1985f.js"
   ]
 }
