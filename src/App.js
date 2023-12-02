@@ -17,9 +17,6 @@ function App() {
             <Route exact path="/">
                <Home/>
             </Route>
-            <Route exact path="/Personal-Website">
-               <Home/>
-            </Route>
             <Route exact path="/resume">
                <Resume url = {url}/>
             </Route>
