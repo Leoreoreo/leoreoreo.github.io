@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/static/css/main.6ee26548.css",
-    "main.js": "/static/js/main.24fa2fac.js",
+    "main.js": "/static/js/main.99fbce61.js",
     "static/media/Leyang Li.jpeg": "/static/media/Leyang Li.d87b228b653f8ae60878.jpeg",
     "index.html": "/index.html",
     "main.6ee26548.css.map": "/static/css/main.6ee26548.css.map",
-    "main.24fa2fac.js.map": "/static/js/main.24fa2fac.js.map"
+    "main.99fbce61.js.map": "/static/js/main.99fbce61.js.map"
   },
   "entrypoints": [
     "static/css/main.6ee26548.css",
-    "static/js/main.24fa2fac.js"
+    "static/js/main.99fbce61.js"
   ]
 }
