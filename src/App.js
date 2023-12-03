@@ -18,7 +18,7 @@ function App() {
                <Home/>
             </Route>
             <Route exact path="/resume">
-               <Resume url = {url}/>
+               <Resume url = { url }/>
             </Route>
             <Route exact path="/about">
                <About/>
@@ -29,5 +29,4 @@ function App() {
     </Router>
   );
 }
-
 export default App;
