@@ -1,0 +1,58 @@
+.about h1 {
+    color: var(--titleColor);
+    text-align: center;
+}
+.about h2 {
+    color: var(--titleColor);
+    margin-top: 40px;
+    margin-bottom: 20px;
+    text-align: center; 
+}
+.about h3 {
+    margin-top: 5px;
+    margin-bottom: 15px; 
+    text-align: center;
+}
+.about p {
+    margin: 3px; 
+}
+.project-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the items horizontally */
+    gap: 20px; /* Adjust the spacing between items */
+}
+
+.project {
+    flex: 0 1 250px; /* Fixed width for each project */
+    height: 250px; /* Fixed height for each project */
+    box-sizing: border-box;
+    padding: 5px;
+    border: 2px solid var(--titleColor);
+    border-radius: 15px; 
+    background-color: #3b4c6a; 
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.7);
+    margin-bottom: 3vh;
+}
+
+@media (max-width: 768px) {
+    .project {
+        flex: 0 1 48%; /* Adjust the width for smaller screens */
+        height: auto; /* Allow height to adjust based on content */
+    }
+}
+
+@media (max-width: 576px) {
+    .project {
+        flex: 0 1 100%; /* Full width for even smaller screens */
+        height: auto; /* Allow height to adjust based on content */
+    }
+}
+
+
+.img {
+    width: 20vw;
+    height: 20vh;
+    border: 3px solid var(--titleColor);
+    border-radius: 5%;
+}

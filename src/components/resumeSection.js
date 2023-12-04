@@ -2,9 +2,9 @@ import React from 'react';
 
 const ResumeSection = ({ activity, location, date, items }) => {
   return (
-    <div className="resume-section">
+    <div>
       <h3>{activity}</h3>
-      <div className="right-align">{location} | {date}</div>
+      <div className="timeAndLocation">{location} | {date}</div>
       <ul>
         {items.map((item, index) => (
           <li key={index}>{item}</li>

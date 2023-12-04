@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ResumeSection from './resumeSection';
 import useFetch from "./useFetch";
+import './resume.css';
 
 const Resume = (props) => {
     const { data: resumeData, isPending, error } = useFetch(`${props.url}/about`);
     let displayedTitle = '';
 
     return (
-        <div className="about">
+        <div className="resume">
           <h1>Welcome to My Resume</h1>
           { error && <div>{ error }</div> }
           { isPending && <div>Loading...</div> }
