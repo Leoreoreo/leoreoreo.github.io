@@ -4,7 +4,7 @@ import Home from './components/home'
 import Block from './components/block';
 import About from './components/about';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
+//import { HashRouter as Router } from 'react-router-dom';
 function App() {
   const url = 'https://leyanglibackend.onrender.com/';    // backend URL
   return (
@@ -29,4 +29,5 @@ function App() {
     </Router>
   );
 }
+
 export default App;
