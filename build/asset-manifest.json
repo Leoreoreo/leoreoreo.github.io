@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.61538dee.css",
+    "main.css": "/static/css/main.7b785059.css",
     "main.js": "/static/js/main.77b5e0fb.js",
     "static/media/travelData.png": "/static/media/travelData.87f890bf061931546aa6.png",
     "static/media/theKuiperFrontier.png": "/static/media/theKuiperFrontier.d7a8d65411c9292357f2.png",
     "static/media/wineQualityPrediction.png": "/static/media/wineQualityPrediction.0b13c7a982774c00322d.png",
     "static/media/Leyang Li.jpeg": "/static/media/Leyang Li.d87b228b653f8ae60878.jpeg",
     "index.html": "/index.html",
-    "main.61538dee.css.map": "/static/css/main.61538dee.css.map",
+    "main.7b785059.css.map": "/static/css/main.7b785059.css.map",
     "main.77b5e0fb.js.map": "/static/js/main.77b5e0fb.js.map"
   },
   "entrypoints": [
-    "static/css/main.61538dee.css",
+    "static/css/main.7b785059.css",
     "static/js/main.77b5e0fb.js"
   ]
 }
