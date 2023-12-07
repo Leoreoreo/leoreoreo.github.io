@@ -39,17 +39,16 @@
 @media only screen and (max-width: 600px) {
     .navbar {
         flex-direction: column; /* Change the flex direction for smaller screens */
-        align-items: stretch; /* Stretch items to full width */
     }
     .navbar h1 {
         font-size: 1.2em;
     }
     .navbar .links {
-        margin: 10px 0; /* Add margin to separate links on smaller screens */
-        order: 1; /* Move links to the top on smaller screens */
+        margin: 10px;   /* Add margin to separate links on smaller screens */
+        order: 1;       /* Move links to the top on smaller screens */
     }
 
     .navbar a {
-        margin: 0; /* Remove margin between links on smaller screens */
+        margin: 10; /* Remove margin between links on smaller screens */
     }
 } 
