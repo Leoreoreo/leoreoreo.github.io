@@ -1,5 +1,8 @@
 import React from 'react';
 import './about.css';
+import ReactImg from "./../img/React.png"
+import flaskImg from "./../img/flask.svg"
+import SQLiteImg from "./../img/Sqlite.svg"
 import theKuiperFrontier from "./../img/theKuiperFrontier.png"
 import travelData from "./../img/travelData.png"
 import WineQualityPrediction from "./../img/wineQualityPrediction.png"
@@ -12,30 +15,30 @@ export default function About() {
       "id": "R_kgDOK0lciA",
       "name": "Backend_LeyangLi",
       "description": "The Backend of this website.",
-      "pic": null,
+      "pic": flaskImg,
       "url": "https://github.com/Leoreoreo/Backend_LeyangLi",
       "techStack": "Flask.py, SQLite3"
     },
     {
       "id": "R_kgDOK0rHnA",
       "name": "leoreoreo.github.io",
-      "description": "The Frontend of this website.",
-      "pic": null,
+      "description": "Frontend of this website.",
+      "pic": ReactImg,
       "url": "https://github.com/Leoreoreo/leoreoreo.github.io",
       "techStack": "React.js, HTML&CSS"
     },
     {
       "id": "R_kgDOKyY1cg",
       "name": "React_Practice",
-      "description": "My repository of learning React.",
-      "pic": null,
+      "description": "Repository for learning React.",
+      "pic": ReactImg,
       "url": "https://github.com/Leoreoreo/react_practice",
       "techStack": "React.js, HTML&CSS"
     },
     {
       "id": "R_kgDOJVNUqA",
       "name": "Travel_Data_Viz",
-      "description": "A data visualization website for users to gain travel insights.",
+      "description": "Data visualization website offering users travel insights.",
       "pic": travelData,
       "url": "https://github.com/Leoreoreo/EGcomp-Final-Project-Web",
       "techStack": "Pandas.py, HTML&CSS"
@@ -43,7 +46,7 @@ export default function About() {
     {
       "id": "R_kgDOKzpaHw",
       "name": "the_Kuiper_Frontier",
-      "description": "A 2D plane-shooting game developed with Processing.",
+      "description": "2D plane-shooting game.",
       "pic": theKuiperFrontier,
       "url": "https://github.com/Leoreoreo/theKuiperFrontier",
       "techStack": "Processing, OOP (JAVA)"
@@ -51,7 +54,7 @@ export default function About() {
     {
       "id": "R_kgDOK1A_qg",
       "name": "Wine_Quality_Prediction",
-      "description": "ML project predicting wine quality.",
+      "description": "Wine quality prediction ML project.",
       "pic": WineQualityPrediction,
       "url": "https://github.com/Leoreoreo/WineQualityPrediction",
       "techStack": "Sklearn.py (LogisticRegression), Pandas.py"
