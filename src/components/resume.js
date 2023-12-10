@@ -1,6 +1,7 @@
 import React from 'react';
 import ResumeSection from './resumeSection';
 import useFetch from "./useFetch";
+import pdf from '../Resume.pdf';
 import './resume.css';
 
 const Resume = (props) => {
@@ -10,6 +11,7 @@ const Resume = (props) => {
     return (
         <div className="resume">
           <h1>Welcome to My Resume</h1>
+          <a className="links" href={pdf}>Download Resume</a>
           { error && <div>{ error }</div> }
           { isPending && <div>Loading...</div> }
           { resumeData && resumeData.map((section, sectionIndex) => {
