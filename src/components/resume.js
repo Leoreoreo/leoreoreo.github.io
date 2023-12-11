@@ -11,7 +11,7 @@ const Resume = (props) => {
     return (
         <div className="resume">
           <h1>Welcome to My Resume</h1>
-          <a className="links" href={pdf}>Download Resume</a>
+          <a className="download" href={pdf} style={{ float: 'right' }}>Download</a>
           { error && <div>{ error }</div> }
           { isPending && <div>Loading...</div> }
           { resumeData && resumeData.map((section, sectionIndex) => {
