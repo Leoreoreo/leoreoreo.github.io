@@ -11,3 +11,9 @@
     margin-top: 20px;
     margin-bottom: 5px; 
 }
+.home img {
+    display: flex;
+    margin: 30%;
+    max-width: 100%; /* Ensure the image does not exceed its natural size */
+    height: auto;
+}

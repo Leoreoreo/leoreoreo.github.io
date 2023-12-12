@@ -1,4 +1,5 @@
 import React from 'react';
+import HomePic from "./../img/HomePic.jpeg"
 import './home.css';
 
 const Home = () => {
@@ -8,6 +9,8 @@ const Home = () => {
           <h1>Hi! I'm Leyang!</h1>
           <br/>
           <h1>Welcome to My Personal Website :D</h1>
+          <br/>
+          <img src={HomePic} alt="" className="img" />
         </div>
     );
 }
