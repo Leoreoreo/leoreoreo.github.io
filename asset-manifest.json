@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.23d83f2a.css",
+    "main.css": "/static/css/main.1e721235.css",
     "main.js": "/static/js/main.e8e2b400.js",
     "static/media/travelData.png": "/static/media/travelData.87f890bf061931546aa6.png",
     "static/media/theKuiperFrontier.png": "/static/media/theKuiperFrontier.d7a8d65411c9292357f2.png",
@@ -11,11 +11,11 @@
     "static/media/flask.svg": "/static/media/flask.08c1b466970b061c71a35c474cc54cab.svg",
     "static/media/Sqlite.svg": "/static/media/Sqlite.ea01873105adaf2aefe5c135d8ec858a.svg",
     "index.html": "/index.html",
-    "main.23d83f2a.css.map": "/static/css/main.23d83f2a.css.map",
+    "main.1e721235.css.map": "/static/css/main.1e721235.css.map",
     "main.e8e2b400.js.map": "/static/js/main.e8e2b400.js.map"
   },
   "entrypoints": [
-    "static/css/main.23d83f2a.css",
+    "static/css/main.1e721235.css",
     "static/js/main.e8e2b400.js"
   ]
 }
