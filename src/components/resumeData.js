@@ -1,0 +1,110 @@
+export const resumeData = [
+  [
+    "EDUCATION",
+    "University of Notre Dame",
+    "Notre Dame, IN",
+    "May, 2026",
+    "Bachelor of Science    |    GPA: 3.9",
+    "Major: Computer Science",
+    "Supplementary major: Applied and Computational Mathematics and Statistics",
+    "Current Courseworks: Theory of Computing, Systems Programming, Linear Algebra & Differential Equation, Probability",
+    null,
+    null
+  ],
+  [
+    "EDUCATION",
+    "University of Notre Dame (London)",
+    "London, UK",
+    "May, 2023 \u2013 June, 2023",
+    "London, England Summer Engineering",
+    "Courses: Machine Learning for Engineers and Creative Programming with Processing",
+    null,
+    null,
+    null,
+    null
+  ],
+  [
+    "RELATED COURSEWORK OR PROJECTS",
+    "Machine Learning for Engineers",
+    "University of Notre Dame",
+    "June, 2023",
+    "Wine Quality Prediction",
+    "Learned machine learning theories and Python sklearn and tensorflow libraries implementations",
+    "Predicted wine quality using logistic regression with SGD optimizer and different regularization methods",
+    null,
+    null,
+    null
+  ],
+  [
+    "RELATED COURSEWORK OR PROJECTS",
+    "Engineering Computing ",
+    "University of Notre Dame",
+    "May, 2023",
+    "World Travel Data Visualization Website",
+    "Provided information for users to make informed decisions about travel plans",
+    "Cleaned and visualized CSV datas with Python pandas and matplotlib libraries",
+    "Created a corresponding website (https://leoreoreo.github.io/EGcomp-Final-Project-Web/) with HTML and CSS",
+    null,
+    null
+  ],
+  [
+    "EXPERIENCE",
+    "Privacy Sandbox",
+    "Notre Dame, IN",
+    "September, 2023 \u2013 Now",
+    "Research Assistant: Privacy Sandbox web development",
+    "Participate in creating a website that generates virtual internet user personas used to analyze users\u2019 privacy loss",
+    "Use Python&Flask for backend, Javascript&React for frontend, and SQLite for database",
+    null,
+    null,
+    null
+  ],
+  [
+    "EXPERIENCE",
+    "Notre Dame Video Game Development Club",
+    "Notre Dame, IN",
+    "February, 2023 \u2013 Now",
+    "Project: Dungeons and Domers game development",
+    "Participate in developing a 2D dungeon crawler game with Unity",
+    "Lead parts of room design, room tiles construction, and player camera programming",
+    null,
+    null,
+    null
+  ],
+  [
+    "EXPERIENCE",
+    "Everbright Securities Asset Management CO., LTD",
+    "Shanghai, China",
+    "July, 2023 \u2013 August, 2023",
+    "Data Science Intern: Application of Machine Learning in Investment Forecasting",
+    "Analyzed research papers and identify potential machine learning strategies to improve investment forecasting",
+    "Attempted to integrate additive, self, and multi-head sparse self attention modules to GRU model with PyTorch",
+    null,
+    null,
+    null
+  ],
+  [
+    "EXPERIENCE",
+    "Institute of Microelectronics of Chinese Academy of Sciences",
+    "Beijing, China",
+    "July, 2021 \u2013 August, 2021",
+    "Research: Road Traffic Sign Recognition Based on Lightweight Neural Network",
+    "Compared the application of YOLO-MoblieNet-V1, V2, V3, and YOLO-V4-tiny in traffic sign recognition",
+    "Poster presented at The 10th Applied Optics and Photonics China (AOPC2021)",
+    "Paper accepted by Society of Photo-Optical Instrumentation Engineers (SPIE)",
+    null,
+    null
+  ],
+  [
+    "LEADERSHIP AND ACTIVITIES",
+    "Shanghai Adolescents Science and Technology Innovation Contest",
+    "Shanghai, China",
+    "June, 2021 \u2013 October, 2021",
+    "Project: Automatic Triangular Traffic Warning Sign",
+    "Designed and constructed an automatically set up triangular warning sign with PID in C and Micro Python",
+    "Won 2nd prize at Shanghai Adolescents Science and Technology Innovation Contest",
+    "Won China Thinks Big 2020-2021 National Trails 3rd prize and CTB Inventor",
+    "Granted a patent and receive high recognition from SAIC",
+    null
+  ]
+];

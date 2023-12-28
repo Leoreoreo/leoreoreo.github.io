@@ -1,4 +1,4 @@
-import Resume from './components/resume';
+import Resume from './components/resumeLocal';
 import Navbar from './components/Navbar';
 import Home from './components/home'
 import Block from './components/block';
@@ -18,7 +18,7 @@ function App() {
                <Home/>
             </Route>
             <Route exact path="/resume">
-               <Resume url = { url }/>
+               <Resume/>
             </Route>
             <Route exact path="/about">
                <About/>
