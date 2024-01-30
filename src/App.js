@@ -1,4 +1,4 @@
-import Resume from './components/resumeLocal';
+import Resume from './components/resume';
 import Navbar from './components/Navbar';
 import Home from './components/home'
 import Block from './components/block';

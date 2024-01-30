@@ -2,7 +2,7 @@ import React from 'react';
 import './about.css';
 import ReactImg from "./../img/React.png"
 import flaskImg from "./../img/flask.svg"
-import SQLiteImg from "./../img/Sqlite.svg"
+import PrivacySandboxImg from "./../img/PrivacySandbox.png"
 import theKuiperFrontier from "./../img/theKuiperFrontier.png"
 import travelData from "./../img/travelData.png"
 import WineQualityPrediction from "./../img/wineQualityPrediction.png"
@@ -12,7 +12,7 @@ import WineQualityPrediction from "./../img/wineQualityPrediction.png"
 export default function About() {
   const projects = [
     {
-      "id": "R_kgDOK0lciA",
+      "id": "1",
       "name": "Backend_LeyangLi",
       "description": "The Backend of this website.",
       "pic": flaskImg,
@@ -20,7 +20,7 @@ export default function About() {
       "techStack": "Flask.py, SQLite3"
     },
     {
-      "id": "R_kgDOK0rHnA",
+      "id": "2",
       "name": "leoreoreo.github.io",
       "description": "Frontend of this website.",
       "pic": ReactImg,
@@ -28,15 +28,15 @@ export default function About() {
       "techStack": "React.js, HTML&CSS"
     },
     {
-      "id": "R_kgDOKyY1cg",
-      "name": "React_Practice",
-      "description": "Repository for learning React.",
-      "pic": ReactImg,
-      "url": "https://github.com/Leoreoreo/react_practice",
-      "techStack": "React.js, HTML&CSS"
+      "id": "3",
+      "name": "relatedPosts",
+      "description": "Text search module for Privacy Sandbox",
+      "pic": PrivacySandboxImg,
+      "url": "https://github.com/Leoreoreo/relatedPosts",
+      "techStack": "Senmatic-Search"
     },
     {
-      "id": "R_kgDOJVNUqA",
+      "id": "4",
       "name": "Travel_Data_Viz",
       "description": "Data visualization website offering users travel insights.",
       "pic": travelData,
@@ -44,7 +44,7 @@ export default function About() {
       "techStack": "Pandas.py, HTML&CSS"
     },
     {
-      "id": "R_kgDOKzpaHw",
+      "id": "5",
       "name": "the_Kuiper_Frontier",
       "description": "2D plane-shooting game.",
       "pic": theKuiperFrontier,
@@ -52,7 +52,7 @@ export default function About() {
       "techStack": "Processing, OOP (JAVA)"
     },
     {
-      "id": "R_kgDOK1A_qg",
+      "id": "6",
       "name": "Wine_Quality_Prediction",
       "description": "Wine quality prediction ML project.",
       "pic": WineQualityPrediction,
