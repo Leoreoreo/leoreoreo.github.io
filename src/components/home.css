@@ -1,9 +1,9 @@
 .home h1 {
-    color: var(--titleColor);
+    color: var(--black);
     text-align: center;
 }
 .home h2 {
-    color: var(--titleColor);
+    color: var(--black);
     margin-top: 40px;
     margin-bottom: 20px; 
 }
@@ -13,7 +13,7 @@
 }
 .home img {
     display: flex;
-    margin-left: 35%;
-    max-width: 300px; /* Ensure the image does not exceed its natural size */
+    margin-left: 12%;
+    width:  50vw; 
     height: auto;
 }

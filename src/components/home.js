@@ -10,7 +10,7 @@ const Home = () => {
           <br/>
           <h1>Welcome to My Personal Website :D</h1>
           <br/>
-          <img src={HomePic} alt="" className="img" />
+          <img src={HomePic} className="img" />
         </div>
     );
 }
