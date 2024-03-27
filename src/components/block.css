@@ -28,19 +28,19 @@
     border: 3px solid var(--titleColor);
     border-radius: 50%;
 }
-/* Styles for smaller screens (e.g., phones) */
+
 @media only screen and (max-width: 600px) {
     .block {
         top: 16%;
-        width: 100px; /* Adjust the width for smaller screens */
-        border-radius: 20px; /* Adjust the border-radius for smaller screens */
-        padding: 5px; /* Adjust padding for smaller screens */
+        width: 100px; 
+        border-radius: 20px; 
+        padding: 5px; 
 
     }
 
     .round-image {
-        width: 100px; /* Adjust the width for smaller screens */
-        height: 100px; /* Adjust the height for smaller screens */
+        width: 100px;
+        height: 100px;
         border-radius: 50%;
     }
     .info {
@@ -48,7 +48,7 @@
     }
 
     .info h2 {
-        font-size: 1.5em; /* Adjust the font size for h2 on smaller screens */
-        margin-bottom: 20px; /* Adjust margin for smaller screens */
+        font-size: 1.5em; 
+        margin-bottom: 20px; 
     }
 }

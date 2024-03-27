@@ -11,7 +11,7 @@ const Block = () => {
                 <p><a href="https://www.nd.edu" className="links">Notre Dame</a></p>
                 <br/>
                 <p>Phone (US & CN):</p>
-                <p>+1 574-378-5954</p>
+                <p>+1 (574)378-5954</p>
                 <p>+86 189-1633-7853</p>
                 <br/>
                 <p>Email: <a href="mailto:lli27@nd.edu" className="links">lli27@nd.edu</a></p>

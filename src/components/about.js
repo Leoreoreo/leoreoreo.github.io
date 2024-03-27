@@ -14,7 +14,7 @@ export default function About() {
     {
       "id": "1",
       "name": "Backend_LeyangLi",
-      "description": "The Backend of this website.",
+      "description": "Backend of this website.",
       "pic": flaskImg,
       "url": "https://github.com/Leoreoreo/Backend_LeyangLi",
       "techStack": "Flask.py, SQLite3"
@@ -30,15 +30,15 @@ export default function About() {
     {
       "id": "3",
       "name": "relatedPosts",
-      "description": "Text search module for Privacy Sandbox",
+      "description": "Module for Ad Auditing",
       "pic": PrivacySandboxImg,
       "url": "https://github.com/Leoreoreo/relatedPosts",
-      "techStack": "Senmatic-Search"
+      "techStack": "React.js, HTML&CSS, Flask.py, Senmatic-Search"
     },
     {
       "id": "4",
       "name": "Travel_Data_Viz",
-      "description": "Data visualization website offering users travel insights.",
+      "description": "Travel insights data visualization.",
       "pic": travelData,
       "url": "https://github.com/Leoreoreo/EGcomp-Final-Project-Web",
       "techStack": "Pandas.py, HTML&CSS"
@@ -54,14 +54,14 @@ export default function About() {
     {
       "id": "6",
       "name": "Wine_Quality_Prediction",
-      "description": "Wine quality prediction ML project.",
+      "description": "Wine quality prediction.",
       "pic": WineQualityPrediction,
       "url": "https://github.com/Leoreoreo/WineQualityPrediction",
       "techStack": "Sklearn.py (LogisticRegression), Pandas.py"
     }
   ];
   const teckStacks = [
-    "C", "Python", "Flask", "PyTorch", "Sklearn", "Tensorflow", "Java", "Javascript", "React", "HTML&CSS", "SQLite3", "Matlab", "Procreate", "Processing", "Unity C#", "SolidWorks", "Fusion360", "Excel"
+    "Python", "Flask", "Sanic", "PyTorch", "Sklearn", "Tensorflow", "Java", "JavaScript", "React.js", "Next.js", "HTML&CSS", "Tailwind CSS", "SQLite3", "C", "Matlab", "Procreate", "Processing", "Unity C#", "SolidWorks", "Fusion360", "Excel"
   ];
   return (
     <div className="about">
@@ -91,63 +91,8 @@ export default function About() {
           )
         })}
       </div>
+      <br></br>
       <h3>...And I'm learning more!</h3>
     </div>
   );
 };
-
-/* 
-// Needs Next.js
-export async function getStaticProps() {
-  const httpLink = createHttpLink({
-    uri: 'https://api.github.com/graphql',
-  });
-
-  const authLink = setContext((_, { headers }) => {
-    return {
-      headers: {
-        ...headers,
-        authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}`,
-      }
-    }
-  });
-
-  const client = new ApolloClient({
-    link: authLink.concat(httpLink),
-    cache: new InMemoryCache()
-  });
-
-  const { data } = await client.query({
-    query: gql`
-      {
-        user(login: "colbyfayock") {
-          pinnedItems(first: 6, types: [REPOSITORY]) {
-            totalCount
-            edges {
-              node {
-                ... on Repository {
-                  name
-                  id
-                  url
-                  stargazers {
-                    totalCount
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    `
-  });
-
-  const { user } = data;
-  const pinnedItems = user.pinnedItems.edges.map(edge => edge.node);
-
-  return {
-    props: {
-      pinnedItems
-    }
-  }
-}
-*/

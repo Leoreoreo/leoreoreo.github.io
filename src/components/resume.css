@@ -1,22 +1,24 @@
-.resume h1 {
-    color: var(--titleColor);
+
+.resume {
+    color: var(--black);
     text-align: center;
 }
-.resume h2 {
-    color: var(--titleColor);
-    margin-top: 40px;
-    margin-bottom: 20px; 
-}
-.resume h3 {
-    margin-top: 20px;
-    margin-bottom: 5px; 
-}
-.timeAndLocation {
-    text-align: right;
-    margin-right: 40px;
-    font-size: 13px;
-}
+
 .download {
-    text-align: center;
-    color:var(--hoverColor); 
+    font-size: medium;
+    margin: 25vh;
+    padding: 5px;
+    text-decoration: none;
+    border: 1px;
+    border-radius: 10px; 
+    box-shadow: 0px 0px 10px 0px var(--shadow);
+    background-color: var(--black);
+    color:white;
+}
+.download:hover {
+    background-color: grey;
+}
+
+.img-container {
+    margin-top: 2vh;
 }

@@ -20,10 +20,10 @@ body {
 }
 
 .links {
-  color:var(--black); 
+  color: var(--black); 
 }
-.links a :hover {
-  color: var(--grey);
+.links:hover {
+  color: var(--shadow);
 }
 
 .content {
@@ -32,19 +32,19 @@ body {
   right: 5vw;
   left: 200px;
   height: 80vh;
-  padding: 5px;
+  padding: 15px;
   border: 1px;
   border-radius: 10px; 
   box-shadow: 0px 0px 10px 0px var(--shadow);
   overflow-y: auto;
   background-color: var(--bggrey);
 }
-/* Styles for smaller screens (e.g., phones) */
+
 @media only screen and (max-width: 600px) {
   .content {
       top: 16%;
       left: 130px;
-      border-radius: 20px; /* Adjust the border-radius for smaller screens */
-      padding: 5px; /* Adjust padding for smaller screens */
+      border-radius: 20px;
+      padding: 5px;
   }
 }

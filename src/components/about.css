@@ -8,24 +8,35 @@
     margin-bottom: 20px;
     text-align: center; 
 }
-.about h3 {
-    margin-top: 5px;
-    margin-bottom: 15px; 
-    text-align: center;
+
+.about .links {
+    font-size: medium;
+    margin-bottom: 20px;
+    padding: 5px;
+    align-self: center;
+    text-decoration: none;
+    border: 1px;
+    border-radius: 10px; 
+    box-shadow: 0px 0px 10px 0px var(--shadow);
+    background-color: var(--black);
+    color:white;
+}
+.about .links:hover {
+    background-color: grey;
 }
 .about p {
-    margin: 3px; 
+    margin-top: 10px; 
 }
 .project-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Center the items horizontally */
-    gap: 20px; /* Adjust the spacing between items */
+    justify-content: center; 
+    gap: 20px; 
+    text-align: center;
 }
 
 .project {
     flex: 0 1 250px; 
-    /* height: 300px; */
     box-sizing: border-box;
     padding: 20px;
     border: 1.5px solid var(--shadow);
@@ -34,7 +45,7 @@
     margin-bottom: 3vh;
 }
 .img-container {
-    width: 100%; /* Make the image container the same width as the project box */
+    width: 100%;
     box-sizing: border-box;
     padding: 5px;
     border: 1.5px solid var(--shadow);
@@ -44,15 +55,15 @@
 .tech-stack-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Center the items horizontally */
-    gap: 30px; /* Adjust the spacing between items */
+    justify-content: center; 
+    gap: 30px; 
 }
 
 .tech-stack {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 50px; /* Fixed height for each project */
+    height: 50px; 
     width: 100px;
     box-sizing: border-box;
     border: 1.5px solid var(--shadow);
@@ -64,20 +75,20 @@
 .tech-stack p {
     color: var(--black);
     font-size: medium;
-    margin: 0; /* Remove default margin to ensure text is centered vertically */
+    margin: 0; 
 }
 
 @media (max-width: 768px) {
     .project {
-        flex: 0 1 48%; /* Adjust the width for smaller screens */
-        height: auto; /* Allow height to adjust based on content */
+        flex: 0 1 48%; 
+        height: auto;
     }
 }
 
 @media (max-width: 576px) {
     .project {
-        flex: 0 1 100%; /* Full width for even smaller screens */
-        height: auto; /* Allow height to adjust based on content */
+        flex: 0 1 100%; 
+        height: auto; 
     }
 }
 

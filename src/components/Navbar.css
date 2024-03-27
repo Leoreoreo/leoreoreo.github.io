@@ -4,51 +4,56 @@
     top: 0px;
     left: 0px;
     right: 0px;
-    /* max-width: 600px; */
     margin: 0;
-    border: 3px solid var(--titleColor);
     padding: 5px; 
-    border-radius: 18px; 
     text-align: center; 
     border: 1px;
     border-radius: 10px; 
     box-shadow: 0px 0px 10px 0px var(--shadow);
     overflow-y: auto;
     background-color: var(--bggrey);
+    color:white;
 }
 .navbar h1 {
     margin-left: 10px;
     color: var(--black);
 }
 .navbar .links {
+    padding: 5px;
     margin-left: auto;
     margin-right: 20px;
 }
 .navbar a {
+    padding: 5px;
     margin-left: 16px;
     text-decoration: none;
-    padding: 6px;
-    border: .5px solid var(--black);
-    border-radius: 8px;
+    border: 1px;
+    border-radius: 10px; 
+    box-shadow: 0px 0px 10px 0px var(--shadow);
+    background-color: var(--black);
+    color:white;
 }
-.navbar:hover {
-    color: var(--black);
+.navbar a:hover {
+    background-color: grey;
 }
- 
-/* Styles for smaller screens (e.g., phones) */
+.navbar a.active {
+    background-color: var(--bggrey);
+    color:black;
+}
+
 @media only screen and (max-width: 600px) {
     .navbar {
-        flex-direction: column; /* Change the flex direction for smaller screens */
+        flex-direction: column; 
     }
     .navbar h1 {
         font-size: 1.2em;
     }
     .navbar .links {
-        margin: 10px;   /* Add margin to separate links on smaller screens */
-        order: 1;       /* Move links to the top on smaller screens */
+        margin: 10px;  
+        order: 1;       
     }
 
     .navbar a {
-        margin: 10; /* Remove margin between links on smaller screens */
+        margin: 10;
     }
 } 
