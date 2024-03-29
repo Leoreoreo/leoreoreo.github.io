@@ -2,10 +2,10 @@ import React from 'react';
 import './about.css';
 import ReactImg from "./../img/React.png"
 import flaskImg from "./../img/flask.svg"
-import PrivacySandboxImg from "./../img/PrivacySandbox.png"
-import theKuiperFrontier from "./../img/theKuiperFrontier.png"
-import travelData from "./../img/travelData.png"
-import WineQualityPrediction from "./../img/wineQualityPrediction.png"
+import PrivacySandboxImg from "./../img/PrivacySandbox.webp"
+import theKuiperFrontier from "./../img/theKuiperFrontier.webp"
+import travelData from "./../img/travelData.webp"
+import WineQualityPrediction from "./../img/wineQualityPrediction.webp"
 // import { ApolloClient, createHttpLink, InMemoryCache, gql } from "@apollo/client";
 // import { setContext } from '@apollo/client/link/context';
 

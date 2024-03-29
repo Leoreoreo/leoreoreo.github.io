@@ -1,7 +1,7 @@
 import React from 'react';
 import pdf from '../Resume.pdf';
 import './resume.css';
-import resumeImg from "./../img/resume.jpg"
+import resumeImg from "./../img/resume.webp"
 
 const Resume = () => {
 

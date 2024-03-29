@@ -1,9 +1,8 @@
 import React from 'react';
-import HomePic from "./../img/HomePic.jpeg"
+import HomePic from "./../img/HomePic.webp"
 import './home.css';
 
 const Home = () => {
-
     return (
         <div className="home">
           <h1>Hi! I'm Leyang!</h1>

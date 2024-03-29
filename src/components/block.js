@@ -1,5 +1,5 @@
 import './block.css';
-import picofme from "./../img/Leyang Li.jpeg"
+import picofme from "./../img/Leyang Li.webp"
 
 const Block = () => {
     return ( 
