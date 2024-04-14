@@ -61,7 +61,7 @@ export default function About() {
     }
   ];
   const teckStacks = [
-    "Python", "Flask", "Sanic", "PyTorch", "Sklearn", "Tensorflow", "Java", "JavaScript", "React.js", "Next.js", "HTML&CSS", "Tailwind CSS", "SQLite3", "C", "Matlab", "Procreate", "Processing", "Unity C#", "SolidWorks", "Fusion360", "Excel"
+    "Python", "Flask", "Sanic", "PyTorch", "Sklearn", "Tensorflow", "Java", "JavaScript","TypeScript", "React", "Next", "HTML&CSS", "Vite", "Tailwind CSS", "mcss", "SQLite3", "C", "Matlab", "Procreate", "Processing", "Unity C#", "SolidWorks", "Fusion360"
   ];
   return (
     <div className="about">
