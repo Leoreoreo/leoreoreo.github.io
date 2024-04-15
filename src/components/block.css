@@ -1,7 +1,8 @@
 .block {
     position: fixed;
-    top: 12vh;
-    height: 80%;
+    top: 75px;
+    /* height: 80%; */
+    bottom: 15px;
     left: 10px;
     width: 150px;
     padding: 15px; 
@@ -32,6 +33,7 @@
 @media only screen and (max-width: 600px) {
     .block {
         width: 100px; 
+        top: 80px;
         border-radius: 20px; 
         padding: 5px; 
     }

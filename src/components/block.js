@@ -17,7 +17,6 @@ const Block = () => {
                 <p><a href="https://acms.nd.edu/undergraduate/" className="links">ACMS</a></p>
                 <br/>
                 <br/>
-                <br/>
                 <p>Phone:</p>
                 <p>(574)378-5954</p>
                 <br/>

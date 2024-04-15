@@ -27,11 +27,12 @@ body {
 }
 
 .content {
-  top: 12vh;
+  top: 75px;
+  bottom: 15px;
   position: fixed;
   right: 15px;
   left: 200px;
-  height: 80vh;
+  /* height: 80vh; */
   padding: 15px;
   border: 1px;
   border-radius: 10px; 
@@ -43,7 +44,7 @@ body {
 @media only screen and (max-width: 600px) {
   .content {
       left: 130px;
-      border-radius: 20px;
+      top: 80px;
       padding: 5px;
   }
 }

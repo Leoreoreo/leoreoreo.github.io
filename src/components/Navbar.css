@@ -1,7 +1,8 @@
 .navbar {
     display: flex;
     align-items: center;
-    padding: 25px; 
+    /* padding: 25px;  */
+    height: 60px;
     text-align: center; 
     border: 1px;
     border-radius: 3px; 
@@ -11,7 +12,7 @@
     color:white;
 }
 .navbar h1 {
-    margin-left: 10px;
+    margin-left: 40px;
     color: var(--black);
 }
 .navbar .links {
@@ -39,10 +40,12 @@
 
 @media only screen and (max-width: 600px) {
     .navbar {
-        padding: 5px;
+        /* padding: 5px; */
+        height: 70px;
         flex-direction: column; 
     }
     .navbar h1 {
+        margin-left: 0;
         font-size: 1.2em;
     }
     .navbar .links {
