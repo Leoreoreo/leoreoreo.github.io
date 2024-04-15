@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/static/css/main.2a8c91a6.css",
-    "main.js": "/static/js/main.975bb5cb.js",
+    "main.js": "/static/js/main.6549057d.js",
     "static/media/HomePic.webp": "/static/media/HomePic.27ea45c58e4d6a99030d.webp",
-    "static/media/resume.webp": "/static/media/resume.b231395ed574bc7f59a1.webp",
+    "static/media/resume.webp": "/static/media/resume.85f0f0d8e9495dafbbe3.webp",
     "static/media/travelData.webp": "/static/media/travelData.87f890bf061931546aa6.webp",
     "static/media/theKuiperFrontier.webp": "/static/media/theKuiperFrontier.d7a8d65411c9292357f2.webp",
     "static/media/PrivacySandbox.webp": "/static/media/PrivacySandbox.6910630f62f8aa5bc113.webp",
     "static/media/wineQualityPrediction.webp": "/static/media/wineQualityPrediction.0b13c7a982774c00322d.webp",
-    "static/media/Resume.pdf": "/static/media/Resume.b6723dc11c53f9ffb32b.pdf",
+    "static/media/Resume.pdf": "/static/media/Resume.916a40af78abc8f58946.pdf",
     "static/media/Leyang Li.webp": "/static/media/Leyang Li.d87b228b653f8ae60878.webp",
     "static/media/flask.svg": "/static/media/flask.08c1b466970b061c71a35c474cc54cab.svg",
     "index.html": "/index.html",
     "main.2a8c91a6.css.map": "/static/css/main.2a8c91a6.css.map",
-    "main.975bb5cb.js.map": "/static/js/main.975bb5cb.js.map"
+    "main.6549057d.js.map": "/static/js/main.6549057d.js.map"
   },
   "entrypoints": [
     "static/css/main.2a8c91a6.css",
-    "static/js/main.975bb5cb.js"
+    "static/js/main.6549057d.js"
   ]
 }
