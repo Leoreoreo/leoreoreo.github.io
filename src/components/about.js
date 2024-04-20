@@ -77,6 +77,7 @@ export default function About() {
   return (
     <div className="about">
       <h1>About Me</h1>
+      <br/>
       <h3>I'm currently a sophomore at the University of Notre Dame, majoring in CS with an ACMS Suppl.</h3>
       <h2>My Projects</h2>
       <div className="project-container">
