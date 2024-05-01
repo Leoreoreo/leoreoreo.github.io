@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.a98de1db.css",
-    "main.js": "/static/js/main.c18bc30f.js",
+    "main.css": "/static/css/main.b7e7fde5.css",
+    "main.js": "/static/js/main.92c09f40.js",
     "static/media/HomePic.webp": "/static/media/HomePic.27ea45c58e4d6a99030d.webp",
     "static/media/A11yVate.webp": "/static/media/A11yVate.56962528f20de837b75f.webp",
-    "static/media/resume.webp": "/static/media/resume.85f0f0d8e9495dafbbe3.webp",
+    "static/media/resume.webp": "/static/media/resume.b2ae42eb91b95becee11.webp",
     "static/media/travelData.webp": "/static/media/travelData.87f890bf061931546aa6.webp",
     "static/media/theKuiperFrontier.webp": "/static/media/theKuiperFrontier.d7a8d65411c9292357f2.webp",
     "static/media/PrivacySandbox.webp": "/static/media/PrivacySandbox.6910630f62f8aa5bc113.webp",
@@ -13,11 +13,11 @@
     "static/media/Leyang Li.webp": "/static/media/Leyang Li.d87b228b653f8ae60878.webp",
     "static/media/flask.svg": "/static/media/flask.08c1b466970b061c71a35c474cc54cab.svg",
     "index.html": "/index.html",
-    "main.a98de1db.css.map": "/static/css/main.a98de1db.css.map",
-    "main.c18bc30f.js.map": "/static/js/main.c18bc30f.js.map"
+    "main.b7e7fde5.css.map": "/static/css/main.b7e7fde5.css.map",
+    "main.92c09f40.js.map": "/static/js/main.92c09f40.js.map"
   },
   "entrypoints": [
-    "static/css/main.a98de1db.css",
-    "static/js/main.c18bc30f.js"
+    "static/css/main.b7e7fde5.css",
+    "static/js/main.92c09f40.js"
   ]
 }

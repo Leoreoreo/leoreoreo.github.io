@@ -15,9 +15,11 @@ const Home = () => {
         <br/>
         <h1>Welcome to My Personal Website :D</h1>
         <br/>
-        <br/>
-        <br/>
         <img src={HomePic} className={`img ${fadeIn ? 'fade-in' : ''}`} />
+        <picture>
+          <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/Leoreoreo/Leoreoreo/output/github-contribution-grid-snake.svg"/>
+          <p>generated with <a href="https://github.com/Platane/snk" className="links">Platane/snk</a></p>
+        </picture>
       </div>
   );
 }

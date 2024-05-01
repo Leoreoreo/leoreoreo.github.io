@@ -18,3 +18,15 @@
     height: auto;
     margin: 0 auto 5px;
 }
+/* .home p {
+    text-align: right;
+    font-size: xx-small;
+} */
+.home picture {
+    display: block;
+    width: 400px;
+    height: auto;
+    margin: 0 auto 5px;
+    text-align: right;
+    font-size: xx-small;
+}
