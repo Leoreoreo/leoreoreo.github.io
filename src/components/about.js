@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './about.css';
 import ReactImg from "./../img/React.png"
-import flaskImg from "./../img/flask.svg"
+import theoryImg from "./../img/theory.webp"
 import PrivacySandboxImg from "./../img/PrivacySandbox.webp"
 import theKuiperFrontier from "./../img/theKuiperFrontier.webp"
 import travelData from "./../img/travelData.webp"
@@ -11,7 +11,6 @@ import A11yVate from "./../img/A11yVate.webp"
 export default function About() {
   const projects = [
     {
-      "id": 0,
       "name": "A11yVate",
       "description": "Project for 2024Hackathon",
       "pic": A11yVate,
@@ -19,7 +18,6 @@ export default function About() {
       "techStack": "React, Flask, OpenAI API, Google Maps API"
     },
     {
-      "id": 1,
       "name": "relatedPosts",
       "description": "Module for Ad Auditing",
       "pic": PrivacySandboxImg,
@@ -27,7 +25,6 @@ export default function About() {
       "techStack": "React, Flask, Senmatic-Search, word2vec, D3"
     },
     {
-      "id": 2,
       "name": "leoreoreo.github.io",
       "description": "Frontend of this website",
       "pic": ReactImg,
@@ -35,15 +32,13 @@ export default function About() {
       "techStack": "React"
     },
     {
-      "id": 3,
-      "name": "Backend_LeyangLi",
-      "description": "Backend of this website",
-      "pic": flaskImg,
-      "url": "https://github.com/Leoreoreo/Backend_LeyangLi",
-      "techStack": "Flask, SQLite3"
+      "name": "SAT_Solver",
+      "description": "NFA, Regex, SAT Solver",
+      "pic": theoryImg,
+      "url": "https://github.com/Leoreoreo/SAT_Solver",
+      "techStack": "Theory of Computing, Python"
     },
     {
-      "id": 4,
       "name": "the_Kuiper_Frontier",
       "description": "2D plane-shooting game",
       "pic": theKuiperFrontier,
@@ -51,7 +46,6 @@ export default function About() {
       "techStack": "Processing, OOP (JAVA)"
     },
     {
-      "id": 5,
       "name": "Wine_Quality_Prediction",
       "description": "Wine quality prediction",
       "pic": WineQualityPrediction,
@@ -59,7 +53,6 @@ export default function About() {
       "techStack": "Sklearn, Pandas"
     },
     {
-      "id": 6,
       "name": "Travel_Data_Viz",
       "description": "Travel insights data",
       "pic": travelData,
@@ -83,7 +76,7 @@ export default function About() {
       <div className="project-container">
         {projects.map( (project) => {
           return (
-              <div key = {project.id} className={`project ${fadeIn ? 'fade-in' : ''}`}>
+              <div key = {project.name} className={`project ${fadeIn ? 'fade-in' : ''}`}>
                 {project.url != null ? (
                   <h3><a href={project.url} className="links">{project.name}</a></h3>
                 ) : (
