@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.b7e7fde5.css",
-    "main.js": "/static/js/main.92c09f40.js",
+    "main.js": "/static/js/main.04e3883b.js",
     "static/media/HomePic.webp": "/static/media/HomePic.27ea45c58e4d6a99030d.webp",
     "static/media/A11yVate.webp": "/static/media/A11yVate.56962528f20de837b75f.webp",
     "static/media/resume.webp": "/static/media/resume.b2ae42eb91b95becee11.webp",
@@ -10,14 +10,14 @@
     "static/media/PrivacySandbox.webp": "/static/media/PrivacySandbox.6910630f62f8aa5bc113.webp",
     "static/media/wineQualityPrediction.webp": "/static/media/wineQualityPrediction.0b13c7a982774c00322d.webp",
     "static/media/Resume.pdf": "/static/media/Resume.cef53e3bd0f5a2029bdc.pdf",
+    "static/media/theory.webp": "/static/media/theory.49c72e8a1931b3094f54.webp",
     "static/media/Leyang Li.webp": "/static/media/Leyang Li.d87b228b653f8ae60878.webp",
-    "static/media/flask.svg": "/static/media/flask.08c1b466970b061c71a35c474cc54cab.svg",
     "index.html": "/index.html",
     "main.b7e7fde5.css.map": "/static/css/main.b7e7fde5.css.map",
-    "main.92c09f40.js.map": "/static/js/main.92c09f40.js.map"
+    "main.04e3883b.js.map": "/static/js/main.04e3883b.js.map"
   },
   "entrypoints": [
     "static/css/main.b7e7fde5.css",
-    "static/js/main.92c09f40.js"
+    "static/js/main.04e3883b.js"
   ]
 }

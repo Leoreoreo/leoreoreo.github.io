@@ -33,7 +33,7 @@ export default function About() {
     },
     {
       "name": "SAT_Solver",
-      "description": "NFA, Regex, SAT Solver",
+      "description": "NFA, regex, sed, TM, SAT",
       "pic": theoryImg,
       "url": "https://github.com/Leoreoreo/SAT_Solver",
       "techStack": "Theory of Computing, Python"
