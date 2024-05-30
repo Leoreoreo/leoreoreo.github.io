@@ -7,12 +7,13 @@ import theKuiperFrontier from "./../img/theKuiperFrontier.webp"
 import travelData from "./../img/travelData.webp"
 import WineQualityPrediction from "./../img/wineQualityPrediction.webp"
 import A11yVate from "./../img/A11yVate.webp"
+import icon from "./../img/favicon.ico"
 
 export default function About() {
   const projects = [
     {
       "name": "A11yVate",
-      "description": "Project for 2024Hackathon",
+      "description": "a crowdsourcing information map",
       "pic": A11yVate,
       "url": null,
       "techStack": "React, Flask, OpenAI API, Google Maps API"
@@ -30,6 +31,13 @@ export default function About() {
       "pic": ReactImg,
       "url": "https://github.com/Leoreoreo/leoreoreo.github.io",
       "techStack": "React"
+    },
+    {
+      "name": "myBlog",
+      "description": "My personal tech blog",
+      "pic": icon,
+      "url": "https://github.com/Leoreoreo/myBlog",
+      "techStack": "Markdown, Python, JavaScript"
     },
     {
       "name": "SAT_Solver",
