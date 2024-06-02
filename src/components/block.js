@@ -24,17 +24,18 @@ const Block = () => {
                 <br/>
             </div>
             <div className="icon-container">
-                <p><FontAwesomeIcon icon={faPhone} /><blank/>(574)378-5954</p>
-                <p><FontAwesomeIcon icon={faEnvelope} /><blank> </blank><a href="mailto:lli27@nd.edu" className="links">lli27@nd.edu</a></p>
-                <div className="p-10">
-                    <a href="https://www.linkedin.com/in/leyang-li/" className="links p-5">
-                        <FontAwesomeIcon icon={faLinkedin} href="https://www.linkedin.com/in/leyang-li/" className="p-2" />
-                    </a>
-                    <br></br>
-                    <a href="https://github.com/Leoreoreo" className="links p-5">
-                        <FontAwesomeIcon icon={faGithub} className="p-2" />
-                    </a>
-                </div>
+                <a href="tel:(574)378-5954">
+                    <FontAwesomeIcon icon={faPhone} className='icon'/>
+                </a> 
+                <a href="mailto:lli27@nd.edu">
+                    <FontAwesomeIcon icon={faEnvelope} className='icon'/>
+                </a> 
+                <a href="https://www.linkedin.com/in/leyang-li/">
+                    <FontAwesomeIcon icon={faLinkedin} className='icon' href="https://www.linkedin.com/in/leyang-li/"/>
+                </a>
+                <a href="https://github.com/Leoreoreo">
+                    <FontAwesomeIcon icon={faGithub} className='icon'/>
+                </a>
             </div>
         </div>
     );

@@ -13,7 +13,8 @@ const Navbar = () => {
             <div className="links">
                 <Link to="/" className={activeLink === '/' ? 'active' : ''} onClick={() => setActiveLink('/')}>Home</Link>     
                 <Link to="/about" className={activeLink === '/about' ? 'active' : ''} onClick={() => setActiveLink('/about')}>About</Link>
-                <Link to="/resume" className={activeLink === '/resume' ? 'active' : ''} onClick={() => setActiveLink('/resume')}>Resume</Link>          
+                <Link to="/resume" className={activeLink === '/resume' ? 'active' : ''} onClick={() => setActiveLink('/resume')}>Resume</Link>
+                <Link to="/arts" className={activeLink === '/arts' ? 'active' : ''} onClick={() => setActiveLink('/arts')}>Arts</Link>            
             </div>
         </nav>
     );

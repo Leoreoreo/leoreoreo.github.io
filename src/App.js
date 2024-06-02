@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Home from './components/home'
 import Block from './components/block';
 import About from './components/about';
+import Arts from './components/arts';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -21,6 +22,9 @@ function App() {
             </Route>
             <Route exact path="/about">
                <About/>
+            </Route>
+            <Route exact path="/arts">
+               <Arts/>
             </Route>
           </Switch>
         </div>

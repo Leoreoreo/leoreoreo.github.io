@@ -79,7 +79,7 @@ export default function About() {
     <div className="about">
       <h1>About Me</h1>
       <br/>
-      <h3>I'm currently a sophomore at the University of Notre Dame, majoring in CS with an ACMS Suppl.</h3>
+      <h3>I'm a 26' undergrad at the University of Notre Dame, majoring in CS with an ACMS Suppl.</h3>
       <h2>My Projects</h2>
       <div className="project-container">
         {projects.map( (project) => {
@@ -102,7 +102,7 @@ export default function About() {
       <div className="tech-stack-container">
         {teckStacks.map( (teckStack) => {
           return (
-              <div className="tech-stack">
+              <div key = {teckStack} className="tech-stack">
                   <p>{teckStack}</p>
               </div>
           )

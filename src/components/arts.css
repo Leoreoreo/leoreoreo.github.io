@@ -1,0 +1,20 @@
+h1 {
+    color: var(--black);
+    text-align: center;
+}
+h3 {
+    text-align: center;
+}
+.art-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    padding: 20px;
+    gap: 20px; 
+    text-align: center;
+}
+.video-mask {
+    height: 170px;
+    border-radius: 10px; 
+    overflow: hidden; 
+}

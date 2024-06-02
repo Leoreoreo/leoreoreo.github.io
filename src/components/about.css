@@ -9,6 +9,10 @@
     text-align: center; 
 }
 
+.about h3 {
+    text-align: center;
+}
+
 .about .links {
     font-size: medium;
     margin-bottom: 20px;

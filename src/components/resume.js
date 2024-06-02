@@ -10,7 +10,7 @@ const Resume = () => {
   }, []);
   return (
     <div className="resume">
-      <h1>Welcome to My Resume</h1>
+      <h1>My Resume</h1>
       <br></br>
       <a className="download" href={pdf}>Download</a>
       <img src={resumeImg} alt="" className={`img-container ${fadeIn ? 'fade-in' : ''}`} />

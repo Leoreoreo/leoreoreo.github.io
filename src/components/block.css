@@ -13,6 +13,7 @@
 }
 .info {
     text-align: center;
+    margin-top: 20px;
 }
 .h2 {
     font-size: 2em;
@@ -27,10 +28,20 @@
     border-radius: 50%;
 }
 
-.block .icon-container {
-    align-self: center;
+.icon-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
     padding: 2px;
-    margin-top: 15vh;
+}
+
+.icon {
+    padding: 5px;
+    border: 0;
+    border-radius: 5px;
+}
+.icon:hover {
+    background-color: grey;
 }
 
 @media only screen and (max-width: 600px) {
