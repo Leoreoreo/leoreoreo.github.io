@@ -1,5 +1,14 @@
-### My Personal Website (Frontend)
-using react, fetching from a flask-SQLite backend
+# My Personal Website
 
-### Deploy after making changes:
-$ npm run deploy
+Using react, (backend abandoned)
+
+### usage
+
+install:
+`npm install`
+
+run local:
+`npm start`
+
+deploy:
+`npm run deploy`
