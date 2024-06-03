@@ -56,36 +56,7 @@ export default function Arts() {
             </video>
             <h3>Fall</h3>
         </div>
-        {/* <VideoPlayer src="/Videos/2023-09-18.mp4" /> 
-        <br/>
-        <VideoPlayer src="/Videos/2023-10-10.mp4" /> */}
       </div>
-    </div>
-  );
-}
-
-function VideoPlayer({ src }) {
-  const videoRef = React.useRef(null);
-
-  const handleMouseEnter = () => {
-    videoRef.current.play();
-  };
-
-  const handleMouseLeave = () => {
-    videoRef.current.pause();
-    videoRef.current.currentTime = 0;
-  };
-
-  return (
-    <div className="video-player">
-      <video
-        width="200"
-        ref={videoRef}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        <source src={src} type="video/mp4" />
-      </video>
     </div>
   );
 }
