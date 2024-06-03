@@ -42,7 +42,7 @@ export default function Arts() {
             <video controls className='video-mask'>
                 <source src={"/Videos/light.mp4"} type="video/mp4"/>
             </video>
-            <h3>light</h3>
+            <h3>Light</h3>
         </div>
         <div className="video-container"> 
             <video controls className='video-mask'>
