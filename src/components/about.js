@@ -12,20 +12,6 @@ import icon from "./../img/favicon.ico"
 export default function About() {
   const projects = [
     {
-      "name": "A11yVate",
-      "description": "a crowdsourcing information map",
-      "pic": A11yVate,
-      "url": null,
-      "techStack": "React, Flask, OpenAI API, Google Maps API"
-    },
-    {
-      "name": "relatedPosts",
-      "description": "Module for Ad Auditing",
-      "pic": PrivacySandboxImg,
-      "url": "https://github.com/Leoreoreo/relatedPosts",
-      "techStack": "React, Flask, Senmatic-Search, word2vec, D3"
-    },
-    {
       "name": "leoreoreo.github.io",
       "description": "Frontend of this website",
       "pic": ReactImg,
@@ -38,6 +24,20 @@ export default function About() {
       "pic": icon,
       "url": "https://github.com/Leoreoreo/myBlog",
       "techStack": "Markdown, Python, JavaScript"
+    },
+    {
+      "name": "A11yVate",
+      "description": "Crowdsourcing Info Map",
+      "pic": A11yVate,
+      "url": null,
+      "techStack": "React, Flask, OpenAI API, Google Maps API"
+    },
+    {
+      "name": "relatedPosts",
+      "description": "Module for Ad Auditing",
+      "pic": PrivacySandboxImg,
+      "url": "https://github.com/Leoreoreo/relatedPosts",
+      "techStack": "React, Flask, Senmatic-Search, word2vec, D3"
     },
     {
       "name": "SAT_Solver",
@@ -69,7 +69,7 @@ export default function About() {
     },
   ];
   const teckStacks = [
-    "Python", "Flask", "Sanic", "PyTorch", "Sklearn", "Tensorflow", "Java", "JavaScript","TypeScript", "React", "Next", "HTML&CSS", "Vite", "Tailwind CSS", "scss", "OpenAI API", "GoogleMaps API", "SQLite3", "C", "Matlab", "Procreate", "Processing", "Unity C#", "SolidWorks", "Fusion360"
+    "Python", "Flask", "Sanic", "PyTorch", "Sklearn", "Tensorflow", "Java", "JavaScript","TypeScript", "React", "Next", "HTML&CSS", "Vite", "Tailwind CSS", "scss", "OpenAI API", "GoogleMaps API", "SQLite3", "C", "Bash", "Markdown", "Matlab", "Procreate", "Processing", "Unity C#", "SolidWorks", "Fusion360"
   ];
   const [fadeIn, setFadeIn] = useState(false);
   useEffect(() => {
