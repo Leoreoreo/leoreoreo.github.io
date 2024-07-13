@@ -13,8 +13,15 @@ h3 {
     gap: 20px; 
     text-align: center;
 }
-.video-mask {
-    height: 170px;
+.gif-mask {
+    display: flex; 
+    height: 200px;
+    border-radius: 10px; 
+    overflow: hidden; 
+}
+.gif-mask-portrait {
+    display: flex; 
+    height: 300px;
     border-radius: 10px; 
     overflow: hidden; 
 }

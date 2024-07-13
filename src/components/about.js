@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './about.css';
-import ReactImg from "./../img/React.png"
-import theoryImg from "./../img/theory.webp"
-import PrivacySandboxImg from "./../img/PrivacySandbox.webp"
-import theKuiperFrontier from "./../img/theKuiperFrontier.webp"
-import travelData from "./../img/travelData.webp"
-import WineQualityPrediction from "./../img/wineQualityPrediction.webp"
-import A11yVate from "./../img/A11yVate.webp"
-import icon from "./../img/favicon.ico"
+import ReactImg from "./../img/about/React.png"
+import theoryImg from "./../img/about/theory.webp"
+import PrivacySandboxImg from "./../img/about/PrivacySandbox.webp"
+import theKuiperFrontier from "./../img/about/theKuiperFrontier.webp"
+import travelData from "./../img/about/travelData.webp"
+import WineQualityPrediction from "./../img/about/wineQualityPrediction.webp"
+import A11yVate from "./../img/about/A11yVate.webp"
+import icon from "./../img/about/favicon.ico"
 
 export default function About() {
   const projects = [
@@ -69,7 +69,14 @@ export default function About() {
     },
   ];
   const teckStacks = [
-    "Python", "Flask", "Sanic", "PyTorch", "Sklearn", "Tensorflow", "Java", "JavaScript","TypeScript", "React", "Next", "HTML&CSS", "Vite", "Tailwind CSS", "scss", "OpenAI API", "GoogleMaps API", "SQLite3", "C", "Bash", "Markdown", "Matlab", "Procreate", "Processing", "Unity C#", "SolidWorks", "Fusion360"
+    "Python", "Flask", "Sanic", "PyTorch", "Sklearn", "Genism", "Word2Vec", "sentence-transformer", "Tensorflow", "Pandas", "Matplotlib",
+    "JavaScript","TypeScript", "React", "Next", "HTML&CSS", "Vite", "Tailwind CSS", "scss", "D3",
+    "SQL", "MongoDB", "RESTful API", "Docker", "Kubernetes", "SQLite3", 
+    "Java", "Hadoop HDFS", "Apache Flink", "Apache Kafka", 
+    "C", "Bash", "Markdown", "Unix",
+    "AWS EC2", "VMware", "Git", "Github"," Figma", "VS Code", "Jupyter", "IntelliJ",
+    "OpenAI API", "GoogleMaps API", 
+    "Matlab", "Procreate", "Processing", "Unity C#", "SolidWorks", "Fusion360"
   ];
   const [fadeIn, setFadeIn] = useState(false);
   useEffect(() => {
