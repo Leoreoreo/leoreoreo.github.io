@@ -14,7 +14,7 @@
 }
 .home img {
     display: block;
-    width: 400px;
+    width: 300px;
     height: auto;
     margin: 0 auto 5px;
 }
@@ -24,9 +24,9 @@
 } */
 .home picture {
     display: block;
-    width: 400px;
+    width: 300px;
     height: auto;
     margin: 0 auto 5px;
-    text-align: right;
+    text-align: center;
     font-size: xx-small;
 }

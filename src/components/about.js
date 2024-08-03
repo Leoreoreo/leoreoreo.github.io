@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './about.css';
-import ReactImg from "./../img/about/React.png"
+// import ReactImg from "./../img/about/React.png"
 import theoryImg from "./../img/about/theory.webp"
 import PrivacySandboxImg from "./../img/about/PrivacySandbox.webp"
 import theKuiperFrontier from "./../img/about/theKuiperFrontier.webp"
@@ -8,13 +8,15 @@ import travelData from "./../img/about/travelData.webp"
 import WineQualityPrediction from "./../img/about/wineQualityPrediction.webp"
 import A11yVate from "./../img/about/A11yVate.webp"
 import icon from "./../img/about/favicon.ico"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 export default function About() {
   const projects = [
     {
       "name": "leoreoreo.github.io",
       "description": "Frontend of this website",
-      "pic": ReactImg,
+      "pic": icon,
       "url": "https://github.com/Leoreoreo/leoreoreo.github.io",
       "techStack": "React"
     },
@@ -47,14 +49,14 @@ export default function About() {
       "techStack": "Theory of Computing, Python"
     },
     {
-      "name": "the_Kuiper_Frontier",
+      "name": "theKuiperFrontier",
       "description": "2D plane-shooting game",
       "pic": theKuiperFrontier,
       "url": "https://github.com/Leoreoreo/theKuiperFrontier",
       "techStack": "Processing, OOP (JAVA)"
     },
     {
-      "name": "Wine_Quality_Prediction",
+      "name": "WineQualityPrediction",
       "description": "Wine quality prediction",
       "pic": WineQualityPrediction,
       "url": "https://github.com/Leoreoreo/WineQualityPrediction",
@@ -85,20 +87,24 @@ export default function About() {
   return (
     <div className="about">
       <h1>About Me</h1>
-      <br/>
-      <h3>I'm a 26' undergrad at the University of Notre Dame, majoring in CS with an ACMS Suppl.</h3>
       <h2>My Projects</h2>
       <div className="project-container">
         {projects.map( (project) => {
           return (
               <div key = {project.name} className={`project ${fadeIn ? 'fade-in' : ''}`}>
                 {project.url != null ? (
-                  <h3><a href={project.url} className="links">{project.name}</a></h3>
+                  <div>
+                    <h3><a href={project.url} className="links" ><FontAwesomeIcon icon={faGithub} size='l'/> {project.name}</a></h3>
+                  </div>
                 ) : (
-                  <h3>{project.name}</h3>
+                  <div>
+                    <h3>{project.name}</h3>
+
+                  </div>
                 )}
+                <br/>          
                 <p>{project.description}</p>
-                {project.pic != null && <img src={project.pic} alt="" className="img-container" />}
+                {project.pic != null && <img src={project.pic} alt="" className="img-container" height={100}/>}
                 <p>{project.techStack}</p> 
               </div>
           )
@@ -115,8 +121,15 @@ export default function About() {
           )
         })}
       </div>
-      <br></br>
-      <h2>And I'm learning more!</h2>
+      <br/>
+      <h3>... And I'm learning!</h3>
+      <br/><br/>
+      <h2>More</h2> 
+      <div align='center'>My name is Leyang Li. I am a junior pursuing a Bachelor of Science in Computer Science at the University of Notre Dame. I am also a Frank Reilly Scholar and have earned Dean’s List recognition with a cumulative GPA of 3.958. Alongside my primary major, I am studying Applied and Computational Mathematics and Statistics as a supplementary field.</div><br/>
+      <div align='center'>In terms of working experience, I have interned as a Software Engineer at China Construction Bank Fintech, where I worked on maintaining and optimizing big data systems based on Kafka, Flink, Phoenix, Elasticsearch, and TiDB. Additionally, I interned as a Machine Learning Engineer at Everbright Securities Asset Management, focusing on improving the investment model's performance.</div><br/>
+      <div align='center'>In the academia, I serve as a Full-Stack Developer and Research Assistant at the SaNDwich Lab in the field of Human-Computer Interactions. I developed interactive systems on projects like Ad Auditing and Privacy Sandbox for generating internet user personas and exploring privacy data usage. In the projects, I applied web-development technologies such as NodeJS, Flask, and sanic, as well as machine learning models such as LLM, word2vec, and sentence transformer.</div><br/>
+      <div align='center'>Moreover, I have participated in various competitions and projects, including game development with the Notre Dame Video Game Development Club, software development in Hesburgh Libraries Hackathon, and data analysis for CourseKata during the American Statistical Association DataFest.</div><br/>
+      <div align='center'>My interests lie in Software Development and Engineering, Machine Learning, Data Science, Human-Computer Interaction, and Big Data. I am enthusiastic in working in an industry where I can continuously solve emerging real-world problems with cutting-edge technologies.</div><br/>
     </div>
   );
 };
