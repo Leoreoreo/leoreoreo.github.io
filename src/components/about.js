@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './about.css';
-// import ReactImg from "./../img/about/React.png"
+import p2pHashtableImg from "./../img/about/p2pHashTable.jpg"
+import TimIMG from "./../img/about/TIM.jpg"
+import nonVisualCookingImg from "./../img/about/nonVisualCooking.jpg"
 import theoryImg from "./../img/about/theory.webp"
 import PrivacySandboxImg from "./../img/about/PrivacySandbox.webp"
 import theKuiperFrontier from "./../img/about/theKuiperFrontier.webp"
@@ -14,11 +16,32 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 export default function About() {
   const projects = [
     {
+      "name": "P2P Hashtable",
+      "description": "Scalabe and persistent distributed hashtable",
+      "pic": p2pHashtableImg,
+      "url": "https://github.com/Leoreoreo/p2pHashtable",
+      "techStack": "chord, RPC, log and checkpoint, replication"
+    },
+    {
+      "name": "TIM",
+      "description": "Trip scheduling and planning assistant",
+      "pic": TimIMG,
+      "url": "https://github.com/Leoreoreo/TravelItineraryManager",
+      "techStack": "PostgreSQL, React, Flask, Google Maps API"
+    },
+    {
+      "name": "non-visual-cooking",
+      "description": "Cooking assistant for visually impaired people",
+      "pic": nonVisualCookingImg,
+      "url": null,
+      "techStack": "Next, React, OpenAI Realtime API"
+    },
+    {
       "name": "leoreoreo.github.io",
       "description": "Frontend of this website",
       "pic": icon,
       "url": "https://github.com/Leoreoreo/leoreoreo.github.io",
-      "techStack": "React"
+      "techStack": "React, CSS, HTML"
     },
     {
       "name": "myBlog",
@@ -36,7 +59,7 @@ export default function About() {
     },
     {
       "name": "relatedPosts",
-      "description": "Module for Ad Auditing",
+      "description": "Module for Privacy Sandbox",
       "pic": PrivacySandboxImg,
       "url": "https://github.com/Leoreoreo/relatedPosts",
       "techStack": "React, Flask, Senmatic-Search, word2vec, D3"
