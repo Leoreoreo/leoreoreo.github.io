@@ -12,13 +12,11 @@ const Block = () => {
             <div className='info'>
                 <h2>Leyang Li</h2>
                 <br/>
-                <p><a href="https://www.nd.edu" className="links">Notre Dame</a></p>
-                <p>26' Undergraduate</p>
+                <p>26' @<a href="https://www.nd.edu" className="links">Notre Dame</a></p>
                 <br/>
-                <p><a href="https://cse.nd.edu/undergraduate/" className="links">Bachelor of Science in Computer Science</a></p>
+                <p><a href="https://cse.nd.edu/undergraduate/" className="links">B.S. in CS</a></p>
                 <br/>
-                <p>Suppl. Major:</p>
-                <p><a href="https://acms.nd.edu/undergraduate/" className="links">ACMS</a></p>
+                <p>Suppl. Major in <a href="https://acms.nd.edu/undergraduate/" className="links">ACMS</a></p>
                 <br/>
                 <br/>
                 <a href="tel:(574)378-5954"><FontAwesomeIcon icon={faPhone} className='icon' size='lg'/></a> 
