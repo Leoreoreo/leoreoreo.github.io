@@ -1,5 +1,5 @@
 import './block.css';
-import picofme from "./../img/Leyang Li.webp"
+import picofme from "./../img/Leyang Li.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';

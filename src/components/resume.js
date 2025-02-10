@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './resume.css';
-import resumeImg from "./../img/resume.webp"
+import resumeImg from "./../img/resume.png"
 
 const Resume = () => {
   const [fadeIn, setFadeIn] = useState(false);

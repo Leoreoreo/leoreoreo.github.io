@@ -3,12 +3,12 @@ import './about.css';
 import p2pHashtableImg from "./../img/about/p2pHashTable.jpg"
 import TimIMG from "./../img/about/TIM.jpg"
 import nonVisualCookingImg from "./../img/about/nonVisualCooking.jpg"
-import theoryImg from "./../img/about/theory.webp"
-import PrivacySandboxImg from "./../img/about/PrivacySandbox.webp"
-import theKuiperFrontier from "./../img/about/theKuiperFrontier.webp"
-import travelData from "./../img/about/travelData.webp"
-import WineQualityPrediction from "./../img/about/wineQualityPrediction.webp"
-import A11yVate from "./../img/about/A11yVate.webp"
+import theoryImg from "./../img/about/theory.png"
+import PrivacySandboxImg from "./../img/about/PrivacySandbox.png"
+import theKuiperFrontier from "./../img/about/theKuiperFrontier.png"
+import travelData from "./../img/about/travelData.png"
+import WineQualityPrediction from "./../img/about/wineQualityPrediction.png"
+import A11yVate from "./../img/about/A11yVate.png"
 import icon from "./../img/about/favicon.ico"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
@@ -20,7 +20,7 @@ export default function About() {
       "description": "Scalabe and persistent distributed hashtable",
       "pic": p2pHashtableImg,
       "url": "https://github.com/Leoreoreo/p2pHashtable",
-      "techStack": "chord, RPC, log and checkpoint, replication"
+      "techStack": "Chord Protocol, RPC, log & checkpoint, chain replication"
     },
     {
       "name": "TIM",
@@ -34,7 +34,7 @@ export default function About() {
       "description": "Cooking assistant for visually impaired people",
       "pic": nonVisualCookingImg,
       "url": null,
-      "techStack": "Next, React, OpenAI Realtime API"
+      "techStack": "Next, React, TypeScript, OpenAI Realtime API, Gemini Multi-Modal API"
     },
     {
       "name": "leoreoreo.github.io",
@@ -62,7 +62,7 @@ export default function About() {
       "description": "Module for Privacy Sandbox",
       "pic": PrivacySandboxImg,
       "url": "https://github.com/Leoreoreo/relatedPosts",
-      "techStack": "React, Flask, Senmatic-Search, word2vec, D3"
+      "techStack": "React, Flask, Senmatic-Search, word2vec, sentence-transformer, D3"
     },
     {
       "name": "SAT_Solver",
@@ -76,14 +76,14 @@ export default function About() {
       "description": "2D plane-shooting game",
       "pic": theKuiperFrontier,
       "url": "https://github.com/Leoreoreo/theKuiperFrontier",
-      "techStack": "Processing, OOP (JAVA)"
+      "techStack": "OOP (JAVA)"
     },
     {
       "name": "WineQualityPrediction",
       "description": "Wine quality prediction",
       "pic": WineQualityPrediction,
       "url": "https://github.com/Leoreoreo/WineQualityPrediction",
-      "techStack": "Sklearn, Pandas"
+      "techStack": "Sklearn, MatPlotLib, Pandas"
     },
     {
       "name": "Travel_Data_Viz",
@@ -109,8 +109,8 @@ export default function About() {
   }, []);
   return (
     <div className="about">
-      <h1>About Me</h1>
-      <h2>My Projects</h2>
+      <h1>My Projects</h1>
+      <br/>
       <div className="project-container">
         {projects.map( (project) => {
           return (
@@ -122,13 +122,16 @@ export default function About() {
                 ) : (
                   <div>
                     <h3>{project.name}</h3>
-
                   </div>
                 )}
-                <br/>          
-                <p>{project.description}</p>
-                {project.pic != null && <img src={project.pic} alt="" className="img-container" height={100}/>}
-                <p>{project.techStack}</p> 
+                <br/> 
+                <div className="project-description-container">     
+                  {project.description}
+                </div>
+                {project.pic != null && <img src={project.pic} alt="" className="img-container"/>}
+                <div className="project-tech-container">
+                  {project.techStack}
+                </div>
               </div>
           )
         })}
@@ -145,7 +148,7 @@ export default function About() {
         })}
       </div>
       <br/>
-      <h3>... And I'm learning!</h3>
+      {/* <h3>... And I'm learning!</h3> */}
     </div>
   );
 };
