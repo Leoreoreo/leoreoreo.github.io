@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.02ec0dd7.css",
-    "main.js": "/static/js/main.b86cf29b.js",
+    "main.js": "/static/js/main.85d5ffbd.js",
     "static/media/resume.png": "/static/media/resume.0db9c686f5faa7ff2d46.png",
     "static/media/TIM.jpg": "/static/media/TIM.519bf1c3ff20344d42e6.jpg",
     "static/media/PrivacySandbox.png": "/static/media/PrivacySandbox.6910630f62f8aa5bc113.png",
@@ -13,15 +13,15 @@
     "static/media/A11yVate.png": "/static/media/A11yVate.2fff1b745e6f2d08e65e.png",
     "static/media/nonVisualCooking.jpg": "/static/media/nonVisualCooking.763ee3fa2fb2cc130929.jpg",
     "static/media/Leyang Li.png": "/static/media/Leyang Li.d87b228b653f8ae60878.png",
+    "static/media/favicon.ico": "/static/media/favicon.378ca6c399ca641abd7a.ico",
     "static/media/travelData.png": "/static/media/travelData.268f71b975d522d1412e.png",
     "static/media/theory.png": "/static/media/theory.909c8bae25cbee81d6f3.png",
-    "static/media/favicon.ico": "/static/media/favicon.7b2cb5e7c1377ed8bed1.ico",
     "index.html": "/index.html",
     "main.02ec0dd7.css.map": "/static/css/main.02ec0dd7.css.map",
-    "main.b86cf29b.js.map": "/static/js/main.b86cf29b.js.map"
+    "main.85d5ffbd.js.map": "/static/js/main.85d5ffbd.js.map"
   },
   "entrypoints": [
     "static/css/main.02ec0dd7.css",
-    "static/js/main.b86cf29b.js"
+    "static/js/main.85d5ffbd.js"
   ]
 }
