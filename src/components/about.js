@@ -2,19 +2,34 @@ import React, { useState, useEffect } from 'react';
 import './about.css';
 import p2pHashtableImg from "./../img/about/p2pHashTable.jpg"
 import TimIMG from "./../img/about/TIM.jpg"
-import nonVisualCookingImg from "./../img/about/nonVisualCooking.jpg"
+import AROMA from "./../img/about/AROMA.png"
 import theoryImg from "./../img/about/theory.png"
 import PrivacySandboxImg from "./../img/about/PrivacySandbox.png"
 import theKuiperFrontier from "./../img/about/theKuiperFrontier.png"
 import travelData from "./../img/about/travelData.png"
 import WineQualityPrediction from "./../img/about/wineQualityPrediction.png"
 import A11yVate from "./../img/about/A11yVate.png"
+import mindEcho from "./../img/about/mindEcho.png"
 import icon from "./../img/about/favicon.ico"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 export default function About() {
   const projects = [
+    {
+      "name": "MindEcho",
+      "description": "Meeting assistant for hearing and speaking disabled people",
+      "pic": mindEcho,
+      "url": "https://github.com/Leoreoreo/Meeting_Assistant",
+      "techStack": "Vite, React, OpenAI API, ReactFlow, React-Speech-Recognition"
+    },
+    {
+      "name": "AROMA",
+      "description": "Cooking assistant for visually impaired people",
+      "pic": AROMA,
+      "url": null,
+      "techStack": "Next, React, TypeScript, OpenAI Realtime API, Gemini Multi-Modal API"
+    },
     {
       "name": "P2P Hashtable",
       "description": "Scalabe and persistent distributed hashtable",
@@ -28,13 +43,6 @@ export default function About() {
       "pic": TimIMG,
       "url": "https://github.com/Leoreoreo/TravelItineraryManager",
       "techStack": "PostgreSQL, React, Flask, Google Maps API"
-    },
-    {
-      "name": "non-visual-cooking",
-      "description": "Cooking assistant for visually impaired people",
-      "pic": nonVisualCookingImg,
-      "url": null,
-      "techStack": "Next, React, TypeScript, OpenAI Realtime API, Gemini Multi-Modal API"
     },
     {
       "name": "leoreoreo.github.io",
@@ -136,7 +144,7 @@ export default function About() {
           )
         })}
       </div>
-      <h2>I have worked with</h2>
+      {/* <h2>I have worked with</h2>
       <br/>
       <div className="tech-stack-container">
         {teckStacks.map( (teckStack) => {
@@ -147,7 +155,7 @@ export default function About() {
           )
         })}
       </div>
-      <br/>
+      <br/> */}
       {/* <h3>... And I'm learning!</h3> */}
     </div>
   );
