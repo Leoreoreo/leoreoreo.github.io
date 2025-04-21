@@ -1,27 +1,28 @@
 {
   "files": {
     "main.css": "/static/css/main.02ec0dd7.css",
-    "main.js": "/static/js/main.85d5ffbd.js",
+    "main.js": "/static/js/main.f4a35dd9.js",
     "static/media/resume.png": "/static/media/resume.0db9c686f5faa7ff2d46.png",
     "static/media/TIM.jpg": "/static/media/TIM.519bf1c3ff20344d42e6.jpg",
     "static/media/PrivacySandbox.png": "/static/media/PrivacySandbox.6910630f62f8aa5bc113.png",
     "static/media/theKuiperFrontier.png": "/static/media/theKuiperFrontier.7d0d72699e67334aa7b0.png",
     "static/media/wineQualityPrediction.png": "/static/media/wineQualityPrediction.0b13c7a982774c00322d.png",
+    "static/media/mindEcho.png": "/static/media/mindEcho.583faaa86024e496dee5.png",
     "static/media/HomePic2.png": "/static/media/HomePic2.d4c2a12930c75b34ab61.png",
+    "static/media/AROMA.png": "/static/media/AROMA.ff5ac9c94583b296c986.png",
     "static/media/HomePic.png": "/static/media/HomePic.de091b777db38aafe020.png",
     "static/media/p2pHashTable.jpg": "/static/media/p2pHashTable.0554b98d53285593b5cf.jpg",
     "static/media/A11yVate.png": "/static/media/A11yVate.2fff1b745e6f2d08e65e.png",
-    "static/media/nonVisualCooking.jpg": "/static/media/nonVisualCooking.763ee3fa2fb2cc130929.jpg",
     "static/media/Leyang Li.png": "/static/media/Leyang Li.d87b228b653f8ae60878.png",
     "static/media/favicon.ico": "/static/media/favicon.378ca6c399ca641abd7a.ico",
     "static/media/travelData.png": "/static/media/travelData.268f71b975d522d1412e.png",
     "static/media/theory.png": "/static/media/theory.909c8bae25cbee81d6f3.png",
     "index.html": "/index.html",
     "main.02ec0dd7.css.map": "/static/css/main.02ec0dd7.css.map",
-    "main.85d5ffbd.js.map": "/static/js/main.85d5ffbd.js.map"
+    "main.f4a35dd9.js.map": "/static/js/main.f4a35dd9.js.map"
   },
   "entrypoints": [
     "static/css/main.02ec0dd7.css",
-    "static/js/main.85d5ffbd.js"
+    "static/js/main.f4a35dd9.js"
   ]
 }
