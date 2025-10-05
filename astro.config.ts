@@ -28,88 +28,88 @@ export default defineConfig({
   site: 'https://leoreoreo.github.io',
   // Deploy to a sub path; See https://astro-pure.js.org/docs/setup/deployment#platform-with-base-path
   // base: '/astro-pure/',
-  // trailingSlash: 'never',
+  trailingSlash: 'never',
 
-  // // Adapter
-  // // https://docs.astro.build/en/guides/deploy/
-  // // 1. Vercel (serverless)
-  // adapter: vercel(),
+  // Adapter
+  // https://docs.astro.build/en/guides/deploy/
+  // 1. Vercel (serverless)
+  adapter: vercel(),
+  output: 'server',
+  // 2. Vercel (static)
+  // adapter: vercelStatic(),
+  // 3. Local (standalone)
+  // adapter: node({ mode: 'standalone' }),
   // output: 'server',
-  // // 2. Vercel (static)
-  // // adapter: vercelStatic(),
-  // // 3. Local (standalone)
-  // // adapter: node({ mode: 'standalone' }),
-  // // output: 'server',
-  // // ---
+  // ---
 
-  // image: {
-  //   responsiveStyles: true,
-  //   service: {
-  //     entrypoint: 'astro/assets/services/sharp'
-  //   }
-  // },
+  image: {
+    responsiveStyles: true,
+    service: {
+      entrypoint: 'astro/assets/services/sharp'
+    }
+  },
 
-  // integrations: [
-  //   // astro-pure will automatically add sitemap, mdx & unocss
-  //   // sitemap(),
-  //   // mdx(),
-  //   AstroPureIntegration(config)
-  //   // (await import('@playform/compress')).default({
-  //   //   SVG: false,
-  //   //   Exclude: ['index.*.js']
-  //   // }),
+  integrations: [
+    // astro-pure will automatically add sitemap, mdx & unocss
+    // sitemap(),
+    // mdx(),
+    AstroPureIntegration(config)
+    // (await import('@playform/compress')).default({
+    //   SVG: false,
+    //   Exclude: ['index.*.js']
+    // }),
 
-  //   // Temporary fix vercel adapter
-  //   // static build method is not needed
-  // ],
-  // // root: './my-project-directory',
+    // Temporary fix vercel adapter
+    // static build method is not needed
+  ],
+  // root: './my-project-directory',
 
-  // // Prefetch Options
-  // prefetch: true,
-  // // Server Options
-  // server: {
-  //   host: true
-  // },
-  // // Markdown Options
-  // markdown: {
-  //   remarkPlugins: [remarkMath],
-  //   rehypePlugins: [
-  //     [rehypeKatex, {}],
-  //     rehypeHeadingIds,
-  //     [
-  //       rehypeAutolinkHeadings,
-  //       {
-  //         behavior: 'append',
-  //         properties: { className: ['anchor'] },
-  //         content: { type: 'text', value: '#' }
-  //       }
-  //     ]
-  //   ],
-  //   // https://docs.astro.build/en/guides/syntax-highlighting/
-  //   shikiConfig: {
-  //     themes: {
-  //       light: 'github-light',
-  //       dark: 'github-dark'
-  //     },
-  //     transformers: [
-  //       transformerNotationDiff(),
-  //       transformerNotationHighlight(),
-  //       updateStyle(),
-  //       addTitle(),
-  //       addLanguage(),
-  //       addCopyButton(2000)
-  //     ]
-  //   }
-  // },
-  // experimental: {
-  //   contentIntellisense: true
-  // },
-  // vite: {
-  //   plugins: [
-  //     //   visualizer({
-  //     //     emitFile: true,
-  //     //     filename: 'stats.html'
-  //     //   })
-  //   ]
-  // }
+  // Prefetch Options
+  prefetch: true,
+  // Server Options
+  server: {
+    host: true
+  },
+  // Markdown Options
+  markdown: {
+    remarkPlugins: [remarkMath],
+    rehypePlugins: [
+      [rehypeKatex, {}],
+      rehypeHeadingIds,
+      [
+        rehypeAutolinkHeadings,
+        {
+          behavior: 'append',
+          properties: { className: ['anchor'] },
+          content: { type: 'text', value: '#' }
+        }
+      ]
+    ],
+    // https://docs.astro.build/en/guides/syntax-highlighting/
+    shikiConfig: {
+      themes: {
+        light: 'github-light',
+        dark: 'github-dark'
+      },
+      transformers: [
+        transformerNotationDiff(),
+        transformerNotationHighlight(),
+        updateStyle(),
+        addTitle(),
+        addLanguage(),
+        addCopyButton(2000)
+      ]
+    }
+  },
+  experimental: {
+    contentIntellisense: true
+  },
+  vite: {
+    plugins: [
+      //   visualizer({
+      //     emitFile: true,
+      //     filename: 'stats.html'
+      //   })
+    ]
+  }
 })
