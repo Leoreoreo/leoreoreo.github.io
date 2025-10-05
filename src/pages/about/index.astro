@@ -5,68 +5,72 @@ import Substats from '@/components/about/Substats.astro'
 import ToolSection from '@/components/about/ToolSection.astro'
 
 const headings = [
-  { depth: 2, slug: 'hobbies', text: 'Hobbies' },
-  { depth: 2, slug: 'tools', text: 'Tools' },
-  { depth: 2, slug: 'social-networks', text: 'Social Networks' },
-  { depth: 2, slug: 'gossips', text: 'Gossips' },
-  { depth: 2, slug: 'about-blog', text: 'About Blog' }
+  { depth: 2, slug: 'researchInterests', text: 'Research Interest' },
+  { depth: 2, slug: 'hobbies', text: 'Hobbies' }
+]
+const nationalParks = [
+  "Grand Canyon (Arizona)",
+  "Yellowstone (Wyoming)",
+  "Arches (Utah)",
+  "Olympic (Washington)",
+  "Mount Rainier (Washington)",
+  "Saguaro (Arizona)",
+  "Bryce Canyon (Utah)",
+  "Canyonlands (Utah)",
+  "Black Canyon of the Gunnison (Colorado)",
+  "North Cascades (Washington)",
+  "Mammoth Cave (Kentucky)",
+  "Petrified Forest (Arizona)",
+  "Mesa Verde (Colorado)",
+  "Indiana Dunes (Indiana)",
+
 ]
 ---
 
-<PageLayout title='About'>
+<PageLayout title='About'  {headings}>
   <p>Software Developer / HCI Researcher</p>
   <p>
     I am a 26' undergraduate student at <a href="https://www.nd.edu">the University of Notre Dame</a>, persuing <a href="https://cse.nd.edu/undergraduate/">B.S. in Computer Science</a> and <a href="https://acms.nd.edu/undergraduate/">ACMS(suppl.)</a>. 
     I have worked at <a href="https://toby.li/">SaNDwich Lab</a> at Notre Dame, advised by <a href="https://toby.li/">Prof. Toby Jia-Jun Li</a>. 
     This 2025 summer, I am working at <a href="https://cmu-spuds.github.io/cmu-spuds-web/">SPUD Lab</a> at Carnegie Mellon University, advised by <a href="https://sauvik.me/">Prof. Sauvik Das</a>.
   </p>
+  <h2 id='researchInterests'>Research Interest</h2>
   <p>
     My research interest lies in the interaction of Usable Privacy and Security, LLM Social Simulation, and Human-Centered AI. Specifically, I aim to focus on:
+    <ul>
       <li>(1) developing effective simulation techniques that faithfully model user intentions and reasoning within real-world tasks.</li>
       <li>(2) mitigating privacy concerns on simulation personas by reducing sensitive data disclosure and increasing transparency and user control.</li>
       <li>(3) building personalized LLM agents based on high-fidelity, privacy-preserving simulations.</li>
+    </ul>
   </p>
 
   {/* general-talk */}
   <h2 id='hobbies'>Hobbies</h2>
+  <li>Meanwhile, I have the hobby of painting and hiking.</li>
+  
+  <p>Some of my paintings for leisure:</p>
+  <img src={"/arts/guard.gif"} alt="guard" width="40%"/>
+  <img src={"/arts/life.gif"} alt="life" width="40%" />
+  <img src={"/arts/DV.gif"} alt="DV" width="40%" />
+  <br/>
+  <br/>
+  <br/>
+  <img src={"/arts/Hannibal.gif"} alt="Hannibal" width="60%" />
+  <img src={"/arts/Edinburgh.gif"} alt="Edinburgh" width="60%" />
+  <img src={"/arts/cat.gif"} alt="cat" width="60%" />
+  <br/>
+  <br/>
+  <p>I've hiked in the following national parks (ranked from best to worst from my view):</p>
   <ul>
-    <li>Lorem ipsum dolor sit amet, vidit suscipit at mei.</li>
-    <li>
-      Quem denique mea id. Usu ei regione indoctum dissentiunt, cu meliore fuisset mei, vel quod
-      voluptua ne.
-    </li>
-    <li>Ex dicat impedit mel, at eum oratio possit voluptatum.</li>
-    <li>Impetus fuisset ullamcorper pri cu, his posse iisque ad, aliquam honestatis usu id.</li>
+    {
+      nationalParks.map(park => <li>{park}</li>)
+    }
   </ul>
 
-  <p>
-    The smooth operation and personalized customization of website also rely on the resources and
-    technical support provided by the following excellent projects/service providers:
-  </p>
-  <ul>
-    <li>Domain: <a href='#' target='_blank'>Vercel</a></li>
-    <li>
-      Framework & Theme: <a href='https://astro.build/' target='_blank'>Astro</a> + <a
-        href='https://github.com/cworld1/astro-theme-pure'
-        target='_blank'>Astro Theme Pure</a
-      >
-    </li>
-    <li>
-      Site hosting: <a href='https://vercel.com/' target='_blank'>Vercel</a>
-    </li>
-    <li>
-      CI/CD: <a href='https://vercel.com/workflow' target='_blank'>Vercel Workflow</a>
-    </li>
-    <!-- <li>Resources speedup: <a href='https://cdn.cbd.int/' target='_blank'>CBD CDN</a></li> -->
-    <li>Comment system: <a href='https://waline.js.org' target='_blank'>Waline</a></li>
-    <li>
-      Visits: <a href='https://supabase.com/' target='_blank'>Supabase</a> +
-      <a href='https://waline.js.org/' target='_blank'>Waline</a>
-    </li>
-    <li>
-      Other statistics: <a href='https://github.com/spencerwooo/substats' target='_blank'
-        >Substats</a
-      >
-    </li>
-  </ul>
+
+
+
+
+
+
 </PageLayout>
