@@ -12,9 +12,11 @@ import SkillLayout from '@/components/home/SkillLayout.astro'
 import avatar from '@/assets/avatar.png'
 import config from '@/site-config'
 
-const languages = ['Html', 'JavaScript', 'CSS', 'Shell']
-const frontend = ['TypeScript', 'Vite', 'Webpack', 'Astro']
-const backend = ['Vercel', 'Waline']
+const programming = ['Python', 'JavaScript', 'TypeScript', 'C/C++', 'Java', 'Clojure', 'SQL', 'HTML&CSS']
+const tools = ['React', 'Node.js', 'Next.js', 'Vite', 'Flask', 'Sanic', 'Django', 'RESTful API', 'MySQL', 'SQLite3', 'PostgreSQL', 'HBase']
+const machinelearnings = ['PyTorch', 'sklearn', 'semopy', 'numpy', 'SentenceTransformers', 'D3.js', 'matplotlib', 'pandas']
+const frameworks = ['AWS EC2', 'Docker', 'Kubernetes', 'Flink', 'Kafka', 'HDFS'
+]
 
 const MAX_POSTS = 10
 const allPosts = await getBlogCollection()
@@ -187,20 +189,29 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
         </div>
       </Section>
 
-      <Section title='Certifications'>
+      <Section title='Honors and Awards'>
         <Card
           as='a'
-          heading='Lorem ipsum'
-          subheading='Lorem ipsum dolor sit amet, vidit suscipit at mei. Quem denique mea id. Usu ei regione indoctum dissentiunt, cu meliore fuisset mei, vel quod voluptua ne. Ex dicat impedit mel, at eum oratio possit voluptatum. Dicat ceteros cu vim. Impetus fuisset ullamcorper pri cu, his posse iisque ad, aliquam honestatis usu id.'
-          date='July 2024'
-          href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+          heading='First Place, Hesburgh Libraries Hackathon 2025'
+          subheading='University of Notre Dame'
+          date='($3000 award)'
+          href='https://hackathon.library.nd.edu/'
         />
+        <Card
+          as='a'
+          heading='Second Place, Hesburgh Libraries Hackathon 2024'
+          subheading='University of Notre Dame'
+          date='($2000 award)'
+          href='https://www.library.nd.edu/news/hesburgh-libraries-announces-2024-hackathon-winners/'
+        />
+
       </Section>
 
       <Section title='Skills'>
-        <SkillLayout title='Languages' skills={languages} />
-        <SkillLayout title='Frontend' skills={frontend} />
-        <SkillLayout title='Backend' skills={backend} />
+        <SkillLayout title='Programming' skills={programming} />
+        <SkillLayout title='Tools' skills={tools} />
+        <SkillLayout title='Data Science & ML' skills={machinelearnings} />
+        <SkillLayout title='Frameworks & Platforms' skills={frameworks} />
       </Section>
 
       <!-- {
