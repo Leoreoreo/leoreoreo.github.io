@@ -11,6 +11,7 @@ import KeyIcon from '@/assets/icons/key.svg'
 // import wechat from '@/assets/wechat-qrcode.jpg'
 
 const headings = [
+  { depth: 2, slug: 'research', text: 'Research' },
   { depth: 2, slug: 'personal', text: 'Personal' },
   { depth: 2, slug: 'course', text: 'Course' },
 
@@ -25,13 +26,35 @@ const headings = [
     <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/Leoreoreo/Leoreoreo/output/github-contribution-grid-snake.svg">
   </picture>
 
-
+  <h2 id='research'>Research</h2>
+  <ProjectSection
+    projects={[
+      {
+        name: 'AROMA',
+        description: 'AI assistant to support blind/low-vision cooks.',
+        image: 'AROMA.png',
+        links: [
+          { type: 'github', href: 'https://github.com/Leoreoreo/Meeting_Assistant' },
+          { type: 'doc', href: 'https://dl.acm.org/doi/10.1145/3746059.3747650' }
+        ]
+      },
+      {
+        name: 'Privacy Auditing Sandbox',
+        description: 'End-user auditing of online content recommendations.',
+        image: 'PrivacySandbox.png',
+        links: [
+          { type: 'github', href: 'https://github.com/Leoreoreo/A11yVate' },
+          { type: 'doc', href: 'https://dl.acm.org/doi/10.1145/3746059.3747798' }
+        ]
+      }
+    ]}
+  />
   <h2 id='personal'>Personal</h2>
   <ProjectSection
     projects={[
       {
         name: 'MindEcho',
-        description: 'A meeting assistant for hearing and speaking disabled people',
+        description: 'Meeting assistant for the hearing-speaking disabled.',
         image: 'mindEcho.png',
         links: [
           { type: 'github', href: 'https://github.com/Leoreoreo/Meeting_Assistant' }
@@ -39,7 +62,7 @@ const headings = [
       },
       {
         name: 'A11yVate',
-        description: 'Crowdsourcing Campus Info Map for Accessibility',
+        description: 'Crowdsourcing campus info map for accessibility.',
         image: 'A11yVate.png',
         links: [
           { type: 'github', href: 'https://github.com/Leoreoreo/A11yVate' }
@@ -78,7 +101,7 @@ const headings = [
       },
       {
         name: 'SAT_Solver',
-        description: 'Python implementation of NFA, regex, sed, Turing Machine, SAT',
+        description: 'Python implementation of NFA, regex, sed, Turing Machine, SAT.',
         image: 'satSolver.jpg',
         links: [
           { type: 'github', href: 'https://github.com/Leoreoreo/SAT_Solver' }
@@ -86,7 +109,7 @@ const headings = [
       },
       {
         name: 'The Kuiper Frontier',
-        description: '2D plane-shooting game',
+        description: '2D plane-shooting game.',
         image: 'theKuiperFrontier.png',
         links: [
           { type: 'github', href: 'https://github.com/Leoreoreo/theKuiperFrontier' }
