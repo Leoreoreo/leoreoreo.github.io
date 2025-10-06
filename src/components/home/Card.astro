@@ -1,0 +1,42 @@
+---
+import { cn } from 'astro-pure/utils'
+import type { HTMLTag, Polymorphic } from 'astro/types'
+
+type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
+  heading?: string
+  subheading?: string
+  date?: string
+  image?: string
+  class?: string
+}
+
+const { as: Tag = 'div', class: className, href, heading, subheading, date, image } = Astro.props
+---
+
+<Tag
+  class={cn(
+    'not-prose block relative rounded-2xl border bg-muted px-5 py-3 overflow-hidden',
+    href && 'transition-all hover:border-foreground/25 hover:shadow-sm',
+    className
+  )}
+  href={href}
+>
+  {image && (
+    <div 
+      class="absolute inset-0 left-1/2 opacity-40 bg-cover bg-center bg-no-repeat"
+      style={`
+        background-image: url('${image}');
+        mask-image: linear-gradient(to right, transparent 0%, black 100%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 100%);
+      `}
+    />
+  )}
+  <div class='flex flex-col gap-y-1.5 relative z-10'>
+    <div class='flex flex-col gap-y-0.5'>
+      {heading && <h2 class='text-lg font-medium'>{heading}</h2>}
+      {subheading && <p class='text-muted-foreground'>{subheading}</p>}
+      {date && <p class='text-muted-foreground'>{date}</p>}
+    </div>
+    <slot />
+  </div>
+</Tag>
