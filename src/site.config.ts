@@ -48,7 +48,8 @@ export const theme: ThemeUserConfig = {
   header: {
     menu: [
       { title: 'Projects', link: '/projects' },
-      { title: 'About', link: '/about' }
+      { title: 'About', link: '/about' },
+      { title: 'CV', link: '/Leyang_CV.pdf' }
     ]
   },
 
@@ -138,9 +139,9 @@ export const integ: IntegrationUserConfig = {
     emoji: ['bmoji', 'weibo'],
     // Refer https://waline.js.org/en/reference/client/props.html
     additionalConfigs: {
-      // search: false,
-      pageview: true,
-      comment: true,
+      search: false,
+      pageview: false,
+      comment: false,
       locale: {
         reaction0: 'Like',
         placeholder: 'Welcome to comment. (Email to receive replies. Login is unnecessary)'
