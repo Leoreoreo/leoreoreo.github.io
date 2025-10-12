@@ -19,12 +19,12 @@ const headings = [
 ---
 
 <PageLayout title='Projects' {headings}>
-  <p>Github Activities:</p>
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Leoreoreo/Leoreoreo/output/github-contribution-grid-snake-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Leoreoreo/Leoreoreo/output/github-contribution-grid-snake.svg">
     <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/Leoreoreo/Leoreoreo/output/github-contribution-grid-snake.svg">
   </picture>
+  <p>Github activities generated with <a href="https://github.com/Platane/snk">Platane/snk</a></p>
 
   <h2 id='research'>Research</h2>
   <ProjectSection
@@ -34,8 +34,9 @@ const headings = [
         description: 'AI assistant to support blind/low-vision cooks.',
         image: 'AROMA.png',
         links: [
-          { type: 'github', href: 'https://github.com/Leoreoreo/Meeting_Assistant' },
-          { type: 'doc', href: 'https://dl.acm.org/doi/10.1145/3746059.3747650' }
+          { type: 'github', href: 'https://github.com/realningzheng/non-visual-cooking' },
+          { type: 'doc', href: 'https://dl.acm.org/doi/10.1145/3746059.3747650' },
+          { type: 'youtube', href: 'https://www.youtube.com/watch?v=hi7YsFJp5KQ' }
         ]
       },
       {
@@ -43,8 +44,9 @@ const headings = [
         description: 'End-user auditing of online content recommendations.',
         image: 'PrivacySandbox.png',
         links: [
-          { type: 'github', href: 'https://github.com/Leoreoreo/A11yVate' },
-          { type: 'doc', href: 'https://dl.acm.org/doi/10.1145/3746059.3747798' }
+          { type: 'github', href: 'https://github.com/Leoreoreo/relatedPosts' },
+          { type: 'doc', href: 'https://dl.acm.org/doi/10.1145/3746059.3747798' },
+          { type: 'youtube', href: 'https://www.youtube.com/watch?v=3I_zgTW02a8' }
         ]
       }
     ]}
@@ -57,7 +59,8 @@ const headings = [
         description: 'Meeting assistant for the hearing-speaking disabled.',
         image: 'mindEcho.png',
         links: [
-          { type: 'github', href: 'https://github.com/Leoreoreo/Meeting_Assistant' }
+          { type: 'github', href: 'https://github.com/Leoreoreo/Meeting_Assistant' },
+          { type: 'doc', href: 'https://github.com/Leoreoreo/Meeting_Assistant/blob/main/Hackathon25.key' }
         ]
       },
       {
@@ -70,7 +73,7 @@ const headings = [
       },
       {
         name: 'This Website',
-        description: 'My personal website build by astro.',
+        description: 'My personal website build with astro.',
         image: 'astro.jpg',
         links: [
           { type: 'github', href: 'https://github.com/Leoreoreo/leoreoreo.github.io' },
@@ -85,7 +88,7 @@ const headings = [
     projects={[
       {
         name: 'Campus Mart',
-        description: 'Marketplace connecting campus students.',
+        description: 'Marketplace connecting campus students. (Django, React)',
         image: 'campusMart.jpg',
         links: [
           { type: 'github', href: 'https://github.com/johnkimdw/campus_mart' },
@@ -94,7 +97,7 @@ const headings = [
       },
       {
         name: 'P2P Hashtable',
-        description: 'Scalabe and persistent distributed hashtable.',
+        description: 'Scalabe and persistent distributed hashtable. (Improved Chord)',
         image: 'p2pHashTable.jpg',
         links: [
           { type: 'github', href: 'https://github.com/Leoreoreo/p2pHashtable' },
@@ -103,7 +106,7 @@ const headings = [
       },
       {
         name: 'Travel Itinerary Manager',
-        description: 'A trip scheduling and planning assistant.',
+        description: 'A trip scheduling and planning assistant. (React, Flask)',
         image: 'TIM.jpg',
         links: [
           { type: 'github', href: 'https://github.com/Leoreoreo/TravelItineraryManager' }
@@ -119,7 +122,7 @@ const headings = [
       },
       {
         name: 'The Kuiper Frontier',
-        description: '2D plane-shooting game.',
+        description: '2D plane-shooting game. (Java)',
         image: 'theKuiperFrontier.png',
         links: [
           { type: 'github', href: 'https://github.com/Leoreoreo/theKuiperFrontier' }
