@@ -65,13 +65,26 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
       <Section title='About'>
         <p class='text-muted-foreground'>Software Developer / HCI Researcher</p>
         <p class='text-muted-foreground'>
-          I am a 26' undergraduate student at <a href="https://www.nd.edu">the University of Notre Dame</a>, persuing <a href="https://cse.nd.edu/undergraduate/">B.S. in Computer Science</a> and <a href="https://acms.nd.edu/undergraduate/">ACMS (suppl.)</a>. 
-          My research interest lies in the intersaction of Usable Privacy and Security, LLM Social Simulation, and Human-Centered AI.
+          I am a CS PhD student at <a href="https://www.jhu.edu">Johns Hopkins University</a>.
+          My research interest lies in the intersaction of Usable Privacy and Security, Human-Computer Interaction, and Human-Centered AI.
         </p>
         <Button title='More about me' class='w-fit self-end' href='/about' variant='ahead' />
       </Section>
 
       <Section title='Education'>
+        <Card
+          as ='a'
+          heading='Johns Hopkins University'
+          subheading='Ph.D. in Computer Science'
+          date='Aug. 2026 - Present'
+          image="/home/jhu.jpg"
+          href='https://jhu.edu'
+        >
+          <!-- <ul class='ms-4 list-disc text-muted-foreground'>
+              GPA: 3.95/4.00 (Magna Cum Laude)
+          </ul> -->
+        </Card>
+
         <Card
           as ='a'
           heading='University of Notre Dame'
@@ -81,7 +94,7 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
           href='https://nd.edu'
         >
           <ul class='ms-4 list-disc text-muted-foreground'>
-              GPA: 3.95/4.00
+              GPA: 3.95/4.00 (Magna Cum Laude)
           </ul>
         </Card>
       </Section>
@@ -217,6 +230,7 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
         </div>
       </Section> -->
       <Section title='Honors'>
+        
         <Card
           as='a'
           heading='Second Place, Hesburgh Libraries Hackathon 2026'
@@ -224,6 +238,12 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
           date=''
           href='https://hackathon.library.nd.edu/2026.shtml'
           image="/home/hackathon2026.png"
+        />
+        <Card
+          heading='Deans Honor List'
+          subheading='2023-2025 all semesters, University of Notre Dame'
+          date=''
+          image="/home/nd.jpg"
         />
         <Card
           as='a'
@@ -261,12 +281,7 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
           date=''
           image="/home/nd.jpg"
         />
-        <Card
-          heading='Deans Honor List'
-          subheading='2023-2025 all semesters, University of Notre Dame'
-          date=''
-          image="/home/nd.jpg"
-        />
+
 
       </Section>
 
