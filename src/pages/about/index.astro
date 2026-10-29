@@ -133,7 +133,9 @@ const photographedParks = nationalParks.filter((park) => park.photo)
         </div>
       </div>
       <ol
-        class='park-gallery'
+        class='park-gallery interest-gallery'
+        tabindex='0'
+        aria-roledescription='carousel'
         id='park-gallery'
         aria-label='National park photographs, in personal ranking order'
       >
@@ -157,7 +159,7 @@ const photographedParks = nationalParks.filter((park) => park.photo)
                   src={park.photo!}
                   alt={park.alt}
                   widths={[400, 800]}
-                  sizes='(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw'
+                  sizes='(max-width: 512px) 78vw, 400px'
                   width={800}
                   loading='lazy'
                 />
@@ -178,6 +180,24 @@ const photographedParks = nationalParks.filter((park) => park.photo)
           ))
         }
       </ol>
+      <div class='gallery-navigation' data-for='park-gallery' hidden>
+        <p>Swipe or scroll to explore photographs</p>
+        <div>
+          <button
+            type='button'
+            data-step='-1'
+            aria-label='Previous photograph'
+            aria-controls='park-gallery'>←</button
+          >
+          <span class='gallery-position' aria-live='polite' aria-atomic='true'></span>
+          <button
+            type='button'
+            data-step='1'
+            aria-label='Next photograph'
+            aria-controls='park-gallery'>→</button
+          >
+        </div>
+      </div>
       <p class='gallery-empty' hidden>
         No photographs match that search. Try another park or state.
       </p>
@@ -191,7 +211,13 @@ const photographedParks = nationalParks.filter((park) => park.photo)
         <span class='collection-count'>Selected personal work</span>
       </div>
       <p>I paint in my spare time. Here are a few of my studies and portraits.</p>
-      <div class='art-gallery'>
+      <div
+        class='art-gallery interest-gallery'
+        id='art-gallery'
+        tabindex='0'
+        aria-label='Paintings'
+        aria-roledescription='carousel'
+      >
         {
           paintings.map(({ file, label }, index) => (
             <figure>
@@ -215,6 +241,21 @@ const photographedParks = nationalParks.filter((park) => park.photo)
             </figure>
           ))
         }
+      </div>
+      <div class='gallery-navigation' data-for='art-gallery' hidden>
+        <p>Swipe or scroll to explore paintings</p>
+        <div>
+          <button
+            type='button'
+            data-step='-1'
+            aria-label='Previous painting'
+            aria-controls='art-gallery'>←</button
+          >
+          <span class='gallery-position' aria-live='polite' aria-atomic='true'></span>
+          <button type='button' data-step='1' aria-label='Next painting' aria-controls='art-gallery'
+            >→</button
+          >
+        </div>
       </div>
     </section>
 
@@ -330,6 +371,7 @@ const photographedParks = nationalParks.filter((park) => park.photo)
     document.querySelector('#gallery-status')!.textContent =
       `${visible} of ${cards.length} photographs`
     document.querySelector<HTMLElement>('.gallery-empty')!.hidden = visible !== 0
+    document.querySelector('#park-gallery')!.dispatchEvent(new Event('gallery-filter'))
   }
   search.addEventListener('input', filterParks)
   clear.addEventListener('click', () => {
@@ -343,6 +385,67 @@ const photographedParks = nationalParks.filter((park) => park.photo)
       search.value = ''
       filterParks()
     })
+  })
+
+  // Keep each strip centered and gently emphasize the photograph nearest its center.
+  document.querySelectorAll<HTMLElement>('.interest-gallery').forEach((rail) => {
+    const navigation = document.querySelector<HTMLElement>(`[data-for="${rail.id}"]`)!
+    const previous = navigation.querySelector<HTMLButtonElement>('[data-step="-1"]')!
+    const next = navigation.querySelector<HTMLButtonElement>('[data-step="1"]')!
+    const counter = navigation.querySelector<HTMLElement>('.gallery-position')!
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+    let current = 0
+    let frame = 0
+    const items = () =>
+      Array.from(rail.children).filter((item) => !(item as HTMLElement).hidden) as HTMLElement[]
+    const update = () => {
+      frame = 0
+      const slides = items()
+      const center = rail.scrollLeft + rail.clientWidth / 2
+      let nearest = Infinity
+      slides.forEach((slide, index) => {
+        const distance = Math.abs(slide.offsetLeft + slide.offsetWidth / 2 - center)
+        if (distance < nearest) {
+          nearest = distance
+          current = index
+        }
+        slide.style.setProperty(
+          '--gallery-scale',
+          String(1 - Math.min(distance / rail.clientWidth, 1) * 0.16)
+        )
+      })
+      navigation.hidden = slides.length === 0
+      counter.textContent = slides.length ? `${current + 1} / ${slides.length}` : ''
+      previous.disabled = current === 0
+      next.disabled = current >= slides.length - 1
+    }
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update)
+    }
+    const goTo = (index: number) => {
+      const slides = items()
+      const slide = slides[Math.max(0, Math.min(index, slides.length - 1))]
+      if (slide)
+        rail.scrollTo({
+          left: slide.offsetLeft + slide.offsetWidth / 2 - rail.clientWidth / 2,
+          behavior: reducedMotion.matches ? 'instant' : 'smooth'
+        })
+    }
+    previous.addEventListener('click', () => goTo(current - 1))
+    next.addEventListener('click', () => goTo(current + 1))
+    rail.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+        event.preventDefault()
+        goTo(current + (event.key === 'ArrowLeft' ? -1 : 1))
+      }
+    })
+    rail.addEventListener('scroll', schedule, { passive: true })
+    rail.addEventListener('gallery-filter', () => {
+      rail.scrollTo({ left: 0, behavior: 'instant' })
+      update()
+    })
+    new ResizeObserver(schedule).observe(rail)
+    update()
   })
 </script>
 
@@ -461,9 +564,6 @@ const photographedParks = nationalParks.filter((park) => park.photo)
     margin-left: auto;
   }
   .park-gallery {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 26px 22px;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -484,7 +584,7 @@ const photographedParks = nationalParks.filter((park) => park.photo)
     background: var(--soft-green);
   }
   .park-image {
-    aspect-ratio: 4/3;
+    height: clamp(280px, 48vw, 440px);
   }
   .park-image img {
     width: 100%;
@@ -535,9 +635,6 @@ const photographedParks = nationalParks.filter((park) => park.photo)
     border-radius: 8px;
   }
   .art-gallery {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px;
     margin-top: 24px;
   }
   .art-gallery figure {
@@ -549,7 +646,7 @@ const photographedParks = nationalParks.filter((park) => park.photo)
   }
   .art-image img {
     width: 100%;
-    height: 280px;
+    height: clamp(280px, 48vw, 440px);
     object-fit: contain;
   }
   .art-gallery figcaption {
@@ -561,6 +658,73 @@ const photographedParks = nationalParks.filter((park) => park.photo)
   .art-gallery figcaption span {
     color: var(--text-muted);
     font-size: 0.75rem;
+  }
+  .interest-gallery {
+    --slide-width: min(78vw, 400px);
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: var(--green) var(--soft-green);
+    padding: 20px max(0px, calc((100% - var(--slide-width)) / 2)) 24px;
+  }
+  .interest-gallery > * {
+    flex: 0 0 var(--slide-width);
+    min-width: 0;
+    scroll-snap-align: center;
+    transform: scale(var(--gallery-scale, 1));
+    transform-origin: center;
+  }
+  .interest-gallery:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 4px;
+    border-radius: 8px;
+  }
+  .gallery-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .gallery-navigation p {
+    margin: 0;
+    font-size: 0.78rem;
+  }
+  .gallery-navigation > div {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .gallery-position {
+    min-width: 4.5ch;
+    text-align: center;
+    font-size: 0.8rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--text-muted);
+  }
+  .gallery-navigation button {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: var(--surface);
+    color: var(--green);
+    cursor: pointer;
+  }
+  .gallery-navigation button:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .interest-gallery > * {
+      transform: none;
+    }
   }
   .football-note {
     display: grid;
@@ -682,12 +846,7 @@ const photographedParks = nationalParks.filter((park) => park.photo)
       transform: scale(1.035);
     }
   }
-  @media (max-width: 900px) {
-    .park-gallery,
-    .art-gallery {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
+
   @media (max-width: 600px) {
     .about-section {
       padding: 30px 0;
@@ -697,10 +856,7 @@ const photographedParks = nationalParks.filter((park) => park.photo)
       flex-direction: column;
       gap: 10px;
     }
-    .park-gallery {
-      grid-template-columns: 1fr;
-      gap: 26px;
-    }
+
     .park-directory ol {
       grid-template-columns: 1fr;
     }
@@ -709,15 +865,11 @@ const photographedParks = nationalParks.filter((park) => park.photo)
       float: none;
       margin: 6px 0 0 18px;
     }
-    .art-gallery {
-      gap: 16px;
-    }
+
     .art-image {
       padding: 8px;
     }
-    .art-image img {
-      height: 190px;
-    }
+
     .art-gallery figcaption {
       font-size: 0.75rem;
       gap: 6px;
