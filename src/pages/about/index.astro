@@ -453,6 +453,8 @@ const photographedParks = nationalParks.filter((park) => park.photo)
     const update = () => {
       frame = 0
       const center = rail.scrollLeft + rail.clientWidth / 2
+      const radius = Math.max(650, rail.clientWidth)
+      rail.style.setProperty('--camera-distance', `${Math.max(1000, rail.clientWidth * 1.5)}px`)
       let nearest = Infinity
       slides.forEach((slide, index) => {
         const offset = slide.offsetLeft + slide.offsetWidth / 2 - center
@@ -461,13 +463,20 @@ const photographedParks = nationalParks.filter((park) => park.photo)
           nearest = distance
           current = index
         }
-        const depth = Math.min(distance / (rail.clientWidth * 0.65), 1)
-        const direction = Math.sign(offset)
-        slide.style.setProperty('--gallery-scale', String(1 - depth * 0.18))
-        slide.style.setProperty('--gallery-turn', `${direction * depth * 24}deg`)
-        slide.style.setProperty('--gallery-depth', `${-depth * 65}px`)
-        slide.style.setProperty('--gallery-arc', `${-depth * depth * 30}px`)
-        slide.style.setProperty('--gallery-opacity', String(1 - depth * 0.38))
+        // Arc length determines the angle; position and orientation share one
+        // circle on the X/Z ground plane: x² + (z + radius)² = radius².
+        const angle = offset / radius
+        const theta = Math.max(-1.35, Math.min(angle, 1.35))
+        slide.style.visibility = Math.abs(angle) <= 1.35 ? 'visible' : 'hidden'
+        slide.style.zIndex = String(Math.round((1 - Math.abs(theta) / 1.35) * 1000))
+        slide.style.setProperty('--gallery-offset', `${offset}px`)
+        slide.style.setProperty('--circle-x', `${radius * Math.sin(theta)}px`)
+        slide.style.setProperty('--circle-z', `${radius * (Math.cos(theta) - 1)}px`)
+        slide.style.setProperty('--circle-angle', `${theta}rad`)
+        slide.style.setProperty(
+          '--gallery-opacity',
+          String(1 - Math.min(Math.abs(theta) / 1.35, 1) * 0.38)
+        )
       })
       const logicalIndex = visible.length ? current % visible.length : 0
       counter.textContent = visible.length ? `${logicalIndex + 1} / ${visible.length}` : ''
@@ -785,11 +794,14 @@ const photographedParks = nationalParks.filter((park) => park.photo)
     font-size: 0.75rem;
   }
   .interest-gallery {
+    isolation: isolate;
     --gallery-height: clamp(180px, 34vw, 360px);
+    --ground-height: calc(var(--gallery-height) * 1.25);
+    --camera-height: calc(var(--ground-height) * 0.65);
 
     position: relative;
     display: flex;
-    align-items: center;
+    align-items: start;
     gap: 28px;
     overflow-x: auto;
     overscroll-behavior-x: contain;
@@ -804,10 +816,17 @@ const photographedParks = nationalParks.filter((park) => park.photo)
     width: calc(var(--item-height) * var(--image-ratio));
     min-width: 0;
     scroll-snap-align: center;
-    transform: perspective(1100px) translateY(var(--gallery-arc, 0px))
-      translateZ(var(--gallery-depth, 0px)) rotateY(var(--gallery-turn, 0deg))
-      scale(var(--gallery-scale, 1));
-    transform-origin: center calc(var(--item-height) / 2);
+    padding-top: calc(var(--ground-height) - var(--item-height));
+    /* Move every local image origin to the same camera before projection. */
+    transform: translate3d(
+        calc(-1 * var(--gallery-offset, 0px)),
+        calc(-1 * var(--camera-height)),
+        0
+      )
+      perspective(var(--camera-distance, 1200px))
+      translate3d(var(--circle-x, 0px), var(--camera-height), var(--circle-z, 0px))
+      rotateY(var(--circle-angle, 0rad));
+    transform-origin: center var(--ground-height);
     opacity: var(--gallery-opacity, 1);
   }
   .interest-gallery > [data-portrait='true'] {

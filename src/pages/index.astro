@@ -4,7 +4,6 @@ import { Image } from 'astro:assets'
 import PageLayout from '@/layouts/BaseLayout.astro'
 import Card from '@/components/home/Card.astro'
 import Section from '@/components/home/Section.astro'
-import SkillLayout from '@/components/home/SkillLayout.astro'
 import avatar from '@/assets/avatar.png'
 import aroma from '@/assets/projects/AROMA.png'
 import sandbox from '@/assets/projects/PrivacySandbox.png'
@@ -51,50 +50,14 @@ const publications = [
     video: 'https://www.youtube.com/watch?v=hi7YsFJp5KQ'
   }
 ]
-const programming = [
-  'Python',
-  'JavaScript',
-  'TypeScript',
-  'C/C++',
-  'Java',
-  'Clojure',
-  'SQL',
-  'HTML & CSS'
-]
-const tools = [
-  'React',
-  'Node.js',
-  'Next.js',
-  'Vite',
-  'Flask',
-  'Sanic',
-  'Django',
-  'RESTful API',
-  'MySQL',
-  'SQLite3',
-  'PostgreSQL',
-  'HBase'
-]
-const dataScience = [
-  'PyTorch',
-  'scikit-learn',
-  'semopy',
-  'NumPy',
-  'SentenceTransformers',
-  'D3.js',
-  'Matplotlib',
-  'pandas'
-]
-const infrastructure = ['AWS EC2', 'Docker', 'Kubernetes', 'Flink', 'Kafka', 'HDFS']
 ---
 
 <PageLayout meta={{ title: 'Home' }}>
   <main id='main-content' class='research-home'>
     <section class='profile-intro' aria-labelledby='profile-name'>
       <div class='profile-copy'>
-        <p class='eyebrow'>Computer Science · Johns Hopkins University</p>
         <h1 id='profile-name'>Leyang Li</h1>
-        <p class='profile-role'>Ph.D. student in Computer Science</p>
+        <p class='profile-role'>Ph.D. student in Computer Science at Johns Hopkins University</p>
         <p>
           I study <strong>usable privacy and security</strong>, <strong
             >human-computer interaction</strong
@@ -105,7 +68,7 @@ const infrastructure = ['AWS EC2', 'Docker', 'Kubernetes', 'Flink', 'Kafka', 'HD
           advised by <a href='https://www.cs.jhu.edu/~yaxing/index.html'>Prof. Yaxing Yao</a>. I
           received my B.S. in Computer Science from the University of Notre Dame in 2026, where I
           worked with <a href='https://toby.li/'>Prof. Toby Jia-Jun Li</a> in the SaNDwich Lab. I also
-          worked with <a href='https://sauvik.me/'>Prof. Sauvik Das</a> in CMU’s SPUD Lab.
+          worked with <a href='https://sauvik.me/'>Prof. Sauvik Das</a> in CMU’s SPUD Lab in summer 2025.
         </p>
         <div class='profile-links' aria-label='Contact and professional links'>
           <a class='contact-primary' href='mailto:lli184@jh.edu'
@@ -117,7 +80,6 @@ const infrastructure = ['AWS EC2', 'Docker', 'Kubernetes', 'Flink', 'Kafka', 'HD
       </div>
       <figure class='profile-photo'>
         <Image src={avatar} alt='Leyang Li' width={280} loading='eager' fetchpriority='high' />
-        <figcaption>Baltimore, Maryland</figcaption>
       </figure>
     </section>
 
@@ -228,16 +190,14 @@ const infrastructure = ['AWS EC2', 'Docker', 'Kubernetes', 'Flink', 'Kafka', 'HD
       <p class='section-description'>
         Teaching Assistant &amp; Tutor · Computer Science and Engineering, University of Notre Dame
       </p>
-      <div class='teaching-row'><h3>Distributed Systems</h3><p>Spring 2026</p></div>
+      <div class='teaching-row'><h3>CSE 40771 Distributed Systems</h3><p>Spring 2026</p></div>
       <div class='teaching-row'>
-        <h3>Operating System Principles</h3><p>Spring &amp; Fall 2025 · Spring 2026</p>
+        <h3>CSE 30341 Operating System Principles</h3><p>Spring &amp; Fall 2025 · Spring 2026</p>
       </div>
     </section>
 
     <details class='additional-background'>
-      <summary
-        >More background <span>Honors, industry experience, and technical skills</span></summary
-      >
+      <summary>More background <span>Honors and industry experience</span></summary>
       <div class='additional-content'>
         <Section title='Honors'>
           <Card
@@ -277,7 +237,7 @@ const infrastructure = ['AWS EC2', 'Docker', 'Kubernetes', 'Flink', 'Kafka', 'HD
             subheading='2022, University of Notre Dame, ($5,000)'
           />
         </Section>
-        <Section title='Industry experience'>
+        <Section title={'Industry\nexperience'}>
           <Card
             heading='Software Engineer Intern'
             subheading='China Construction Bank Fintech'
@@ -299,12 +259,6 @@ const infrastructure = ['AWS EC2', 'Docker', 'Kubernetes', 'Flink', 'Kafka', 'HD
               </li>
             </ul>
           </Card>
-        </Section>
-        <Section title='Skills'>
-          <SkillLayout title='Programming' skills={programming} />
-          <SkillLayout title='Tools' skills={tools} />
-          <SkillLayout title='Data Science & ML' skills={dataScience} />
-          <SkillLayout title='Infrastructure' skills={infrastructure} />
         </Section>
       </div>
     </details>
