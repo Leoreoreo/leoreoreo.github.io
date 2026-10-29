@@ -1,0 +1,50 @@
+{/* Apply the preference before the page paints to prevent a light flash. */}
+<script is:inline>
+  ;(() => {
+    const key = 'site-theme'
+    const media = window.matchMedia('(prefers-color-scheme: dark)')
+    const normalize = (value) => (['light', 'dark'].includes(value) ? value : 'system')
+    let preference = 'system'
+    try {
+      preference = normalize(localStorage.getItem(key))
+    } catch {
+      // System mode still works when browser storage is unavailable.
+    }
+    const apply = () => {
+      const theme = preference === 'system' ? (media.matches ? 'dark' : 'light') : preference
+      document.documentElement.dataset.theme = theme
+      document
+        .querySelector('meta[name="theme-color"]')
+        ?.setAttribute('content', theme === 'dark' ? '#151a1e' : '#fcfcfa')
+      const select = document.getElementById('theme-select')
+      if (select) select.value = preference
+    }
+    apply()
+    media.addEventListener('change', apply)
+    window.addEventListener('storage', (event) => {
+      if (event.key === key || event.key === null) {
+        preference = normalize(event.newValue)
+        apply()
+      }
+    })
+    document.addEventListener(
+      'DOMContentLoaded',
+      () => {
+        const select = document.getElementById('theme-select')
+        if (!select) return
+        select.value = preference
+        select.closest('.theme-control').hidden = false
+        select.addEventListener('change', () => {
+          preference = normalize(select.value)
+          try {
+            localStorage.setItem(key, preference)
+          } catch {
+            // Keep the selected appearance for this page even without storage.
+          }
+          apply()
+        })
+      },
+      { once: true }
+    )
+  })()
+</script>

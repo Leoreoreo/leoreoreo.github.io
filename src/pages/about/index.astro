@@ -347,10 +347,6 @@ const photographedParks = nationalParks.filter((park) => park.photo)
 </script>
 
 <style>
-  .about-page {
-    --green: #3c6559;
-    --soft-green: #edf3ef;
-  }
   .about-page .eyebrow {
     font-size: 0.7rem;
     color: var(--green);
@@ -358,7 +354,7 @@ const photographedParks = nationalParks.filter((park) => park.photo)
   }
   .about-section {
     padding: 42px 0;
-    border-top: 1px solid #dfe4e7;
+    border-top: 1px solid var(--line);
   }
   .about-section:first-child {
     padding-top: 0;
@@ -377,14 +373,14 @@ const photographedParks = nationalParks.filter((park) => park.photo)
   }
   .collection-count {
     font-size: 0.78rem;
-    color: #67756d;
+    color: var(--text-muted);
   }
   .park-directory {
-    border: 1px solid #dce4df;
+    border: 1px solid var(--line);
     border-radius: 8px;
     padding: 16px 20px;
     margin: 24px 0;
-    background: #f5f7f4;
+    background: var(--park-surface);
   }
   summary {
     cursor: pointer;
@@ -395,7 +391,7 @@ const photographedParks = nationalParks.filter((park) => park.photo)
     float: right;
     font-weight: 400;
     font-size: 0.78rem;
-    color: #627168;
+    color: var(--text-muted);
   }
   .park-directory ol {
     display: grid;
@@ -413,7 +409,7 @@ const photographedParks = nationalParks.filter((park) => park.photo)
   }
   .park-directory small {
     display: block;
-    color: #68747e;
+    color: var(--text-muted);
     font-size: 0.75rem;
     margin-top: 3px;
   }
@@ -440,8 +436,8 @@ const photographedParks = nationalParks.filter((park) => park.photo)
     flex-wrap: wrap;
   }
   input {
-    border: 1px solid #ccd7d0;
-    background: white;
+    border: 1px solid var(--line);
+    background: var(--surface);
     border-radius: 6px;
     padding: 10px 14px;
     min-width: 0;
@@ -461,7 +457,7 @@ const photographedParks = nationalParks.filter((park) => park.photo)
   }
   #gallery-status {
     font-size: 0.78rem;
-    color: #68747e;
+    color: var(--text-muted);
     margin-left: auto;
   }
   .park-gallery {
@@ -485,7 +481,7 @@ const photographedParks = nationalParks.filter((park) => park.photo)
     position: relative;
     overflow: hidden;
     border-radius: 8px;
-    background: #edf0ec;
+    background: var(--soft-green);
   }
   .park-image {
     aspect-ratio: 4/3;
@@ -531,11 +527,11 @@ const photographedParks = nationalParks.filter((park) => park.photo)
   .park-caption p {
     margin: 3px 0 0;
     font-size: 0.78rem;
-    color: #68747e;
+    color: var(--text-muted);
   }
   .gallery-empty {
     padding: 30px;
-    border: 1px dashed #ccd7d0;
+    border: 1px dashed var(--line);
     border-radius: 8px;
   }
   .art-gallery {
@@ -548,7 +544,7 @@ const photographedParks = nationalParks.filter((park) => park.photo)
     margin: 0;
   }
   .art-image {
-    background: #f0ede7;
+    background: var(--art-surface);
     padding: 18px;
   }
   .art-image img {
@@ -560,10 +556,10 @@ const photographedParks = nationalParks.filter((park) => park.photo)
     display: flex;
     gap: 12px;
     margin-top: 12px;
-    color: #4b5660;
+    color: var(--text-muted);
   }
   .art-gallery figcaption span {
-    color: #7d8880;
+    color: var(--text-muted);
     font-size: 0.75rem;
   }
   .football-note {

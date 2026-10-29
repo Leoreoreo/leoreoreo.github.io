@@ -1,6 +1,7 @@
 ---
 import type { SiteMeta } from 'astro-pure/types'
 import BaseHead from '@/components/BaseHead.astro'
+import ThemeScript from '@/components/ThemeScript.astro'
 import config from '@/site-config'
 
 import '@/assets/styles/app.css'
@@ -16,21 +17,31 @@ const menu = [{ title: 'Home', link: '/' }, ...(config.header.menu ?? [])]
 ---
 
 <html lang={config.locale.lang}>
-  <head><BaseHead {articleDate} {description} {ogImage} {title} /></head>
+  <head><BaseHead {articleDate} {description} {ogImage} {title} /><ThemeScript /></head>
   <body>
     <a class='skip-link' href='#main-content'>Skip to content</a>
     <div class='site-shell'>
       <header class='site-header'>
         <a class='site-name' href='/'>{config.author}</a>
-        <nav aria-label='Main navigation'>
-          {
-            menu.map((item) => (
-              <a href={item.link} aria-current={currentPath === item.link ? 'page' : undefined}>
-                {item.title}
-              </a>
-            ))
-          }
-        </nav>
+        <div class='header-controls'>
+          <nav aria-label='Main navigation'>
+            {
+              menu.map((item) => (
+                <a href={item.link} aria-current={currentPath === item.link ? 'page' : undefined}>
+                  {item.title}
+                </a>
+              ))
+            }
+          </nav>
+          <label class='theme-control' hidden>
+            <span>Theme</span>
+            <select id='theme-select' aria-label='Color theme'>
+              <option value='system'>System</option>
+              <option value='light'>Light</option>
+              <option value='dark'>Dark</option>
+            </select>
+          </label>
+        </div>
       </header>
       <div class='site-content'><slot /></div>
       <footer class='site-footer'>
