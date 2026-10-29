@@ -1,6 +1,7 @@
 ---
 import type { SiteMeta } from 'astro-pure/types'
 import BaseHead from '@/components/BaseHead.astro'
+import ThemeIcon from '@/components/ThemeIcon.astro'
 import ThemeScript from '@/components/ThemeScript.astro'
 import config from '@/site-config'
 
@@ -33,14 +34,36 @@ const menu = [{ title: 'Home', link: '/' }, ...(config.header.menu ?? [])]
               ))
             }
           </nav>
-          <label class='theme-control' hidden>
-            <span>Theme</span>
-            <select id='theme-select' aria-label='Color theme'>
-              <option value='system'>System</option>
-              <option value='light'>Light</option>
-              <option value='dark'>Dark</option>
-            </select>
-          </label>
+          <details class='theme-control' data-preference='system' hidden>
+            <summary aria-label='Color theme: System' title='Color theme'>
+              {
+                ['system', 'light', 'dark'].map((mode) => (
+                  <span data-theme-symbol={mode}>
+                    <ThemeIcon {mode} />
+                  </span>
+                ))
+              }
+            </summary>
+            <div class='theme-options' role='group' aria-label='Color theme'>
+              {
+                ['system', 'light', 'dark'].map((mode) => (
+                  <button
+                    type='button'
+                    data-theme-option={mode}
+                    aria-label={
+                      mode === 'system'
+                        ? 'System appearance'
+                        : `${mode === 'light' ? 'Light' : 'Dark'} mode`
+                    }
+                    title={mode === 'system' ? 'System' : mode === 'light' ? 'Light' : 'Dark'}
+                    aria-pressed={mode === 'system'}
+                  >
+                    <ThemeIcon {mode} />
+                  </button>
+                ))
+              }
+            </div>
+          </details>
         </div>
       </header>
       <div class='site-content'><slot /></div>

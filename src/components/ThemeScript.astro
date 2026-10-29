@@ -16,8 +16,14 @@
       document
         .querySelector('meta[name="theme-color"]')
         ?.setAttribute('content', theme === 'dark' ? '#151a1e' : '#fcfcfa')
-      const select = document.getElementById('theme-select')
-      if (select) select.value = preference
+      const control = document.querySelector('.theme-control')
+      if (control) {
+        control.dataset.preference = preference
+        control.querySelector('summary').setAttribute('aria-label', `Color theme: ${preference}`)
+        control.querySelectorAll('[data-theme-option]').forEach((button) => {
+          button.setAttribute('aria-pressed', String(button.dataset.themeOption === preference))
+        })
+      }
     }
     apply()
     media.addEventListener('change', apply)
@@ -30,18 +36,30 @@
     document.addEventListener(
       'DOMContentLoaded',
       () => {
-        const select = document.getElementById('theme-select')
-        if (!select) return
-        select.value = preference
-        select.closest('.theme-control').hidden = false
-        select.addEventListener('change', () => {
-          preference = normalize(select.value)
-          try {
-            localStorage.setItem(key, preference)
-          } catch {
-            // Keep the selected appearance for this page even without storage.
+        const control = document.querySelector('.theme-control')
+        if (!control) return
+        control.hidden = false
+        apply()
+        const trigger = control.querySelector('summary')
+        control.querySelectorAll('[data-theme-option]').forEach((button) => {
+          button.addEventListener('click', () => {
+            preference = normalize(button.dataset.themeOption)
+            try {
+              localStorage.setItem(key, preference)
+            } catch {}
+            apply()
+            control.open = false
+            trigger.focus()
+          })
+        })
+        control.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') {
+            control.open = false
+            trigger.focus()
           }
-          apply()
+        })
+        document.addEventListener('click', (event) => {
+          if (!control.contains(event.target)) control.open = false
         })
       },
       { once: true }
