@@ -1,36 +1,57 @@
 ---
 import { Image } from 'astro:assets'
 
-import { Quote } from 'astro-pure/advanced'
-import { PostPreview } from 'astro-pure/components/pages'
-import { getBlogCollection, sortMDByDate } from 'astro-pure/server'
 import { Button, Icon, Label } from 'astro-pure/user'
-import Card from '@/components/home/Card.astro'
-
 import PageLayout from '@/layouts/BaseLayout.astro'
-import ProjectCard from '@/components/home/ProjectCard.astro'
+import Card from '@/components/home/Card.astro'
 import Section from '@/components/home/Section.astro'
 import SkillLayout from '@/components/home/SkillLayout.astro'
 import avatar from '@/assets/avatar.png'
 import config from '@/site-config'
 
-const programming = ['Python', 'JavaScript', 'TypeScript', 'C/C++', 'Java', 'Clojure', 'SQL', 'HTML&CSS']
-const tools = ['React', 'Node.js', 'Next.js', 'Vite', 'Flask', 'Sanic', 'Django', 'RESTful API', 'MySQL', 'SQLite3', 'PostgreSQL', 'HBase']
-const machinelearnings = ['PyTorch', 'sklearn', 'semopy', 'numpy', 'SentenceTransformers', 'D3.js', 'matplotlib', 'pandas']
-const frameworks = ['AWS EC2', 'Docker', 'Kubernetes', 'Flink', 'Kafka', 'HDFS'
+const programming = [
+  'Python',
+  'JavaScript',
+  'TypeScript',
+  'C/C++',
+  'Java',
+  'Clojure',
+  'SQL',
+  'HTML & CSS'
 ]
-
-const MAX_POSTS = 10
-const allPosts = await getBlogCollection()
-const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
+const tools = [
+  'React',
+  'Node.js',
+  'Next.js',
+  'Vite',
+  'Flask',
+  'Sanic',
+  'Django',
+  'RESTful API',
+  'MySQL',
+  'SQLite3',
+  'PostgreSQL',
+  'HBase'
+]
+const dataScience = [
+  'PyTorch',
+  'scikit-learn',
+  'semopy',
+  'NumPy',
+  'SentenceTransformers',
+  'D3.js',
+  'Matplotlib',
+  'pandas'
+]
+const infrastructure = ['AWS EC2', 'Docker', 'Kubernetes', 'Flink', 'Kafka', 'HDFS']
 ---
 
-<PageLayout meta={{ title: 'Home' }} highlightColor='#659EB9'>
-  <main class='flex w-full flex-col items-center'>
-    <section class='animate mb-10 flex flex-col items-center gap-y-7' id='content-header'>
+<PageLayout meta={{ title: 'Home' }}>
+  <main id='main-content' class='flex w-full flex-col items-center'>
+    <section class='mb-10 flex flex-col items-center gap-y-7' id='content-header'>
       <Image
         src={avatar}
-        alt='profile'
+        alt='Leyang Li'
         class='h-28 w-auto rounded-full border p-1'
         loading='eager'
       />
@@ -41,62 +62,26 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
           <Label title='Baltimore, MD'>
             <Icon name='location' class='size-5' slot='icon' />
           </Label>
-          <Label
-            title='Email'
-            as='a'
-            href='mailto:lli184@jh.edu'
-            target='_blank'
-          >
+          <Label title='Email' as='a' href='mailto:lli184@jh.edu'>
             <Icon name='email' class='size-5' slot='icon' />
           </Label>
-          <Label
-            title='Github'
-            as='a'
-            href='https://github.com/Leoreoreo'
-            target='_blank'
-          >
+          <Label title='GitHub' as='a' href='https://github.com/Leoreoreo'>
             <Icon name='github' class='size-5' slot='icon' />
           </Label>
         </div>
       </div>
     </section>
 
-    <div id='content' class='animate flex flex-col gap-y-10 md:w-4/5 lg:w-5/6'>
+    <div id='content' class='flex flex-col gap-y-10 w-full'>
       <Section title='About'>
         <p class='text-muted-foreground'>HCI, Privacy, and Security Researcher</p>
         <p class='text-muted-foreground'>
-          I am a CS PhD student at <a href="https://www.jhu.edu">Johns Hopkins University</a>.
-          My research interest lies in the intersaction of Usable Privacy and Security, Human-Computer Interaction, and Human-Centered AI.
+          I am a Ph.D. student in Computer Science at <a href='https://www.jhu.edu'
+            >Johns Hopkins University</a
+          >. My research interests lie at the intersection of usable privacy and security,
+          human-computer interaction, and human-centered AI.
         </p>
         <Button title='More about me' class='w-fit self-end' href='/about' variant='ahead' />
-      </Section>
-
-      <Section title='Education'>
-        <Card
-          as ='a'
-          heading='Johns Hopkins University'
-          subheading='Ph.D. in Computer Science'
-          date='Aug. 2026 - Present'
-          image="/home/jhu.jpg"
-          href='https://jhu.edu'
-        >
-          <!-- <ul class='ms-4 list-disc text-muted-foreground'>
-              GPA: 3.95/4.00 (Magna Cum Laude)
-          </ul> -->
-        </Card>
-
-        <Card
-          as ='a'
-          heading='University of Notre Dame'
-          subheading='B.S. in Computer Science; suppl. major in Applied Mathematics and Statistics'
-          date='Aug. 2022 - May 2026'
-          image="/home/nd.jpg"
-          href='https://nd.edu'
-        >
-          <ul class='ms-4 list-disc text-muted-foreground'>
-              GPA: 3.95/4.00 (Magna Cum Laude)
-          </ul>
-        </Card>
       </Section>
 
       <Section title='Publications'>
@@ -104,12 +89,21 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
           heading='Why am I seeing this: Democratizing End User Auditing for Online Content Recommendations'
           subheading='Chaoran Chen, Leyang Li, Luke Cao, Yanfang Ye, Tianshi Li, Yaxing Yao, Toby Jia-Jun Li'
           date='In Proceedings of the 38th Annual ACM Symposium on User Interface Software and Technology'
-          image="/home/PrivacySandbox.png"
         >
-          <div class="flex items-center gap-2 justify-end">
+          <div class='flex items-center gap-2 justify-end'>
             <span>[UIST'25]</span>
-            <a href='https://dl.acm.org/doi/10.1145/3746059.3747798' target='_blank'><Icon class='size-5' name={"document"} /></a>
-            <a href='https://www.youtube.com/watch?v=3I_zgTW02a8' target='_blank'><Icon class='size-5' name={"youtube"} /></a>
+            <a
+              href='https://dl.acm.org/doi/10.1145/3746059.3747798'
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label='Read paper'>Paper</a
+            >
+            <a
+              href='https://www.youtube.com/watch?v=3I_zgTW02a8'
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label='Watch project video'>Video</a
+            >
           </div>
         </Card>
 
@@ -117,29 +111,56 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
           heading='AROMA: Mixed-Initiative AI Assistance for Non-Visual Cooking by Grounding Multimodal Information Between Reality and Videos'
           subheading='Zheng Ning, Leyang Li, Daniel Killough, JooYoung Seo, Patrick Carrington, Yapeng Tian, Yuhang Zhao, Franklin Mingzhe Li, Toby Jia-Jun Li'
           date='In Proceedings of the 38th Annual ACM Symposium on User Interface Software and Technology'
-          image="/home/AROMA.png"
         >
-          <div class="flex items-center gap-2 justify-end">
+          <div class='flex items-center gap-2 justify-end'>
             <span>[UIST'25]</span>
-            <a href='https://dl.acm.org/doi/10.1145/3746059.3747650' target='_blank'><Icon class='size-5' name={"document"} /></a>
-            <a href='https://www.youtube.com/watch?v=hi7YsFJp5KQ' target='_blank'><Icon class='size-5' name={"youtube"} /></a>
+            <a
+              href='https://dl.acm.org/doi/10.1145/3746059.3747650'
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label='Read paper'>Paper</a
+            >
+            <a
+              href='https://www.youtube.com/watch?v=hi7YsFJp5KQ'
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label='Watch project video'>Video</a
+            >
           </div>
+        </Card>
+      </Section>
+
+      <Section title='Education'>
+        <Card
+          as='a'
+          heading='Johns Hopkins University'
+          subheading='Ph.D. in Computer Science'
+          date='Aug. 2026 - Present'
+          href='https://jhu.edu'
+        />
+
+        <Card
+          as='a'
+          heading='University of Notre Dame'
+          subheading='B.S. in Computer Science; supplementary major in Applied Mathematics and Statistics'
+          date='Aug. 2022 - May 2026'
+          href='https://nd.edu'
+        >
+          <p>GPA: 3.95/4.00 (magna cum laude)</p>
         </Card>
       </Section>
 
       <Section title='Experience'>
         <Card
-          heading='Researcher Intern'
+          heading='Research Intern'
           subheading='SPUD Lab, HCII, Carnegie Mellon University'
           date='May 2025 - Feb. 2026'
-          image="/home/hcii.png"
         >
           <ul class='ms-4 list-disc text-muted-foreground'>
+            <li>Advised by Prof. Sauvik Das.</li>
             <li>
-              Advised by Prof. Sauvik Das.
-            </li>
-            <li>
-              SP-ABCBench: A benchmark to simulate and evaluate LLM agents' privacy attitude and behavior.
+              SP-ABCBench: A benchmark to simulate and evaluate LLM agents' privacy attitudes and
+              behaviors.
             </li>
           </ul>
         </Card>
@@ -147,166 +168,96 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
           heading='Research Assistant'
           subheading='SaNDwich Lab, University of Notre Dame'
           date='Sept. 2023 - May 2025'
-          image="/home/sandwich_logo.png"
         >
           <ul class='ms-4 list-disc text-muted-foreground'>
+            <li>Advised by Prof. Toby Jia-Jun Li.</li>
             <li>
-              Advised by Prof. Toby Jia-Jun Li.
-            <li>
-              AROMA: A multimodal cooking assistant for BLV users, providing both reactive and proactive assistance.
+              AROMA: A multimodal cooking assistant for blind and low-vision users, providing both
+              reactive and proactive assistance.
             </li>
             <li>
-              Privacy Auditing Sandbox: An interactive interface for end-user auditing of online content recommendations using AI-generated virtual personas.
+              Privacy Auditing Sandbox: An interactive interface for end-user auditing of online
+              content recommendations using AI-generated virtual personas.
             </li>
           </ul>
         </Card>
         <Card
           heading='Teaching Assistant & Tutor'
           subheading='CSE Department, University of Notre Dame'
-          date='Aug. 2022 - May 2025'
-          image="/home/nd.jpg"
         >
           <ul class='ms-4 list-disc text-muted-foreground'>
-            <li>
-              Operating System Principles: Spring&Fall 2025
-            </li>
-            <li>
-              Distributed Systems: Spring 2026
-            </li>
+            <li>Operating System Principles: Spring and Fall 2025</li>
+            <li>Distributed Systems: Spring 2026</li>
           </ul>
         </Card>
         <Card
           heading='Software Engineer Intern'
           subheading='China Construction Bank Fintech'
           date='Jun. - Aug. 2024'
-          image="/home/ccb.jpg"
         >
           <ul class='ms-4 list-disc text-muted-foreground'>
-            <li>
-              Big Data System Maintenance (Flink-based Kafka consumer)
-            </li>
+            <li>Maintained a big data system using a Flink-based Kafka consumer.</li>
           </ul>
         </Card>
         <Card
           heading='Data Analyst Intern'
           subheading='Everbright Securities Asset Management'
           date='Jul. - Aug. 2023'
-          image="/home/everbright.jpg"
         >
           <ul class='ms-4 list-disc text-muted-foreground'>
             <li>
-              Machine Learning for Investment (GRU with multi-head self-attention)
+              Applied machine learning to investment analysis using a GRU with multi-head
+              self-attention.
             </li>
           </ul>
         </Card>
       </Section>
 
-      <!-- <Section title='Website List'>
-        <div class='grid grid-cols-1 gap-3 sm:grid-cols-2'>
-          <ProjectCard
-            href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-            heading='Lorem ipsum'
-            subheading='dolor sit amet, oratio ornatus explicari pro ex'
-            imagePath='/src/assets/projects/alex-tyson-2BAXJ7ha74s-unsplash.jpg'
-          />
-          <ProjectCard
-            href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-            heading='Lorem ipsum'
-            subheading='dolor sit amet, oratio ornatus explicari pro ex'
-            imagePath='/src/assets/projects/angelica-teran-Bk9hpaXHK4o-unsplash.jpg'
-          />
-          <ProjectCard
-            href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-            heading='Lorem ipsum'
-            subheading='dolor sit amet, oratio ornatus explicari pro ex'
-            imagePath='/src/assets/projects/kseniia-zapiatkina-yATU3rg8tNI-unsplash.jpg'
-          />
-          <ProjectCard
-            href='/projects'
-            heading='More projects'
-            subheading='Check out more projects'
-            imagePath='/src/assets/projects/wen-qiao-g_w8I64FiO0-unsplash.jpg'
-          />
-        </div>
-      </Section> -->
       <Section title='Honors'>
-        
         <Card
           as='a'
           heading='Second Place, Hesburgh Libraries Hackathon 2026'
-          subheading='Apr. 2026, University of Notre Dame, ($2000)'
-          date=''
+          subheading='Apr. 2026, University of Notre Dame, ($2,000)'
           href='https://hackathon.library.nd.edu/2026.shtml'
-          image="/home/hackathon2026.png"
         />
         <Card
-          heading='Deans Honor List'
-          subheading='2023-2025 all semesters, University of Notre Dame'
-          date=''
-          image="/home/nd.jpg"
+          heading='Dean’s Honor List'
+          subheading='Every semester, 2023–2025, University of Notre Dame'
         />
         <Card
           as='a'
           heading='First Place, Hesburgh Libraries Hackathon 2025'
-          subheading='Apr. 2025, University of Notre Dame, ($3000)'
-          date=''
+          subheading='Apr. 2025, University of Notre Dame, ($3,000)'
           href='https://hackathon.library.nd.edu/2025.shtml'
-          image="/home/hackathon2025.png"
         />
         <Card
           as='a'
           heading='Best Use of External Data, ASA DataFest 2025 at Notre Dame'
-          subheading='Mar. 2025, American Statistical Association, ($1000)'
-          date=''
+          subheading='Mar. 2025, American Statistical Association, ($1,000)'
           href='https://vweber1.wixsite.com/datafest-nd/'
-          image="/home/datafest.jpg"
         />
         <Card
           heading='Frank Reilly Scholar'
-          subheading='2024, University of Notre Dame, ($5000)'
-          date=''
-          image="/home/nd.jpg"
+          subheading='2024, University of Notre Dame, ($5,000)'
         />
         <Card
           as='a'
           heading='Second Place, Hesburgh Libraries Hackathon 2024'
-          subheading='Apr. 2024, University of Notre Dame, ($2000)'
-          date=''
-          image="/home/hackathon2024.png"
+          subheading='Apr. 2024, University of Notre Dame, ($2,000)'
           href='https://hackathon.library.nd.edu/2024.shtml'
         />
         <Card
           heading='Greater China Scholar'
-          subheading='2022, University of Notre Dame, ($5000)'
-          date=''
-          image="/home/nd.jpg"
+          subheading='2022, University of Notre Dame, ($5,000)'
         />
-
-
       </Section>
 
       <Section title='Skills'>
         <SkillLayout title='Programming' skills={programming} />
         <SkillLayout title='Tools' skills={tools} />
-        <SkillLayout title='Data Science & ML' skills={machinelearnings} />
-        <SkillLayout title='Frameworks' skills={frameworks} />
+        <SkillLayout title='Data Science & ML' skills={dataScience} />
+        <SkillLayout title='Infrastructure' skills={infrastructure} />
       </Section>
-
-      <!-- {
-        allPostsByDate.length > 0 && (
-          <Section title='Posts'>
-            <ul class='flex flex-col gap-y-1.5 sm:gap-y-2'>
-              {allPostsByDate.map((p) => (
-                <li class='flex flex-col gap-x-2 sm:flex-row'>
-                  <PostPreview post={p} />
-                </li>
-              ))}
-            </ul>
-            <Button title='More posts' class='w-fit self-end' href='/blog' variant='ahead' />
-          </Section>
-        )
-      } -->
     </div>
-    <!-- <Quote class='mt-12' /> -->
   </main>
 </PageLayout>

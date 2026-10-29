@@ -1,60 +1,44 @@
 ---
-import { Footer, Header, ThemeProvider } from 'astro-pure/components/basic'
 import type { SiteMeta } from 'astro-pure/types'
 import BaseHead from '@/components/BaseHead.astro'
 import config from '@/site-config'
 
-// Import the global.css file here so that it is included on
-// all pages through the use of the <BaseLayout /> component.
 import '@/assets/styles/app.css'
 
 interface Props {
   meta: SiteMeta
-  highlightColor?: string
 }
-
 const {
-  meta: { articleDate, description = config.description, ogImage, title },
-  highlightColor,
-  ...props
+  meta: { articleDate, description = config.description, ogImage, title }
 } = Astro.props
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/'
+const menu = [{ title: 'Home', link: '/' }, ...(config.header.menu ?? [])]
 ---
 
 <html lang={config.locale.lang}>
-  <head>
-    <BaseHead {articleDate} {description} {ogImage} {title} />
-    <ThemeProvider />
-  </head>
-
-  <body class='flex justify-center bg-background text-foreground' {...props}>
-    {
-      highlightColor && (
-        <div
-          id='highlight-gradient'
-          class='pointer-events-none absolute start-0 top-0 z-0 h-screen w-full opacity-25'
-          style={`background-image:linear-gradient(${highlightColor},transparent)`}
-        />
-      )
-    }
-    <div class='w-full max-w-[70rem] px-4 sm:px-7 lg:px-10 min-h-[100dvh] flex flex-col justify-between'>
-      <Header />
-      <div class='flex-1 w-full'>
-        <slot />
-      </div>
-      <Footer />
+  <head><BaseHead {articleDate} {description} {ogImage} {title} /></head>
+  <body>
+    <a class='skip-link' href='#main-content'>Skip to content</a>
+    <div class='site-shell'>
+      <header class='site-header'>
+        <a class='site-name' href='/'>{config.author}</a>
+        <nav aria-label='Main navigation'>
+          {
+            menu.map((item) => (
+              <a href={item.link} aria-current={currentPath === item.link ? 'page' : undefined}>
+                {item.title}
+              </a>
+            ))
+          }
+        </nav>
+      </header>
+      <div class='site-content'><slot /></div>
+      <footer class='site-footer'>
+        <span>© {new Date().getFullYear()} {config.author}</span>
+        <div>
+          <a href='mailto:lli184@jh.edu'>Email</a><a href='https://github.com/Leoreoreo'>GitHub</a>
+        </div>
+      </footer>
     </div>
-
-    {/* Set highlight color */}
-    <style define:vars={{ highlightColor }}>
-      :global(.highlight) {
-        color: var(--highlightColor, hsl(var(--primary) / var(--un-text-opacity))) !important;
-      }
-      :global(.highlight-bg) {
-        background-color: var(
-          --highlightColor,
-          hsl(var(--primary) / var(--un-text-opacity))
-        ) !important;
-      }
-    </style>
   </body>
 </html>

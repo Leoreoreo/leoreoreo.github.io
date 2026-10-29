@@ -1,30 +1,16 @@
 ---
-import { Image } from 'astro:assets'
-
-import { Button, Collapse, Icon } from 'astro-pure/user'
 import PageLayout from '@/layouts/CommonPage.astro'
 import ProjectSection from '@/components/projects/ProjectSection.astro'
-import Sponsors from '@/components/projects/Sponsors.astro'
-import Sponsorship from '@/components/projects/Sponsorship.astro'
-import alipay from '@/assets/alipay-qrcode.jpg'
-import KeyIcon from '@/assets/icons/key.svg'
-// import wechat from '@/assets/wechat-qrcode.jpg'
 
 const headings = [
   { depth: 2, slug: 'research', text: 'Research' },
   { depth: 2, slug: 'personal', text: 'Personal' },
-  { depth: 2, slug: 'course', text: 'Course' },
-
+  { depth: 2, slug: 'course', text: 'Course projects' }
 ]
 ---
 
 <PageLayout title='Projects' {headings}>
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Leoreoreo/Leoreoreo/output/github-contribution-grid-snake-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Leoreoreo/Leoreoreo/output/github-contribution-grid-snake.svg">
-    <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/Leoreoreo/Leoreoreo/output/github-contribution-grid-snake.svg">
-  </picture>
-  <p>Github activities generated with <a href="https://github.com/Platane/snk">Platane/snk</a></p>
+  <p>A selection of my research, personal, and course projects.</p>
 
   <h2 id='research'>Research</h2>
   <ProjectSection
@@ -34,7 +20,6 @@ const headings = [
         description: 'AI assistant to support blind/low-vision cooks.',
         image: 'AROMA.png',
         links: [
-          // { type: 'github', href: 'https://github.com/realningzheng/non-visual-cooking' },
           { type: 'doc', href: 'https://dl.acm.org/doi/10.1145/3746059.3747650' },
           { type: 'youtube', href: 'https://www.youtube.com/watch?v=hi7YsFJp5KQ' }
         ]
@@ -56,7 +41,7 @@ const headings = [
     projects={[
       {
         name: 'SafePrompt',
-        description: 'Middlelayer before AI chatbots to reduce privacy disclosure.',
+        description: 'A privacy layer that reduces sensitive information shared with AI chatbots.',
         image: 'SafePrompt.png',
         links: [
           { type: 'github', href: 'https://github.com/lukewarm3/SafePrompt' },
@@ -65,24 +50,25 @@ const headings = [
       },
       {
         name: 'MindEcho',
-        description: 'Meeting assistant for the hearing-speaking disabled.',
+        description: 'A meeting assistant for people with hearing or speech disabilities.',
         image: 'mindEcho.png',
         links: [
           { type: 'github', href: 'https://github.com/Leoreoreo/Meeting_Assistant' },
-          { type: 'doc', href: 'https://github.com/Leoreoreo/Meeting_Assistant/blob/main/Hackathon25.key' }
+          {
+            type: 'doc',
+            href: 'https://github.com/Leoreoreo/Meeting_Assistant/blob/main/Hackathon25.key'
+          }
         ]
       },
       {
         name: 'A11yVate',
-        description: 'Crowdsourcing campus info map for accessibility.',
+        description: 'A crowdsourced map of campus accessibility information.',
         image: 'A11yVate.png',
-        links: [
-          { type: 'github', href: 'https://github.com/Leoreoreo/A11yVate' }
-        ]
+        links: [{ type: 'github', href: 'https://github.com/Leoreoreo/A11yVate' }]
       },
       {
         name: 'This Website',
-        description: 'My personal website built with astro.',
+        description: 'My personal website built with Astro.',
         image: 'astro.jpg',
         links: [
           { type: 'github', href: 'https://github.com/Leoreoreo/leoreoreo.github.io' },
@@ -92,73 +78,52 @@ const headings = [
     ]}
   />
 
-  <h2 id='course'>Course</h2>
+  <h2 id='course'>Course projects</h2>
   <ProjectSection
     projects={[
       {
         name: 'Campus Mart',
-        description: 'Marketplace connecting campus students. (Django, React)',
+        description: 'A campus marketplace built with Django and React.',
         image: 'campusMart.jpg',
         links: [
           { type: 'github', href: 'https://github.com/johnkimdw/campus_mart' },
-          { type: 'doc', href: 'https://github.com/johnkimdw/campus_mart/blob/main/Group%205%20Final%20Report.pdf' }
+          {
+            type: 'doc',
+            href: 'https://github.com/johnkimdw/campus_mart/blob/main/Group%205%20Final%20Report.pdf'
+          }
         ]
       },
       {
-        name: 'P2P Hashtable',
-        description: 'Scalabe and persistent distributed hashtable. (Improved Chord)',
+        name: 'P2P Hash Table',
+        description: 'A scalable, persistent distributed hash table based on Chord.',
         image: 'p2pHashTable.jpg',
         links: [
           { type: 'github', href: 'https://github.com/Leoreoreo/p2pHashtable' },
-          { type: 'doc', href: 'https://github.com/Leoreoreo/p2pHashtable/blob/main/Peer-to-Peer%20Hash%20Table%20Final%20Report.pdf' }
+          {
+            type: 'doc',
+            href: 'https://github.com/Leoreoreo/p2pHashtable/blob/main/Peer-to-Peer%20Hash%20Table%20Final%20Report.pdf'
+          }
         ]
       },
       {
         name: 'Travel Itinerary Manager',
         description: 'A trip scheduling and planning assistant. (React, Flask)',
         image: 'TIM.jpg',
-        links: [
-          { type: 'github', href: 'https://github.com/Leoreoreo/TravelItineraryManager' }
-        ]
+        links: [{ type: 'github', href: 'https://github.com/Leoreoreo/TravelItineraryManager' }]
       },
       {
-        name: 'SAT_Solver',
-        description: 'Python implementation of NFA, regex, sed, Turing Machine.',
+        name: 'SAT Solver',
+        description:
+          'Python implementations of finite automata, regular expressions, sed, and Turing machines.',
         image: 'satSolver.jpg',
-        links: [
-          { type: 'github', href: 'https://github.com/Leoreoreo/SAT_Solver' }
-        ]
+        links: [{ type: 'github', href: 'https://github.com/Leoreoreo/SAT_Solver' }]
       },
       {
         name: 'The Kuiper Frontier',
-        description: '2D plane-shooting game. (Java)',
+        description: 'A 2D aerial shooting game built with Java.',
         image: 'theKuiperFrontier.png',
-        links: [
-          { type: 'github', href: 'https://github.com/Leoreoreo/theKuiperFrontier' }
-        ]
+        links: [{ type: 'github', href: 'https://github.com/Leoreoreo/theKuiperFrontier' }]
       }
     ]}
   />
-
-
 </PageLayout>
-
-<style>
-  .sponsorship-card {
-    & .sponsorship-card-img {
-      opacity: 0.3;
-      --un-blur: blur(4px);
-      filter: var(--un-blur);
-    }
-
-    &:hover {
-      & .sponsorship-card-icon {
-        opacity: 0;
-      }
-      & .sponsorship-card-img {
-        opacity: 1;
-        --un-blur: blur(0);
-      }
-    }
-  }
-</style>
