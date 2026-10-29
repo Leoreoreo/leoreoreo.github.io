@@ -575,7 +575,8 @@ const photographedParks = nationalParks.filter((park) => park.photo)
   .football-note img {
     width: 100%;
     height: auto;
-    object-fit: contain;
+    aspect-ratio: 1;
+    object-fit: cover;
     object-position: center top;
   }
   .football-note > div {
