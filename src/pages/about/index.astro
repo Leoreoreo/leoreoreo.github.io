@@ -5,7 +5,6 @@ import { Image } from 'astro:assets'
 import PageLayout from '@/layouts/CommonPage.astro'
 
 const headings = [
-  { depth: 2, slug: 'background', text: 'Background' },
   { depth: 2, slug: 'hiking', text: 'National parks' },
   { depth: 2, slug: 'painting', text: 'Painting' }
 ]
@@ -37,11 +36,14 @@ const paintings = [
   { file: 'Hannibal', label: 'Hannibal portrait' },
   { file: 'cat', label: 'Cat portrait' }
 ]
-const photos = import.meta.glob<{ default: ImageMetadata }>('/public/National Parks/*.jpeg', {
+const photos = import.meta.glob<{ default: ImageMetadata }>('/public/National Parks/*.{jpg,jpeg}', {
   eager: true
 })
 const descriptions: Record<string, string> = {
   'Grand Canyon': 'Layered canyon walls under a blue, cloud-filled sky',
+  Yellowstone: 'Steam rising above a colorful hot spring beneath a blue sky',
+  'Bryce Canyon': 'Rows of orange hoodoos stretching across the canyon',
+  'Indiana Dunes': 'Sandy dunes beside Lake Michigan with a distant city skyline',
   Arches: 'Red sandstone arches framing the blue sky',
   Olympic: 'Sunlight filtering through a moss-covered forest',
   'Mount Rainier': 'Snow-covered mountain ridges above the clouds',
@@ -59,12 +61,15 @@ const descriptions: Record<string, string> = {
 }
 const nationalParks = parkNames.map((label, index) => {
   const [name, state] = label.replace(')', '').split(' (')
+  const photoPath = ['jpeg', 'jpg']
+    .map((extension) => `/public/National Parks/${name}.${extension}`)
+    .find((path) => photos[path])
   return {
     name,
     state,
     rank: index + 1,
-    photo: photos[`/public/National Parks/${name}.jpeg`]?.default,
-    original: `/National%20Parks/${encodeURIComponent(name)}.jpeg`,
+    photo: photoPath ? photos[photoPath].default : undefined,
+    original: photoPath ? encodeURI(photoPath.replace('/public', '')) : '',
     alt: descriptions[name]
   }
 })
@@ -73,38 +78,10 @@ const photographedParks = nationalParks.filter((park) => park.photo)
 
 <PageLayout title='About' {headings}>
   <div class='about-page'>
-    <section class='about-intro' aria-labelledby='background'>
-      <p class='eyebrow'>A little about me</p><h2 id='background'>
-        Research, art, and the outdoors.
-      </h2>
-      <p>
-        I am a Ph.D. student in Computer Science at Johns Hopkins University, advised by
-        <a href='https://www.cs.jhu.edu/~yaxing/index.html'>Prof. Yaxing Yao</a>. I study usable
-        privacy and security, human-computer interaction, and human-centered AI.
-      </p>
-      <p>
-        I received my B.S. in Computer Science from the University of Notre Dame in 2026, where I
-        worked in the <a href='https://toby.li/'>SaNDwich Lab</a> with Prof. Toby Jia-Jun Li. I also
-        worked in the
-        <a href='https://cmu-spuds.github.io/cmu-spuds-web/'>SPUD Lab</a>
-        at Carnegie Mellon University, advised by <a href='https://sauvik.me/'>Prof. Sauvik Das</a>.
-      </p>
-      <p><a href='/projects'>Explore my projects →</a></p>
-
-      <div class='interest-links'>
-        <a href='#hiking'
-          ><strong>{nationalParks.length}</strong><span>national parks visited ↓</span></a
-        >
-        <a href='#painting'
-          ><strong>{paintings.length}</strong><span>paintings to explore ↓</span></a
-        >
-      </div>
-    </section>
-
     <section class='about-section' aria-labelledby='hiking'>
       <div class='about-section-heading'>
         <div>
-          <p class='eyebrow'>Out of the office</p><h2 id='hiking'>Hiking &amp; national parks</h2>
+          <p class='eyebrow'>On the trail</p><h2 id='hiking'>Hiking &amp; national parks</h2>
         </div>
         <span class='collection-count'>{photographedParks.length} photographs</span>
       </div>
@@ -204,9 +181,6 @@ const photographedParks = nationalParks.filter((park) => park.photo)
       <p class='gallery-empty' hidden>
         No photographs match that search. Try another park or state.
       </p>
-      <p class='gallery-note'>
-        Not pictured yet: Yellowstone (02), Bryce Canyon (09), and Indiana Dunes (18).
-      </p>
     </section>
 
     <section class='about-section' aria-labelledby='painting'>
@@ -245,7 +219,11 @@ const photographedParks = nationalParks.filter((park) => park.photo)
     </section>
 
     <aside class='football-note'>
-      <img src='/travels/football.jpeg' alt='A Notre Dame football game' loading='lazy' />
+      <img
+        src='/travels/football.jpeg'
+        alt='Cheering at a Notre Dame football game'
+        loading='lazy'
+      />
       <div>
         <p class='eyebrow'>Go Irish!</p><h2>Still cheering for Notre Dame.</h2><p>
           I’m also a Notre Dame football fan!
@@ -373,49 +351,18 @@ const photographedParks = nationalParks.filter((park) => park.photo)
     --green: #3c6559;
     --soft-green: #edf3ef;
   }
-  .about-intro {
-    max-width: 760px;
-    padding: 4px 0 44px;
-  }
-  .about-intro h2 {
-    font-family: Georgia, serif;
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
-    font-weight: 400;
-    letter-spacing: -0.025em;
-    margin: 0 0 24px;
-  }
   .about-page .eyebrow {
     font-size: 0.7rem;
     color: var(--green);
     margin: 0 0 10px;
   }
-  .interest-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 28px;
-  }
-  .interest-links a {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: var(--green);
-    padding: 12px 18px;
-    border: 1px solid #d5e1da;
-    border-radius: 8px;
-    background: var(--soft-green);
-    text-decoration: none;
-  }
-  .interest-links strong {
-    font-size: 1.6rem;
-    font-weight: 500;
-  }
-  .interest-links span {
-    font-size: 0.8rem;
-  }
   .about-section {
     padding: 42px 0;
     border-top: 1px solid #dfe4e7;
+  }
+  .about-section:first-child {
+    padding-top: 0;
+    border-top: 0;
   }
   .about-section-heading {
     display: flex;
@@ -586,11 +533,6 @@ const photographedParks = nationalParks.filter((park) => park.photo)
     font-size: 0.78rem;
     color: #68747e;
   }
-  .about-page .gallery-note {
-    font-size: 0.8rem;
-    margin-top: 26px;
-    color: #68747e;
-  }
   .gallery-empty {
     padding: 30px;
     border: 1px dashed #ccd7d0;
@@ -636,8 +578,9 @@ const photographedParks = nationalParks.filter((park) => park.photo)
   }
   .football-note img {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
+    height: auto;
+    object-fit: contain;
+    object-position: center top;
   }
   .football-note > div {
     padding: 20px 24px 20px 0;
@@ -749,9 +692,6 @@ const photographedParks = nationalParks.filter((park) => park.photo)
     }
   }
   @media (max-width: 600px) {
-    .about-intro {
-      padding-bottom: 30px;
-    }
     .about-section {
       padding: 30px 0;
     }
@@ -793,7 +733,8 @@ const photographedParks = nationalParks.filter((park) => park.photo)
       padding: 24px;
     }
     .football-note img {
-      height: 200px;
+      max-width: 280px;
+      justify-self: center;
     }
     .photo-viewer {
       padding: 12px;
