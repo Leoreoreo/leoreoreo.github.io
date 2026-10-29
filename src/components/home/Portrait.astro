@@ -1,0 +1,191 @@
+---
+import portrait from '../../../public/images/leyang-portrait.svg?raw'
+---
+
+<div class='portrait-player'>
+  <div class='portrait-art' set:html={portrait} />
+  <div class='portrait-controls' hidden>
+    <button
+      class='portrait-play'
+      type='button'
+      aria-label='Pause portrait drawing'
+      title='Pause drawing'
+    >
+      <svg class='play-symbol' viewBox='0 0 20 20' aria-hidden='true'
+        ><path d='m6 3 10 7-10 7Z'></path></svg
+      >
+      <svg class='pause-symbol' viewBox='0 0 20 20' aria-hidden='true'
+        ><path d='M5 3h3v14H5zm7 0h3v14h-3Z'></path></svg
+      >
+    </button>
+    <input
+      class='portrait-progress'
+      type='range'
+      min='0'
+      max='100'
+      step='0.1'
+      value='0'
+      aria-label='Portrait drawing progress'
+    />
+    <button
+      class='portrait-replay'
+      type='button'
+      aria-label='Replay portrait drawing'
+      title='Replay drawing'
+    >
+      <svg
+        viewBox='0 0 20 20'
+        aria-hidden='true'
+        fill='none'
+        stroke='currentColor'
+        stroke-width='1.6'><path d='M4 6a7 7 0 1 1-1 6M4 2v5h5'></path></svg
+      >
+    </button>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.portrait-player').forEach((player) => {
+    const art = player.querySelector<SVGSVGElement>('svg')!
+    const controls = player.querySelector<HTMLElement>('.portrait-controls')!
+    const play = player.querySelector<HTMLButtonElement>('.portrait-play')!
+    const replay = player.querySelector<HTMLButtonElement>('.portrait-replay')!
+    const progress = player.querySelector<HTMLInputElement>('.portrait-progress')!
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+    let animations: Animation[] = []
+    let duration = 1
+    let frame = 0
+    let playing = false
+
+    function setPlaying(value: boolean) {
+      playing = value
+      player.dataset.playing = String(value)
+      play.setAttribute('aria-label', value ? 'Pause portrait drawing' : 'Play portrait drawing')
+      play.title = value ? 'Pause drawing' : 'Play drawing'
+    }
+    function updateProgress(time: number) {
+      progress.value = String(Math.min(100, (time / duration) * 100))
+      progress.setAttribute('aria-valuetext', `${Math.round(Number(progress.value))}% drawn`)
+    }
+    function tick() {
+      const time = Math.max(0, ...animations.map((animation) => Number(animation.currentTime || 0)))
+      updateProgress(time)
+      if (time >= duration) setPlaying(false)
+      else if (playing) frame = requestAnimationFrame(tick)
+    }
+    function start(fromBeginning = false) {
+      cancelAnimationFrame(frame)
+      if (fromBeginning || Number(progress.value) >= 100) {
+        animations.forEach((animation) => {
+          animation.currentTime = 0
+        })
+      }
+      animations.forEach((animation) => {
+        const end = Number(animation.effect?.getComputedTiming().endTime || 0)
+        if (Number(animation.currentTime || 0) < end) animation.play()
+      })
+      setPlaying(true)
+      frame = requestAnimationFrame(tick)
+    }
+    function pause() {
+      cancelAnimationFrame(frame)
+      animations.forEach((animation) => animation.pause())
+      setPlaying(false)
+    }
+    function initialize() {
+      cancelAnimationFrame(frame)
+      animations = art.getAnimations({ subtree: true })
+      controls.hidden = reducedMotion.matches || animations.length === 0
+      if (controls.hidden) return
+      duration = Math.max(
+        ...animations.map((animation) => Number(animation.effect?.getComputedTiming().endTime || 0))
+      )
+      setPlaying(true)
+      frame = requestAnimationFrame(tick)
+    }
+    play.addEventListener('click', () => (playing ? pause() : start()))
+    replay.addEventListener('click', () => start(true))
+    progress.addEventListener('input', () => {
+      pause()
+      const time = (Number(progress.value) / 100) * duration
+      animations.forEach((animation) => {
+        animation.currentTime = time
+      })
+      updateProgress(time)
+    })
+    reducedMotion.addEventListener('change', initialize)
+    initialize()
+  })
+</script>
+
+<style>
+  .portrait-player {
+    width: 220px;
+    flex-shrink: 0;
+  }
+  .portrait-art {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px #24344212;
+  }
+  .portrait-art :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .portrait-controls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .portrait-controls[hidden] {
+    display: none;
+  }
+  .portrait-controls button {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    padding: 7px;
+    border: 0;
+    border-radius: 6px;
+    color: var(--text-muted);
+    background: transparent;
+    cursor: pointer;
+  }
+  .portrait-controls button:hover {
+    color: var(--link);
+    background: var(--surface-muted);
+  }
+  .portrait-controls button svg {
+    width: 18px;
+    height: 18px;
+  }
+  .portrait-play svg {
+    fill: currentColor;
+  }
+  .portrait-player[data-playing='true'] .play-symbol,
+  .portrait-player:not([data-playing='true']) .pause-symbol {
+    display: none;
+  }
+  .portrait-progress {
+    width: 100%;
+    min-width: 0;
+    height: 32px;
+    margin: 0;
+    accent-color: var(--link);
+    cursor: pointer;
+  }
+  @media (max-width: 760px) {
+    .portrait-player {
+      width: 170px;
+    }
+  }
+  @media (max-width: 600px) {
+    .portrait-player {
+      width: 160px;
+    }
+  }
+</style>

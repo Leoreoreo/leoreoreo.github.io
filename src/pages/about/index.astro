@@ -136,57 +136,76 @@ const photographedParks = nationalParks.filter((park) => park.photo)
           >
         </div>
       </div>
-      <ol
-        class='park-gallery interest-gallery'
-        tabindex='0'
-        aria-roledescription='carousel'
-        id='park-gallery'
-        aria-label='National park photographs, in personal ranking order'
-      >
-        {
-          photographedParks.map((park) => (
-            <li
-              class='park-card'
-              id={`park-${park.rank}`}
-              value={park.rank}
-              style={`--image-ratio: ${park.photo!.width / park.photo!.height}`}
-              data-search={`${park.name} ${park.state}`.toLowerCase()}
-            >
-              <a
-                class='gallery-image park-image'
-                href={park.original}
-                data-gallery='parks'
-                data-caption={`${String(park.rank).padStart(2, '0')} · ${park.name}`}
-                data-detail={park.state}
-                aria-label={`Enlarge photo: ${park.name}`}
+      <div class='gallery-stage'>
+        <ol
+          class='park-gallery interest-gallery'
+          tabindex='0'
+          aria-roledescription='carousel'
+          id='park-gallery'
+          aria-label='National park photographs, in personal ranking order'
+        >
+          {
+            photographedParks.map((park) => (
+              <li
+                class='park-card'
+                id={`park-${park.rank}`}
+                value={park.rank}
+                data-portrait={park.photo!.height > park.photo!.width}
+                style={`--image-ratio: ${park.photo!.width / park.photo!.height}`}
+                data-search={`${park.name} ${park.state}`.toLowerCase()}
               >
-                <Image
-                  src={park.photo!}
-                  alt={park.alt}
-                  widths={[400, 800, 1200]}
-                  sizes='(max-width: 600px) 90vw, 640px'
-                  width={800}
-                  loading='lazy'
-                />
-                <span class='image-expand' aria-hidden='true'>
-                  View photograph ↗
-                </span>
-              </a>
-              <div class='park-caption'>
-                <span class='park-number'>{String(park.rank).padStart(2, '0')}</span>
-                <div>
-                  <>
-                    <h3>{park.name}</h3>
-                    <p>{park.state}</p>
-                  </>
+                <a
+                  class='gallery-image park-image'
+                  href={park.original}
+                  data-gallery='parks'
+                  data-caption={`${String(park.rank).padStart(2, '0')} · ${park.name}`}
+                  data-detail={park.state}
+                  aria-label={`Enlarge photo: ${park.name}`}
+                >
+                  <Image
+                    src={park.photo!}
+                    alt={park.alt}
+                    widths={[400, 800, 1200]}
+                    sizes='(max-width: 600px) 90vw, 640px'
+                    width={800}
+                    loading='lazy'
+                  />
+                  <span class='image-expand' aria-hidden='true'>
+                    View photograph ↗
+                  </span>
+                </a>
+                <div class='park-caption'>
+                  <span class='park-number'>{String(park.rank).padStart(2, '0')}</span>
+                  <div>
+                    <>
+                      <h3>{park.name}</h3>
+                      <p>{park.state}</p>
+                    </>
+                  </div>
                 </div>
-              </div>
-            </li>
-          ))
-        }
-      </ol>
+              </li>
+            ))
+          }
+        </ol>
+        <button
+          class='gallery-edge gallery-edge-prev'
+          type='button'
+          data-step='-1'
+          aria-label='Previous photograph'
+          aria-controls='park-gallery'
+          hidden>‹</button
+        >
+        <button
+          class='gallery-edge gallery-edge-next'
+          type='button'
+          data-step='1'
+          aria-label='Next photograph'
+          aria-controls='park-gallery'
+          hidden>›</button
+        >
+      </div>
       <div class='gallery-navigation' data-for='park-gallery' hidden>
-        <p>Swipe or scroll to explore photographs</p>
+        <p>‹ Swipe or scroll · the gallery loops ›</p>
         <div>
           <button
             type='button'
@@ -216,39 +235,57 @@ const photographedParks = nationalParks.filter((park) => park.photo)
         <span class='collection-count'>Selected personal work</span>
       </div>
       <p>I paint in my spare time. Here are a few of my studies and portraits.</p>
-      <div
-        class='art-gallery interest-gallery'
-        id='art-gallery'
-        tabindex='0'
-        aria-label='Paintings'
-        aria-roledescription='carousel'
-      >
-        {
-          paintings.map(({ file, label, ratio }, index) => (
-            <figure style={`--image-ratio: ${ratio}`}>
-              <a
-                class='gallery-image art-image'
-                href={`/arts/${file}.gif`}
-                data-gallery='art'
-                data-caption={label}
-                data-detail='Personal artwork'
-                aria-label={`Enlarge painting: ${label}`}
-              >
-                <img src={`/arts/${file}.gif`} alt={label} loading='lazy' />
-                <span class='image-expand' aria-hidden='true'>
-                  View painting ↗
-                </span>
-              </a>
-              <figcaption>
-                <span>{String(index + 1).padStart(2, '0')}</span>
-                {label}
-              </figcaption>
-            </figure>
-          ))
-        }
+      <div class='gallery-stage'>
+        <div
+          class='art-gallery interest-gallery'
+          id='art-gallery'
+          tabindex='0'
+          aria-label='Paintings'
+          aria-roledescription='carousel'
+        >
+          {
+            paintings.map(({ file, label, ratio }, index) => (
+              <figure style={`--image-ratio: ${ratio}`} data-portrait={ratio < 1}>
+                <a
+                  class='gallery-image art-image'
+                  href={`/arts/${file}.gif`}
+                  data-gallery='art'
+                  data-caption={label}
+                  data-detail='Personal artwork'
+                  aria-label={`Enlarge painting: ${label}`}
+                >
+                  <img src={`/arts/${file}.gif`} alt={label} loading='lazy' />
+                  <span class='image-expand' aria-hidden='true'>
+                    View painting ↗
+                  </span>
+                </a>
+                <figcaption>
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  {label}
+                </figcaption>
+              </figure>
+            ))
+          }
+        </div>
+        <button
+          class='gallery-edge gallery-edge-prev'
+          type='button'
+          data-step='-1'
+          aria-label='Previous painting'
+          aria-controls='art-gallery'
+          hidden>‹</button
+        >
+        <button
+          class='gallery-edge gallery-edge-next'
+          type='button'
+          data-step='1'
+          aria-label='Next painting'
+          aria-controls='art-gallery'
+          hidden>›</button
+        >
       </div>
       <div class='gallery-navigation' data-for='art-gallery' hidden>
-        <p>Swipe or scroll to explore paintings</p>
+        <p>‹ Swipe or scroll · the gallery loops ›</p>
         <div>
           <button
             type='button'
@@ -392,28 +429,29 @@ const photographedParks = nationalParks.filter((park) => park.photo)
     })
   })
 
-  // Keep each strip centered and gently emphasize the photograph nearest its center.
+  // Three copies form a continuous ring. Once scrolling settles, recenter the
+  // equivalent original without animation; the surrounding images stay identical.
   document.querySelectorAll<HTMLElement>('.interest-gallery').forEach((rail) => {
     const navigation = document.querySelector<HTMLElement>(`[data-for="${rail.id}"]`)!
-    const previous = navigation.querySelector<HTMLButtonElement>('[data-step="-1"]')!
-    const next = navigation.querySelector<HTMLButtonElement>('[data-step="1"]')!
+    const buttons = Array.from(
+      document.querySelectorAll<HTMLButtonElement>(`button[aria-controls="${rail.id}"][data-step]`)
+    )
     const counter = navigation.querySelector<HTMLElement>('.gallery-position')!
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const originals = Array.from(rail.children) as HTMLElement[]
+    let visible: HTMLElement[] = []
+    let slides: HTMLElement[] = []
     let current = 0
     let frame = 0
-    const items = () =>
-      Array.from(rail.children).filter((item) => !(item as HTMLElement).hidden) as HTMLElement[]
+    let settleTimer: ReturnType<typeof setTimeout>
+    const centerOn = (slide: HTMLElement, smooth = false) => {
+      rail.scrollTo({
+        left: slide.offsetLeft + slide.offsetWidth / 2 - rail.clientWidth / 2,
+        behavior: smooth && !reducedMotion.matches ? 'smooth' : 'instant'
+      })
+    }
     const update = () => {
       frame = 0
-      const slides = items()
-      rail.style.setProperty(
-        '--first-ratio',
-        slides[0]?.style.getPropertyValue('--image-ratio') || '1'
-      )
-      rail.style.setProperty(
-        '--last-ratio',
-        slides.at(-1)?.style.getPropertyValue('--image-ratio') || '1'
-      )
       const center = rail.scrollLeft + rail.clientWidth / 2
       let nearest = Infinity
       slides.forEach((slide, index) => {
@@ -424,54 +462,105 @@ const photographedParks = nationalParks.filter((park) => park.photo)
           current = index
         }
         const depth = Math.min(distance / (rail.clientWidth * 0.65), 1)
-        slide.style.setProperty(
-          '--gallery-turn',
-          `${Math.max(-1, Math.min(offset / rail.clientWidth, 1)) * -26}deg`
-        )
-        slide.style.setProperty('--gallery-depth', `${depth * -70}px`)
+        const direction = Math.sign(offset)
+        slide.style.setProperty('--gallery-scale', String(1 - depth * 0.18))
+        slide.style.setProperty('--gallery-turn', `${direction * depth * 24}deg`)
+        slide.style.setProperty('--gallery-depth', `${-depth * 65}px`)
+        slide.style.setProperty('--gallery-arc', `${-depth * depth * 30}px`)
         slide.style.setProperty('--gallery-opacity', String(1 - depth * 0.38))
       })
-      navigation.hidden = slides.length === 0
-      counter.textContent = slides.length ? `${current + 1} / ${slides.length}` : ''
-      previous.disabled = current === 0
-      next.disabled = current >= slides.length - 1
+      const logicalIndex = visible.length ? current % visible.length : 0
+      counter.textContent = visible.length ? `${logicalIndex + 1} / ${visible.length}` : ''
     }
     const schedule = () => {
       if (!frame) frame = requestAnimationFrame(update)
     }
-    const goTo = (index: number) => {
-      const slides = items()
-      const slide = slides[Math.max(0, Math.min(index, slides.length - 1))]
-      if (slide)
-        rail.scrollTo({
-          left: slide.offsetLeft + slide.offsetWidth / 2 - rail.clientWidth / 2,
-          behavior: reducedMotion.matches ? 'instant' : 'smooth'
-        })
+    const reflect = (slide: HTMLElement) => {
+      slide.querySelectorAll<HTMLImageElement>('.gallery-image > img').forEach((photo) => {
+        const sync = () =>
+          photo.parentElement!.style.setProperty(
+            '--reflection-image',
+            `url("${photo.currentSrc || photo.src}")`
+          )
+        photo.addEventListener('load', sync)
+        if (photo.complete) sync()
+      })
     }
-    previous.addEventListener('click', () => goTo(current - 1))
-    next.addEventListener('click', () => goTo(current + 1))
+    const clone = (original: HTMLElement) => {
+      const copy = original.cloneNode(true) as HTMLElement
+      copy.dataset.clone = 'true'
+      copy.setAttribute('aria-hidden', 'true')
+      copy.removeAttribute('id')
+      copy.querySelectorAll('[id]').forEach((element) => element.removeAttribute('id'))
+      copy.querySelectorAll<HTMLAnchorElement>('a').forEach((link) => {
+        link.tabIndex = -1
+        link.addEventListener('click', (event) => {
+          if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return
+          event.preventDefault()
+          original.querySelector<HTMLAnchorElement>('a')!.click()
+        })
+      })
+      reflect(copy)
+      return copy
+    }
+    const rebuild = () => {
+      clearTimeout(settleTimer)
+      rail.querySelectorAll('[data-clone]').forEach((copy) => copy.remove())
+      visible = originals.filter((slide) => !slide.hidden)
+      if (visible.length > 1) {
+        rail.prepend(...visible.map(clone))
+        rail.append(...visible.map(clone))
+      }
+      slides = Array.from(rail.children).filter(
+        (slide) => !(slide as HTMLElement).hidden
+      ) as HTMLElement[]
+      navigation.hidden = !visible.length
+      buttons.forEach((button) => {
+        button.hidden = !visible.length
+        button.disabled = visible.length < 2
+      })
+      rail.hidden = !visible.length
+      if (visible.length) centerOn(visible[0])
+      update()
+    }
+    const settle = () => {
+      update()
+      const slide = slides[current]
+      if (slide?.dataset.clone && visible.length > 1) {
+        centerOn(visible[current % visible.length])
+        update()
+      }
+    }
+    const step = (direction: number) => {
+      if (visible.length < 2) return
+      settle()
+      centerOn(slides[current + direction], true)
+    }
+    buttons.forEach((button) =>
+      button.addEventListener('click', () => step(Number(button.dataset.step)))
+    )
     rail.addEventListener('keydown', (event) => {
       if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
         event.preventDefault()
-        goTo(current + (event.key === 'ArrowLeft' ? -1 : 1))
+        step(event.key === 'ArrowLeft' ? -1 : 1)
       }
     })
-    rail.addEventListener('scroll', schedule, { passive: true })
-    rail.addEventListener('gallery-filter', () => {
-      rail.scrollTo({ left: 0, behavior: 'instant' })
-      update()
-    })
-    rail.querySelectorAll<HTMLImageElement>('.gallery-image > img').forEach((photo) => {
-      const reflect = () =>
-        photo.parentElement!.style.setProperty(
-          '--reflection-image',
-          `url("${photo.currentSrc || photo.src}")`
-        )
-      photo.addEventListener('load', reflect)
-      if (photo.complete) reflect()
-    })
-    new ResizeObserver(schedule).observe(rail)
-    update()
+    rail.addEventListener(
+      'scroll',
+      () => {
+        schedule()
+        clearTimeout(settleTimer)
+        settleTimer = setTimeout(settle, 160)
+      },
+      { passive: true }
+    )
+    rail.addEventListener('gallery-filter', rebuild)
+    originals.forEach(reflect)
+    new ResizeObserver(() => {
+      if (visible.length) centerOn(visible[current % visible.length])
+      schedule()
+    }).observe(rail)
+    rebuild()
   })
 </script>
 
@@ -613,7 +702,7 @@ const photographedParks = nationalParks.filter((park) => park.photo)
   }
   .park-image,
   .art-image {
-    height: var(--gallery-height);
+    height: var(--item-height);
   }
   .gallery-image > img {
     display: block;
@@ -629,7 +718,7 @@ const photographedParks = nationalParks.filter((park) => park.photo)
     inset: calc(100% + 8px) 0 auto;
     height: 54px;
     background-image: var(--reflection-image);
-    background-size: 100% var(--gallery-height);
+    background-size: 100% var(--item-height);
     background-position: bottom;
     transform: scaleY(-1);
     opacity: 0.18;
@@ -697,30 +786,64 @@ const photographedParks = nationalParks.filter((park) => park.photo)
   }
   .interest-gallery {
     --gallery-height: clamp(180px, 34vw, 360px);
-    --first-ratio: 1;
-    --last-ratio: 1;
+
     position: relative;
     display: flex;
-    align-items: start;
+    align-items: center;
     gap: 28px;
     overflow-x: auto;
     overscroll-behavior-x: contain;
     scroll-snap-type: x mandatory;
-    scrollbar-width: thin;
+    scrollbar-width: none;
     scrollbar-color: var(--green) var(--soft-green);
-    padding: 36px 0 28px;
-    padding-left: max(16px, calc((100% - var(--gallery-height) * var(--first-ratio)) / 2));
-    padding-right: max(16px, calc((100% - var(--gallery-height) * var(--last-ratio)) / 2));
+    padding: 36px 50% 28px;
   }
   .interest-gallery > * {
+    --item-height: var(--gallery-height);
     flex: 0 0 auto;
-    width: calc(var(--gallery-height) * var(--image-ratio));
+    width: calc(var(--item-height) * var(--image-ratio));
     min-width: 0;
     scroll-snap-align: center;
-    transform: perspective(1000px) translateZ(var(--gallery-depth, 0px))
-      rotateY(var(--gallery-turn, 0deg));
+    transform: perspective(1100px) translateY(var(--gallery-arc, 0px))
+      translateZ(var(--gallery-depth, 0px)) rotateY(var(--gallery-turn, 0deg))
+      scale(var(--gallery-scale, 1));
+    transform-origin: center calc(var(--item-height) / 2);
     opacity: var(--gallery-opacity, 1);
-    transform-origin: center calc(var(--gallery-height) / 2);
+  }
+  .interest-gallery > [data-portrait='true'] {
+    --item-height: calc(var(--gallery-height) * 1.25);
+  }
+  .interest-gallery::-webkit-scrollbar {
+    display: none;
+  }
+  .gallery-stage {
+    position: relative;
+  }
+  .gallery-edge {
+    position: absolute;
+    top: calc(50% - 55px);
+    z-index: 2;
+    width: 44px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--surface);
+    color: var(--green);
+    box-shadow: 0 4px 16px #0002;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  .gallery-edge-prev {
+    left: 4px;
+  }
+  .gallery-edge-next {
+    right: 4px;
+  }
+  .gallery-edge:disabled {
+    opacity: 0.35;
+    cursor: default;
   }
   .interest-gallery:focus-visible {
     outline: 2px solid var(--green);
