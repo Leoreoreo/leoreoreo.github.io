@@ -1,14 +1,56 @@
 ---
 import { Image } from 'astro:assets'
 
-import { Button, Icon, Label } from 'astro-pure/user'
 import PageLayout from '@/layouts/BaseLayout.astro'
 import Card from '@/components/home/Card.astro'
 import Section from '@/components/home/Section.astro'
 import SkillLayout from '@/components/home/SkillLayout.astro'
 import avatar from '@/assets/avatar.png'
-import config from '@/site-config'
+import aroma from '@/assets/projects/AROMA.png'
+import sandbox from '@/assets/projects/PrivacySandbox.png'
 
+const publications = [
+  {
+    title:
+      'Why am I seeing this: Democratizing End User Auditing for Online Content Recommendations',
+    authors: [
+      'Chaoran Chen',
+      'Leyang Li',
+      'Luke Cao',
+      'Yanfang Ye',
+      'Tianshi Li',
+      'Yaxing Yao',
+      'Toby Jia-Jun Li'
+    ],
+    image: sandbox,
+    alt: 'Privacy Auditing Sandbox interface',
+    summary:
+      'An interactive interface for auditing content recommendations with AI-generated virtual personas.',
+    paper: 'https://dl.acm.org/doi/10.1145/3746059.3747798',
+    video: 'https://www.youtube.com/watch?v=3I_zgTW02a8'
+  },
+  {
+    title:
+      'AROMA: Mixed-Initiative AI Assistance for Non-Visual Cooking by Grounding Multimodal Information Between Reality and Videos',
+    authors: [
+      'Zheng Ning',
+      'Leyang Li',
+      'Daniel Killough',
+      'JooYoung Seo',
+      'Patrick Carrington',
+      'Yapeng Tian',
+      'Yuhang Zhao',
+      'Franklin Mingzhe Li',
+      'Toby Jia-Jun Li'
+    ],
+    image: aroma,
+    alt: 'AROMA cooking assistant overview',
+    summary:
+      'Multimodal assistance for blind and low-vision cooks, combining reactive and proactive support.',
+    paper: 'https://dl.acm.org/doi/10.1145/3746059.3747650',
+    video: 'https://www.youtube.com/watch?v=hi7YsFJp5KQ'
+  }
+]
 const programming = [
   'Python',
   'JavaScript',
@@ -47,217 +89,229 @@ const infrastructure = ['AWS EC2', 'Docker', 'Kubernetes', 'Flink', 'Kafka', 'HD
 ---
 
 <PageLayout meta={{ title: 'Home' }}>
-  <main id='main-content' class='flex w-full flex-col items-center'>
-    <section class='mb-10 flex flex-col items-center gap-y-7' id='content-header'>
-      <Image
-        src={avatar}
-        alt='Leyang Li'
-        class='h-28 w-auto rounded-full border p-1'
-        loading='eager'
-      />
+  <main id='main-content' class='research-home'>
+    <section class='profile-intro' aria-labelledby='profile-name'>
+      <div class='profile-copy'>
+        <p class='eyebrow'>Computer Science · Johns Hopkins University</p>
+        <h1 id='profile-name'>Leyang Li</h1>
+        <p class='profile-role'>Ph.D. student in Computer Science</p>
+        <p>
+          I study <strong>usable privacy and security</strong>, <strong
+            >human-computer interaction</strong
+          >, and <strong>human-centered AI</strong>.
+        </p>
+        <p>
+          I am a Ph.D. student at <a href='https://www.jhu.edu'>Johns Hopkins University</a>,
+          advised by <a href='https://www.cs.jhu.edu/~yaxing/index.html'>Prof. Yaxing Yao</a>. I
+          received my B.S. in Computer Science from the University of Notre Dame in 2026, where I
+          worked with <a href='https://toby.li/'>Prof. Toby Jia-Jun Li</a> in the SaNDwich Lab. I also
+          worked with <a href='https://sauvik.me/'>Prof. Sauvik Das</a> in CMU’s SPUD Lab.
+        </p>
+        <div class='profile-links' aria-label='Contact and professional links'>
+          <a class='contact-primary' href='mailto:lli184@jh.edu'
+            >Email <span aria-hidden='true'>↗</span></a
+          >
+          <a href='/Leyang_CV.pdf'>Curriculum vitae <span aria-hidden='true'>↗</span></a>
+          <a href='https://github.com/Leoreoreo'>GitHub <span aria-hidden='true'>↗</span></a>
+        </div>
+      </div>
+      <figure class='profile-photo'>
+        <Image src={avatar} alt='Leyang Li' width={280} loading='eager' fetchpriority='high' />
+        <figcaption>Baltimore, Maryland</figcaption>
+      </figure>
+    </section>
 
-      <div class='flex flex-col items-center gap-y-4'>
-        <h1 class='text-3xl font-bold'>{config.author}</h1>
-        <div class='flex flex-wrap justify-center gap-x-7 gap-y-3'>
-          <Label title='Baltimore, MD'>
-            <Icon name='location' class='size-5' slot='icon' />
-          </Label>
-          <Label title='Email' as='a' href='mailto:lli184@jh.edu'>
-            <Icon name='email' class='size-5' slot='icon' />
-          </Label>
-          <Label title='GitHub' as='a' href='https://github.com/Leoreoreo'>
-            <Icon name='github' class='size-5' slot='icon' />
-          </Label>
+    <nav class='research-nav' aria-label='On this page'>
+      <a href='#publications'>Publications</a>
+      <a href='#education'>Education</a>
+      <a href='#research-experience'>Research experience</a>
+      <a href='#teaching'>Teaching</a>
+    </nav>
+
+    <section class='academic-section' id='publications' aria-labelledby='publications-heading'>
+      <div class='section-heading'>
+        <div><p class='eyebrow'>Research</p><h2 id='publications-heading'>Publications</h2></div>
+        <a class='quiet-link' href='/projects'>All projects <span aria-hidden='true'>↗</span></a>
+      </div>
+      <div class='publication-list'>
+        {
+          publications.map((publication) => (
+            <article class='publication'>
+              <a
+                class='publication-image'
+                href={publication.paper}
+                aria-label={`Read ${publication.title}`}
+              >
+                <Image src={publication.image} alt={publication.alt} width={440} loading='lazy' />
+              </a>
+              <div class='publication-copy'>
+                <span class='venue-badge'>UIST 2025</span>
+                <h3>
+                  <a href={publication.paper}>{publication.title}</a>
+                </h3>
+                <p class='authors'>
+                  {publication.authors.map((author, index) => (
+                    <Fragment>
+                      {index > 0 && ', '}
+                      {author === 'Leyang Li' ? <strong>{author}</strong> : author}
+                    </Fragment>
+                  ))}
+                </p>
+                <p class='publication-venue'>
+                  38th ACM Symposium on User Interface Software and Technology
+                </p>
+                <p class='publication-summary'>{publication.summary}</p>
+                <div class='publication-links'>
+                  <a href={publication.paper} aria-label={`Paper: ${publication.title}`}>
+                    Paper <span aria-hidden='true'>↗</span>
+                  </a>
+                  <a href={publication.video} aria-label={`Video: ${publication.title}`}>
+                    Video <span aria-hidden='true'>↗</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class='academic-section' id='education' aria-labelledby='education-heading'>
+      <div class='section-heading'><h2 id='education-heading'>Education</h2></div>
+      <div class='academic-row'>
+        <p class='row-date'>2026 — present</p>
+        <div>
+          <h3>Johns Hopkins University</h3><p>Ph.D. in Computer Science</p>
+          <p class='row-detail'>
+            Advisor: <a href='https://www.cs.jhu.edu/~yaxing/index.html'>Prof. Yaxing Yao</a>
+          </p>
+        </div>
+      </div>
+      <div class='academic-row'>
+        <p class='row-date'>2022 — 2026</p>
+        <div>
+          <h3>University of Notre Dame</h3><p>B.S. in Computer Science, magna cum laude</p>
+          <p class='row-detail'>
+            Supplementary major in Applied Mathematics and Statistics · GPA: 3.95/4.00
+          </p>
         </div>
       </div>
     </section>
 
-    <div id='content' class='flex flex-col gap-y-10 w-full'>
-      <Section title='About'>
-        <p class='text-muted-foreground'>HCI, Privacy, and Security Researcher</p>
-        <p class='text-muted-foreground'>
-          I am a Ph.D. student in Computer Science at <a href='https://www.jhu.edu'
-            >Johns Hopkins University</a
-          >. My research interests lie at the intersection of usable privacy and security,
-          human-computer interaction, and human-centered AI.
-        </p>
-        <Button title='More about me' class='w-fit self-end' href='/about' variant='ahead' />
-      </Section>
+    <section class='academic-section' id='research-experience' aria-labelledby='experience-heading'>
+      <div class='section-heading'><h2 id='experience-heading'>Research experience</h2></div>
+      <div class='academic-row'>
+        <p class='row-date'>May 2025 — Feb. 2026</p>
+        <div>
+          <h3>Research Intern · Carnegie Mellon University</h3>
+          <p>SPUD Lab, Human-Computer Interaction Institute · Prof. Sauvik Das</p>
+          <p class='row-detail'>
+            SP-ABCBench: simulating and evaluating LLM agents’ privacy attitudes and behaviors.
+          </p>
+        </div>
+      </div>
+      <div class='academic-row'>
+        <p class='row-date'>Sept. 2023 — May 2025</p>
+        <div>
+          <h3>Research Assistant · University of Notre Dame</h3>
+          <p>SaNDwich Lab · Prof. Toby Jia-Jun Li</p>
+          <p class='row-detail'>
+            Research on non-visual cooking assistance and end-user auditing of content
+            recommendations.
+          </p>
+        </div>
+      </div>
+    </section>
 
-      <Section title='Publications'>
-        <Card
-          heading='Why am I seeing this: Democratizing End User Auditing for Online Content Recommendations'
-          subheading='Chaoran Chen, Leyang Li, Luke Cao, Yanfang Ye, Tianshi Li, Yaxing Yao, Toby Jia-Jun Li'
-          date='In Proceedings of the 38th Annual ACM Symposium on User Interface Software and Technology'
-        >
-          <div class='flex items-center gap-2 justify-end'>
-            <span>[UIST'25]</span>
-            <a
-              href='https://dl.acm.org/doi/10.1145/3746059.3747798'
-              target='_blank'
-              rel='noopener noreferrer'
-              aria-label='Read paper'>Paper</a
-            >
-            <a
-              href='https://www.youtube.com/watch?v=3I_zgTW02a8'
-              target='_blank'
-              rel='noopener noreferrer'
-              aria-label='Watch project video'>Video</a
-            >
-          </div>
-        </Card>
+    <section class='academic-section' id='teaching' aria-labelledby='teaching-heading'>
+      <div class='section-heading'><h2 id='teaching-heading'>Teaching</h2></div>
+      <p class='section-description'>
+        Teaching Assistant &amp; Tutor · Computer Science and Engineering, University of Notre Dame
+      </p>
+      <div class='teaching-row'><h3>Distributed Systems</h3><p>Spring 2026</p></div>
+      <div class='teaching-row'>
+        <h3>Operating System Principles</h3><p>Spring &amp; Fall 2025</p>
+      </div>
+    </section>
 
-        <Card
-          heading='AROMA: Mixed-Initiative AI Assistance for Non-Visual Cooking by Grounding Multimodal Information Between Reality and Videos'
-          subheading='Zheng Ning, Leyang Li, Daniel Killough, JooYoung Seo, Patrick Carrington, Yapeng Tian, Yuhang Zhao, Franklin Mingzhe Li, Toby Jia-Jun Li'
-          date='In Proceedings of the 38th Annual ACM Symposium on User Interface Software and Technology'
-        >
-          <div class='flex items-center gap-2 justify-end'>
-            <span>[UIST'25]</span>
-            <a
-              href='https://dl.acm.org/doi/10.1145/3746059.3747650'
-              target='_blank'
-              rel='noopener noreferrer'
-              aria-label='Read paper'>Paper</a
-            >
-            <a
-              href='https://www.youtube.com/watch?v=hi7YsFJp5KQ'
-              target='_blank'
-              rel='noopener noreferrer'
-              aria-label='Watch project video'>Video</a
-            >
-          </div>
-        </Card>
-      </Section>
+    <details class='additional-background'>
+      <summary
+        >More background <span>Honors, industry experience, and technical skills</span></summary
+      >
+      <div class='additional-content'>
+        <Section title='Honors'>
+          <Card
+            as='a'
+            heading='Second Place, Hesburgh Libraries Hackathon 2026'
+            subheading='Apr. 2026, University of Notre Dame, ($2,000)'
+            href='https://hackathon.library.nd.edu/2026.shtml'
+          />
+          <Card
+            heading='Dean’s Honor List'
+            subheading='Every semester, 2023–2025, University of Notre Dame'
+          />
+          <Card
+            as='a'
+            heading='First Place, Hesburgh Libraries Hackathon 2025'
+            subheading='Apr. 2025, University of Notre Dame, ($3,000)'
+            href='https://hackathon.library.nd.edu/2025.shtml'
+          />
+          <Card
+            as='a'
+            heading='Best Use of External Data, ASA DataFest 2025 at Notre Dame'
+            subheading='Mar. 2025, American Statistical Association, ($1,000)'
+            href='https://vweber1.wixsite.com/datafest-nd/'
+          />
+          <Card
+            heading='Frank Reilly Scholar'
+            subheading='2024, University of Notre Dame, ($5,000)'
+          />
+          <Card
+            as='a'
+            heading='Second Place, Hesburgh Libraries Hackathon 2024'
+            subheading='Apr. 2024, University of Notre Dame, ($2,000)'
+            href='https://hackathon.library.nd.edu/2024.shtml'
+          />
+          <Card
+            heading='Greater China Scholar'
+            subheading='2022, University of Notre Dame, ($5,000)'
+          />
+        </Section>
+        <Section title='Industry experience'>
+          <Card
+            heading='Software Engineer Intern'
+            subheading='China Construction Bank Fintech'
+            date='Jun. - Aug. 2024'
+          >
+            <ul class='ms-4 list-disc text-muted-foreground'>
+              <li>Maintained a big data system using a Flink-based Kafka consumer.</li>
+            </ul>
+          </Card>
+          <Card
+            heading='Data Analyst Intern'
+            subheading='Everbright Securities Asset Management'
+            date='Jul. - Aug. 2023'
+          >
+            <ul class='ms-4 list-disc text-muted-foreground'>
+              <li>
+                Applied machine learning to investment analysis using a GRU with multi-head
+                self-attention.
+              </li>
+            </ul>
+          </Card>
+        </Section>
+        <Section title='Skills'>
+          <SkillLayout title='Programming' skills={programming} />
+          <SkillLayout title='Tools' skills={tools} />
+          <SkillLayout title='Data Science & ML' skills={dataScience} />
+          <SkillLayout title='Infrastructure' skills={infrastructure} />
+        </Section>
+      </div>
+    </details>
 
-      <Section title='Education'>
-        <Card
-          as='a'
-          heading='Johns Hopkins University'
-          subheading='Ph.D. in Computer Science'
-          date='Aug. 2026 - Present'
-          href='https://jhu.edu'
-        />
-
-        <Card
-          as='a'
-          heading='University of Notre Dame'
-          subheading='B.S. in Computer Science; supplementary major in Applied Mathematics and Statistics'
-          date='Aug. 2022 - May 2026'
-          href='https://nd.edu'
-        >
-          <p>GPA: 3.95/4.00 (magna cum laude)</p>
-        </Card>
-      </Section>
-
-      <Section title='Experience'>
-        <Card
-          heading='Research Intern'
-          subheading='SPUD Lab, HCII, Carnegie Mellon University'
-          date='May 2025 - Feb. 2026'
-        >
-          <ul class='ms-4 list-disc text-muted-foreground'>
-            <li>Advised by Prof. Sauvik Das.</li>
-            <li>
-              SP-ABCBench: A benchmark to simulate and evaluate LLM agents' privacy attitudes and
-              behaviors.
-            </li>
-          </ul>
-        </Card>
-        <Card
-          heading='Research Assistant'
-          subheading='SaNDwich Lab, University of Notre Dame'
-          date='Sept. 2023 - May 2025'
-        >
-          <ul class='ms-4 list-disc text-muted-foreground'>
-            <li>Advised by Prof. Toby Jia-Jun Li.</li>
-            <li>
-              AROMA: A multimodal cooking assistant for blind and low-vision users, providing both
-              reactive and proactive assistance.
-            </li>
-            <li>
-              Privacy Auditing Sandbox: An interactive interface for end-user auditing of online
-              content recommendations using AI-generated virtual personas.
-            </li>
-          </ul>
-        </Card>
-        <Card
-          heading='Teaching Assistant & Tutor'
-          subheading='CSE Department, University of Notre Dame'
-        >
-          <ul class='ms-4 list-disc text-muted-foreground'>
-            <li>Operating System Principles: Spring and Fall 2025</li>
-            <li>Distributed Systems: Spring 2026</li>
-          </ul>
-        </Card>
-        <Card
-          heading='Software Engineer Intern'
-          subheading='China Construction Bank Fintech'
-          date='Jun. - Aug. 2024'
-        >
-          <ul class='ms-4 list-disc text-muted-foreground'>
-            <li>Maintained a big data system using a Flink-based Kafka consumer.</li>
-          </ul>
-        </Card>
-        <Card
-          heading='Data Analyst Intern'
-          subheading='Everbright Securities Asset Management'
-          date='Jul. - Aug. 2023'
-        >
-          <ul class='ms-4 list-disc text-muted-foreground'>
-            <li>
-              Applied machine learning to investment analysis using a GRU with multi-head
-              self-attention.
-            </li>
-          </ul>
-        </Card>
-      </Section>
-
-      <Section title='Honors'>
-        <Card
-          as='a'
-          heading='Second Place, Hesburgh Libraries Hackathon 2026'
-          subheading='Apr. 2026, University of Notre Dame, ($2,000)'
-          href='https://hackathon.library.nd.edu/2026.shtml'
-        />
-        <Card
-          heading='Dean’s Honor List'
-          subheading='Every semester, 2023–2025, University of Notre Dame'
-        />
-        <Card
-          as='a'
-          heading='First Place, Hesburgh Libraries Hackathon 2025'
-          subheading='Apr. 2025, University of Notre Dame, ($3,000)'
-          href='https://hackathon.library.nd.edu/2025.shtml'
-        />
-        <Card
-          as='a'
-          heading='Best Use of External Data, ASA DataFest 2025 at Notre Dame'
-          subheading='Mar. 2025, American Statistical Association, ($1,000)'
-          href='https://vweber1.wixsite.com/datafest-nd/'
-        />
-        <Card
-          heading='Frank Reilly Scholar'
-          subheading='2024, University of Notre Dame, ($5,000)'
-        />
-        <Card
-          as='a'
-          heading='Second Place, Hesburgh Libraries Hackathon 2024'
-          subheading='Apr. 2024, University of Notre Dame, ($2,000)'
-          href='https://hackathon.library.nd.edu/2024.shtml'
-        />
-        <Card
-          heading='Greater China Scholar'
-          subheading='2022, University of Notre Dame, ($5,000)'
-        />
-      </Section>
-
-      <Section title='Skills'>
-        <SkillLayout title='Programming' skills={programming} />
-        <SkillLayout title='Tools' skills={tools} />
-        <SkillLayout title='Data Science & ML' skills={dataScience} />
-        <SkillLayout title='Infrastructure' skills={infrastructure} />
-      </Section>
-    </div>
+    <aside class='personal-note'>
+      <div><h2>Outside the lab</h2><p>I enjoy painting, hiking, and Notre Dame football.</p></div>
+      <a href='/about'>A little more about me <span aria-hidden='true'>→</span></a>
+    </aside>
   </main>
 </PageLayout>
