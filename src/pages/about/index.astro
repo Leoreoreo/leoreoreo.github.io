@@ -8,25 +8,25 @@ const headings = [
   { depth: 2, slug: 'hiking', text: 'National parks' },
   { depth: 2, slug: 'painting', text: 'Painting' }
 ]
-const parkNames = [
-  'Grand Canyon (Arizona)',
-  'Yellowstone (Wyoming)',
-  'Arches (Utah)',
-  'Olympic (Washington)',
-  'Mount Rainier (Washington)',
-  'Everglades (Florida)',
-  'Acadia (Maine)',
-  'Saguaro (Arizona)',
-  'Bryce Canyon (Utah)',
-  'Canyonlands (Utah)',
-  'Black Canyon of the Gunnison (Colorado)',
-  'North Cascades (Washington)',
-  'Shenandoah (Virginia)',
-  'Mammoth Cave (Kentucky)',
-  'Biscayne (Florida)',
-  'Petrified Forest (Arizona)',
-  'Mesa Verde (Colorado)',
-  'Indiana Dunes (Indiana)'
+const parkEntries = [
+  { label: 'Grand Canyon (Arizona)', date: 'Mar. 2024', datetime: '2024-03' },
+  { label: 'Yellowstone (Wyoming)', date: 'Jul. 2016', datetime: '2016-07' },
+  { label: 'Arches (Utah)', date: 'Mar. 2025', datetime: '2025-03' },
+  { label: 'Olympic (Washington)', date: 'Oct. 2024', datetime: '2024-10' },
+  { label: 'Mount Rainier (Washington)', date: 'Oct. 2024', datetime: '2024-10' },
+  { label: 'Everglades (Florida)', date: 'Mar. 2026', datetime: '2026-03' },
+  { label: 'Bryce Canyon (Utah)', date: 'Jul. 2016', datetime: '2016-07' },
+  { label: 'Canyonlands (Utah)', date: 'Mar. 2025', datetime: '2025-03' },
+  { label: 'Acadia (Maine)', date: 'Oct. 2025', datetime: '2025-10' },
+  { label: 'Saguaro (Arizona)', date: 'Mar. 2024', datetime: '2024-03' },
+  { label: 'Shenandoah (Virginia)', date: 'Oct. 2026', datetime: '2026-10' },
+  { label: 'Black Canyon of the Gunnison (Colorado)', date: 'Mar. 2025', datetime: '2025-03' },
+  { label: 'North Cascades (Washington)', date: 'Oct. 2024', datetime: '2024-10' },
+  { label: 'Mammoth Cave (Kentucky)', date: 'Apr. 2025', datetime: '2025-04' },
+  { label: 'Biscayne (Florida)', date: 'Mar. 2026', datetime: '2026-03' },
+  { label: 'Petrified Forest (Arizona)', date: 'Mar. 2024', datetime: '2024-03' },
+  { label: 'Mesa Verde (Colorado)', date: 'Mar. 2025', datetime: '2025-03' },
+  { label: 'Indiana Dunes (Indiana)', date: 'Mar. 2024', datetime: '2024-03' }
 ]
 const artwork = import.meta.glob<{ default: ImageMetadata }>('/public/arts/*.gif', { eager: true })
 const paintings = [
@@ -63,7 +63,7 @@ const descriptions: Record<string, string> = {
   'Petrified Forest': 'Pale, eroded badlands stretching toward the horizon',
   'Mesa Verde': 'Cliff dwellings sheltered beneath a sandstone overhang'
 }
-const nationalParks = parkNames.map((label, index) => {
+const nationalParks = parkEntries.map(({ label, date, datetime }, index) => {
   const [name, state] = label.replace(')', '').split(' (')
   const photoPath = ['jpeg', 'jpg']
     .map((extension) => `/public/National Parks/${name}.${extension}`)
@@ -72,6 +72,8 @@ const nationalParks = parkNames.map((label, index) => {
     name,
     state,
     rank: index + 1,
+    date,
+    datetime,
     photo: photoPath ? photos[photoPath].default : undefined,
     original: photoPath ? encodeURI(photoPath.replace('/public', '')) : '',
     alt: descriptions[name]
@@ -111,7 +113,7 @@ const photographedParks = nationalParks.filter((park) => park.photo)
                     <span>{park.name}</span>
                   )}
                   <small>
-                    {park.state}
+                    {park.state} · <time datetime={park.datetime}>{park.date}</time>
                     {!park.photo && ' · No photo yet'}
                   </small>
                 </div>
@@ -159,7 +161,7 @@ const photographedParks = nationalParks.filter((park) => park.photo)
                   href={park.original}
                   data-gallery='parks'
                   data-caption={`${String(park.rank).padStart(2, '0')} · ${park.name}`}
-                  data-detail={park.state}
+                  data-detail={`${park.state} · ${park.date}`}
                   aria-label={`Enlarge photo: ${park.name}`}
                 >
                   <Image
@@ -179,7 +181,7 @@ const photographedParks = nationalParks.filter((park) => park.photo)
                   <div>
                     <>
                       <h3>{park.name}</h3>
-                      <p>{park.state}</p>
+                      <p>{park.state} · <time datetime={park.datetime}>{park.date}</time></p>
                     </>
                   </div>
                 </div>
