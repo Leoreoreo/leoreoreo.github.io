@@ -1,5 +1,6 @@
 ---
 import PageLayout from '@/layouts/CommonPage.astro'
+import ProjectGallery from '@/components/projects/ProjectGallery.astro'
 import ProjectSection from '@/components/projects/ProjectSection.astro'
 
 const headings = [
@@ -37,12 +38,15 @@ const headings = [
     ]}
   />
   <h2 id='personal'>Personal</h2>
-  <ProjectSection
+  <ProjectGallery
+    id='personal-gallery'
+    label='Personal projects'
     projects={[
       {
         name: 'SafePrompt',
         description: 'A privacy layer that reduces sensitive information shared with AI chatbots.',
         image: 'SafePrompt.png',
+        detail: '2026 Hesburgh Library Hackathon — second place',
         links: [
           { type: 'github', href: 'https://github.com/lukewarm3/SafePrompt' },
           { type: 'doc', href: 'https://github.com/lukewarm3/SafePrompt/blob/main/Hackathon26.key' }
@@ -52,6 +56,7 @@ const headings = [
         name: 'MindEcho',
         description: 'A meeting assistant for people with hearing or speech disabilities.',
         image: 'mindEcho.png',
+        detail: '2025 Hesburgh Library Hackathon — second place',
         links: [
           { type: 'github', href: 'https://github.com/Leoreoreo/Meeting_Assistant' },
           {
@@ -64,6 +69,7 @@ const headings = [
         name: 'A11yVate',
         description: 'A crowdsourced map of campus accessibility information.',
         image: 'A11yVate.png',
+        detail: '2024 Hesburgh Library Hackathon — second place',
         links: [{ type: 'github', href: 'https://github.com/Leoreoreo/A11yVate' }]
       },
       {
@@ -79,12 +85,15 @@ const headings = [
   />
 
   <h2 id='course'>Course projects</h2>
-  <ProjectSection
+  <ProjectGallery
+    id='course-gallery'
+    label='Course projects'
     projects={[
       {
         name: 'Campus Mart',
         description: 'A campus marketplace built with Django and React.',
         image: 'campusMart.jpg',
+        detail: 'CSE 30332 Programming Paradigms',
         links: [
           { type: 'github', href: 'https://github.com/johnkimdw/campus_mart' },
           {
@@ -97,6 +106,7 @@ const headings = [
         name: 'P2P Hash Table',
         description: 'A scalable, persistent distributed hash table based on Chord.',
         image: 'p2pHashTable.jpg',
+        detail: 'CSE 40771 Distributed Systems',
         links: [
           { type: 'github', href: 'https://github.com/Leoreoreo/p2pHashtable' },
           {
@@ -109,6 +119,7 @@ const headings = [
         name: 'Travel Itinerary Manager',
         description: 'A trip scheduling and planning assistant. (React, Flask)',
         image: 'TIM.jpg',
+        detail: 'CSE 30246 Database Concepts',
         links: [{ type: 'github', href: 'https://github.com/Leoreoreo/TravelItineraryManager' }]
       },
       {
@@ -116,12 +127,14 @@ const headings = [
         description:
           'Python implementations of finite automata, regular expressions, sed, and Turing machines.',
         image: 'satSolver.jpg',
+        detail: 'CSE 30151 Theory of Computing',
         links: [{ type: 'github', href: 'https://github.com/Leoreoreo/SAT_Solver' }]
       },
       {
         name: 'The Kuiper Frontier',
         description: 'A 2D aerial shooting game built with Java.',
         image: 'theKuiperFrontier.png',
+        detail: 'CSE 34777: Creative Programming with Processing',
         links: [{ type: 'github', href: 'https://github.com/Leoreoreo/theKuiperFrontier' }]
       }
     ]}

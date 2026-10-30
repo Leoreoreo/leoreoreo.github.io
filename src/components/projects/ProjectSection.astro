@@ -13,7 +13,7 @@ interface Props {
 }
 const { projects } = Astro.props
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  '/src/assets/projects/*.{jpeg,jpg,png,webp}'
+  '/src/assets/projects/*.{jpeg,jpg,png,webp}', { eager: true }
 )
 const labels: Record<string, string> = {
   github: 'Code',
@@ -29,7 +29,7 @@ const labels: Record<string, string> = {
       <article class='project-card'>
         {project.image && (
           <Image
-            src={images[`/src/assets/projects/${project.image}`]()}
+            src={images[`/src/assets/projects/${project.image}`].default}
             alt={project.name}
             loading='lazy'
           />

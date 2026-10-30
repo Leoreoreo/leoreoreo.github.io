@@ -1,0 +1,113 @@
+.interest-gallery {
+  isolation: isolate;
+  --gallery-height: clamp(180px, 34vw, 360px);
+  --ground-height: calc(var(--gallery-height) * 1.25);
+  --camera-height: calc(var(--ground-height) * 0.65);
+
+  position: relative;
+  display: flex;
+  align-items: start;
+  gap: clamp(56px, 8vw, 96px);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  overflow-anchor: none;
+  scrollbar-width: none;
+  scrollbar-color: var(--green) var(--soft-green);
+  padding: 36px 50% 28px;
+}
+.interest-gallery > * {
+  --item-height: var(--gallery-height);
+  flex: 0 0 auto;
+  width: calc(var(--item-height) * var(--image-ratio));
+  min-width: 0;
+  padding-top: calc(var(--ground-height) - var(--item-height));
+  /* Move every local image origin to the same camera before projection. */
+  transform: translate3d(calc(-1 * var(--gallery-offset, 0px)), calc(-1 * var(--camera-height)), 0)
+    perspective(var(--camera-distance, 1200px))
+    translate3d(var(--circle-x, 0px), var(--camera-height), var(--circle-z, 0px))
+    rotateY(var(--circle-angle, 0rad));
+  transform-origin: center var(--ground-height);
+  opacity: var(--gallery-opacity, 1);
+}
+.interest-gallery > [data-portrait='true'] {
+  --item-height: calc(var(--gallery-height) * 1.25);
+}
+.interest-gallery::-webkit-scrollbar {
+  display: none;
+}
+.gallery-stage {
+  position: relative;
+}
+.gallery-edge {
+  position: absolute;
+  top: calc(50% - 55px);
+  z-index: 2;
+  width: 44px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--green);
+  box-shadow: 0 4px 16px #0002;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.gallery-edge-prev {
+  left: 4px;
+}
+.gallery-edge-next {
+  right: 4px;
+}
+.gallery-edge:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.interest-gallery:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+.gallery-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 12px;
+}
+.gallery-navigation p {
+  margin: 0;
+  font-size: 0.78rem;
+}
+.gallery-navigation > div {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.gallery-position {
+  min-width: 4.5ch;
+  text-align: center;
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+.gallery-navigation button {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--green);
+  cursor: pointer;
+}
+.gallery-navigation button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+@media (prefers-reduced-motion: reduce) {
+  .interest-gallery > * {
+    transform: none;
+  }
+}

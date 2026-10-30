@@ -1,0 +1,160 @@
+---
+import type { ImageMetadata } from 'astro'
+import { Image } from 'astro:assets'
+
+import '@/assets/styles/gallery.css'
+
+interface Props {
+  id: string
+  label: string
+  projects: {
+    name: string
+    description: string
+    detail?: string
+    image: string
+    links: { type: string; href: string }[]
+  }[]
+}
+const { id, label, projects } = Astro.props
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/projects/*.{jpeg,jpg,png,webp}',
+  { eager: true }
+)
+const labels: Record<string, string> = {
+  github: 'Code',
+  site: 'Website',
+  doc: 'Read more',
+  youtube: 'Video'
+}
+---
+
+<div class='gallery-stage'>
+  <div
+    class='interest-gallery project-gallery'
+    id={id}
+    tabindex='0'
+    aria-roledescription='carousel'
+    aria-label={label}
+  >
+    {
+      projects.map((project) => {
+        const image = images[`/src/assets/projects/${project.image}`].default
+        return (
+          <article
+            class='project-slide'
+            style={`--image-ratio: ${image.width / image.height}`}
+            data-portrait={image.height > image.width}
+          >
+            <a
+              class='gallery-image'
+              href={project.links[0].href}
+              aria-label={`Explore ${project.name}`}
+            >
+              <Image
+                src={image}
+                alt={`${project.name} project preview`}
+                widths={[400, 800, 1200]}
+                sizes='(max-width: 600px) 90vw, 640px'
+                width={800}
+                loading='lazy'
+              />
+            </a>
+            <div class='project-description'>
+              <h3>{project.name}</h3>
+              <p>{project.description}</p>
+              {project.detail && <p class='project-detail'>{project.detail}</p>}
+              <div class='project-links'>
+                {project.links.map((link) => (
+                  <a
+                    href={link.href}
+                    aria-label={`${project.name}: ${labels[link.type] || link.type}`}
+                  >
+                    {labels[link.type] || link.type} ↗
+                  </a>
+                ))}
+              </div>
+            </div>
+          </article>
+        )
+      })
+    }
+  </div>
+  <button
+    class='gallery-edge gallery-edge-prev'
+    type='button'
+    data-step='-1'
+    aria-label='Previous project'
+    aria-controls={id}
+    hidden>‹</button
+  >
+  <button
+    class='gallery-edge gallery-edge-next'
+    type='button'
+    data-step='1'
+    aria-label='Next project'
+    aria-controls={id}
+    hidden>›</button
+  >
+</div>
+<div class='gallery-navigation' data-for={id} hidden>
+  <p>‹ Swipe or scroll · the gallery loops ›</p>
+  <div>
+    <button type='button' data-step='-1' aria-label='Previous project' aria-controls={id}>←</button>
+    <span class='gallery-position' aria-live='polite' aria-atomic='true'></span>
+    <button type='button' data-step='1' aria-label='Next project' aria-controls={id}>→</button>
+  </div>
+</div>
+<script>
+  import { initializeGalleries } from '../../scripts/gallery'
+
+  initializeGalleries()
+</script>
+<style>
+  .gallery-image {
+    display: block;
+    position: relative;
+    height: var(--item-height);
+    border-radius: 8px;
+    background: var(--surface-muted);
+    box-shadow:
+      0 18px 30px -16px #0008,
+      0 3px 10px #0002;
+  }
+  .gallery-image > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: inherit;
+  }
+  .gallery-image::after {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: calc(100% + 8px) 0 auto;
+    height: 54px;
+    background-image: var(--reflection-image);
+    background-size: 100% var(--item-height);
+    background-position: bottom;
+    transform: scaleY(-1);
+    opacity: 0.18;
+    filter: blur(1px);
+    mask-image: linear-gradient(to top, #0009, transparent);
+    border-radius: inherit;
+  }
+  .project-description {
+    padding: 70px 4px 0;
+    max-width: 560px;
+  }
+  .project-description h3 {
+    margin: 0;
+  }
+  .project-description p {
+    margin: 10px 0 16px;
+    font-size: 0.9rem;
+  }
+  .project-description .project-detail {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+  }
+</style>
